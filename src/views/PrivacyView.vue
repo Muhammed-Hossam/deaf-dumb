@@ -1,9 +1,8 @@
 <template>
     <section>
-        <h1>About Us Page</h1>
+        <h1>Privacy and Policy</h1>
     </section>
 </template>
-
 
 
 <script>
