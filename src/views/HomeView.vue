@@ -3,16 +3,21 @@
     <TheSlider />
     <hr>
     <service-section />
+    <hr>
+    <ContactSection />
   </div>
 </template>
 
 <script>
 import TheSlider from "../components/TheSlider.vue";
-import ServiceSection from "../components/home-sections/ServiceSection.vue";
+import ServiceSection from "../components/home-sections/ContentSection.vue";
+import ContactSection from "../components/home-sections/ContactSection.vue";
+
 export default {
   components: {
     TheSlider,
-    ServiceSection
+    ServiceSection,
+    ContactSection
   },
   data() {
     return {};

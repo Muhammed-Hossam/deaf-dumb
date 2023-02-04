@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-4">
           <video width="400" class="h-100" autoplay loop muted>
-            <source src="../../assets/home-video-design-1.mp4" />
+            <source src="../../assets/contents/home-video-design-1.mp4" />
           </video>
         </div>
         <div class="col-8">
