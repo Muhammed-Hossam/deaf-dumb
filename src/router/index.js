@@ -1,9 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ContentView from '../views/ContentView.vue';
+import HomeView from '../views/HomeView.vue';
 import AboutView from '../views/AboutView.vue';
 import ContactView from '../views/ContactView.vue';
 import PrivacyView from '../views/PrivacyView.vue';
+import AlphabetView from '../views/AlphabetView.vue';
+import CommonSignsView from '../views/CommonSignsView.vue';
+import SignsDictionaryView from '../views/SignsDictionaryView.vue';
+import FlashCards from '../views/FlashCardsView.vue';
 
 const routes = [
   {
@@ -12,9 +15,24 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/content',
-    name: 'content',
-    component: ContentView
+    path: '/alphabet',
+    name: 'alphabet',
+    component: AlphabetView
+  },
+  {
+    path: '/common-signs',
+    name: 'common-signs',
+    component: CommonSignsView
+  },
+  {
+    path: '/dictionary',
+    name: 'dictionary',
+    component: SignsDictionaryView
+  },
+  {
+    path: '/flash-cards',
+    name: 'flash-cards',
+    component: FlashCards
   },
   {
     path: '/about',

@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
     <div class="container-fluid">
-      <router-link to="/" class="navbar-brand">
+      <router-link to="/" class="navbar-brand py-0">
         <img src="../assets/logo.png" alt="logo" width="70" height="70" />
         <span>Deaf & Dumb</span>
       </router-link>
@@ -26,8 +26,47 @@
               >Home</router-link
             >
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/content">Content</router-link>
+          <li class="nav-item dropdown">
+            <!-- dropdown -->
+            <a
+              href="#"
+              class="btn dropdown-toggle text-muted d-none d-lg-block"
+              aria-expanded="false"
+            >
+              contents
+            </a>
+            <!-- dropdown toggle for mobile -->
+            <a
+              class="btn dropdown-toggle d-lg-none mobile-dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <router-link class="dropdown-item text-muted" to="/alphabet"
+                  >Sign Lang Alphabet</router-link
+                >
+              </li>
+              <li>
+                <router-link class="dropdown-item text-muted" to="/common-signs"
+                  >Common Signs</router-link
+                >
+              </li>
+              <li>
+                <router-link class="dropdown-item text-muted" to="/dictionary"
+                  >Signs Dictionary</router-link
+                >
+              </li>
+              <li>
+                <router-link class="dropdown-item text-muted" to="/flash-cards"
+                  >Flash Cards</router-link
+                >
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/contact">Contact Us</router-link>
@@ -51,27 +90,49 @@ export default {
   },
 
   mounted() {
-    const links = document.querySelectorAll(".nav-link");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const dropdownItems = document.querySelectorAll(".dropdown-item");
 
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        const activeLink = document.querySelector(".nav-link.active");
-        activeLink.classList.remove("active");
-        link.classList.add("active");
+    /*
+      loop through navbar links and when click on any link of them add "active" class to clicked link 
+      and remove it from others.
+    */
+    function addActiveClassWhenLinkClicked(
+      links,
+      linkSelector,
+      removedClass,
+      addedClass
+    ) {
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          const activeLink = document.querySelector(linkSelector);
+          activeLink.classList.remove(removedClass);
+          link.classList.add(addedClass);
+        });
       });
-    });
+    }
+
+    addActiveClassWhenLinkClicked(
+      navLinks,
+      ".nav-link.active",
+      "active",
+      "active"
+    );
+    addActiveClassWhenLinkClicked(
+      dropdownItems,
+      ".dropdown-item.router-link-exact-active",
+      "text-muted",
+      "text-dark"
+    );
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .navbar {
-  padding: 0;
   .navbar-brand {
     color: #02b1b4;
     transition: all 0.5s ease-in-out;
-    padding-top: 0;
-    padding-bottom: 0;
     font-weight: 800;
 
     &:hover {
@@ -79,7 +140,37 @@ export default {
     }
   }
 
-  .nav-link {
+  .dropdown {
+    .dropdown-toggle {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      &:focus {
+        border: 0;
+      }
+
+      &::after {
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover::after {
+        rotate: 180deg;
+      }
+    }
+
+    .dropdown-menu {
+      transition: all 0.3s ease-in-out;
+      border-radius: 0;
+    }
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background: #fff;
+    color: #000;
+  }
+
+  .nav-link,
+  .dropdown-item {
     position: relative;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -107,15 +198,22 @@ export default {
     // }
   }
   @media (min-width: 992px) {
-    .nav-link {
+    .nav-link,
+    .dropdown-item {
       &.router-link-exact-active {
         &::after {
           width: 85%;
         }
       }
       &:hover::after {
-      width: 85%;
+        width: 85%;
+      }
     }
+
+    .dropdown {
+      &:hover .dropdown-menu {
+        display: block;
+      }
     }
   }
 }

@@ -1,28 +1,49 @@
 <template>
-  <header>
-    <TheNavbar />
-  </header>
-  <router-view/>
+  <div>
+    <header>
+      <TheNavbar />
+    </header>
+    <router-view/>
+    <TheFooter />
+  </div>
 </template>
 
 <script>
 import TheNavbar from './components/TheNavbar.vue';
+import TheFooter from './components/TheFooter.vue';
 export default {
   components: {
-    TheNavbar
-  }
+    TheNavbar,
+    TheFooter
+  },
 }
 </script>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+// @import "./scss/custom.scss";
+
+body {
+  // background-image: url('./assets/cool-background.png');
+  // background-size: cover;
+  // background-repeat: repeat;
+
+}
+
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+}
+
+.background {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 </style>
