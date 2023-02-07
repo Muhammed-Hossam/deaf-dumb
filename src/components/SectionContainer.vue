@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <section class="text-center my-3">
     <h2 class="title my-5">{{ title }}</h2>
-    <div class="features">
+    <div class="content">
       <slot></slot>
     </div>
   </section>

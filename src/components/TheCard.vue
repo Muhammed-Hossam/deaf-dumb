@@ -1,10 +1,10 @@
 <template>
-  <div class="card mb-3 px-0 me-4" style="max-width: 400px;">
+  <div class="card mb-3 px-0">
   <div class="row g-0">
-    <div class="col-md-4">
+    <div class="col-lg-4">
       <img :src="cardImg" class="img-fluid rounded-start h-100" :alt="alt">
     </div>
-    <div class="col-md-8">
+    <div class="col-lg-8">
       <div class="card-body">
         <h5 class="card-title text-center">{{ cardTitle }}</h5>
         <p class="card-text">{{ cardText }}</p>
@@ -27,6 +27,10 @@ export default {
 <style lang="scss" scoped>
 .card {
   height: fit-content;
+
+  @media (min-width: 992px) {
+    width: 26.25rem;
+  }
 
   .card-body {
     text-align: initial;

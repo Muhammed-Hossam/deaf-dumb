@@ -1,17 +1,17 @@
 <template>
-  <section-container title="Contents">
+  <section-container title="Content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-4">
-          <video width="400" class="h-100" autoplay loop muted>
+        <div class="col-12 col-lg-4">
+          <video class="h-100" autoplay loop muted>
             <source src="../../assets/contents/home-video-design-1.mp4" />
           </video>
         </div>
-        <div class="col-8">
+        <div class="col-12 col-lg-8 mt-3">
           <div class="container-fluid">
-            <div class="row">
+            <div class="row flex-lg-nowrap column-gap-3">
               <TheCard
-                class="col-6"
+                class="col-12 col-lg-6"
                 :cardImg="require('../../assets/contents/s-1.jpg')"
                 alt="F alphabet image"
                 cardTitle="Learn SL Alphabet"
@@ -19,7 +19,7 @@
                 link="/alphabet"
               />
               <TheCard
-                class="col-6"
+                class="col-12 col-lg-6"
                 :cardImg="require('../../assets/contents/s-2.jpg')"
                 alt="Most common Signs image"
                 cardTitle="Most Common Signs"
@@ -27,10 +27,10 @@
                 link="/common-signs"
               />
               </div>
-              <div class="row">
+              <div class="row flex-lg-nowrap column-gap-3">
 
                 <TheCard
-                  class="col-6"
+                  class="col-12 col-lg-6"
                   :cardImg="require('../../assets/contents/s-3.jpg')"
                   alt="Signs dictionary image"
                   cardTitle="Signs Dictionary"
@@ -38,7 +38,7 @@
                   link="/dictionary"
                 />
                 <TheCard
-                  class="col-6"
+                  class="col-12 col-lg-6"
                   :cardImg="require('../../assets/contents/s-4.jpg')"
                   alt="Flash Cards image"
                   cardTitle="Flash Cards"
@@ -68,5 +68,6 @@ export default {
 <style lang="scss" scoped>
 video {
   border-radius: 5px;
+  width: 100%;
 }
 </style>
