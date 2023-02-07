@@ -1,17 +1,86 @@
 <template>
-  <footer class="p-5 bg-dark">
-
+  <footer class="bg-dark text-secondary">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="logo text-center">
+            <img src="../assets/logo.png" width="250" height="250" alt="logo" />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="aim mt-5">
+            <p class="text-center fs-4">
+              Our website aim to provide resources for deaf and dumb people to
+              make their life more easier by provide sign language images.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="site-map mt-5 text-center">
+            <h5 class="fs-2">Site Map</h5>
+            <ul class="links">
+              <li>
+                <router-link to="/">Home</router-link>
+              </li>
+              <li>
+                <router-link to="/contact">Contact Us</router-link>
+              </li>
+              <li>
+                <router-link to="/about">About Us</router-link>
+              </li>
+              <li>
+                <router-link to="/privacy">Privacy</router-link>
+              </li>
+            </ul>
+            <ul class="links">
+              <li>
+                <router-link to="/alphabet"
+                  >Sign Alphabets</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/common-signs">Most Common Signs</router-link>
+              </li>
+              <li>
+                <router-link to="/dictionary">Signs Dictionary</router-link>
+              </li>
+              <li>
+                <router-link to="/flash-cards">Flash Cards</router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="copyright bg-black text-light text-center m-0 p-2">
+      Copyright &copy; created by
+      <a href="https://api.whatsapp.com/send?phone=01007876406"
+        target="_blank" class="text-decoration-none">El-Hawary Team</a
+      >.
+    </p>
   </footer>
 </template>
 
-
 <script>
-export default {
-  
-}
+export default {};
 </script>
 
-
 <style lang="scss" scoped>
+.links {
+  list-style: none;
+  display: inline-block !important;
 
+  li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    a {
+      text-decoration: none;
+      color: rgb(108, 117, 125);
+
+      &:hover {
+        color: #ccc;
+      }
+    }
+  }
+}
 </style>

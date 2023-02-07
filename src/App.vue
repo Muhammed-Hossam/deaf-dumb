@@ -23,19 +23,13 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 // @import "./scss/custom.scss";
 
-body {
-  // background-image: url('./assets/cool-background.png');
-  // background-size: cover;
-  // background-repeat: repeat;
-
-}
 
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  // text-align: center;
 }
 
 .background {
