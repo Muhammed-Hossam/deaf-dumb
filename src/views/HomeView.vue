@@ -5,6 +5,8 @@
     <service-section />
     <hr>
     <ContactSection />
+    <hr>
+    <AboutSection />
   </div>
 </template>
 
@@ -12,12 +14,14 @@
 import TheSlider from "../components/TheSlider.vue";
 import ServiceSection from "../components/home-sections/ContentSection.vue";
 import ContactSection from "../components/home-sections/ContactSection.vue";
+import AboutSection from "../components/home-sections/AboutSection.vue"
 
 export default {
   components: {
     TheSlider,
     ServiceSection,
-    ContactSection
+    ContactSection,
+    AboutSection
   },
   data() {
     return {};

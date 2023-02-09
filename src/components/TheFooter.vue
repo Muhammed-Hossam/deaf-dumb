@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <p class="copyright bg-black text-light text-center m-0 p-2">
+    <p class="copyright text-light text-center m-0 p-2">
       Copyright &copy; created by
       <a href="https://api.whatsapp.com/send?phone=01007876406"
         target="_blank" class="text-decoration-none">El-Hawary Team</a
@@ -66,21 +66,29 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.links {
-  list-style: none;
-  display: inline-block !important;
+footer {
 
-  li {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    a {
-      text-decoration: none;
-      color: rgb(108, 117, 125);
-
-      &:hover {
-        color: #ccc;
+  .links {
+    list-style: none;
+    display: inline-block !important;
+  
+    li {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      a {
+        text-decoration: none;
+        color: rgb(108, 117, 125);
+  
+        &:hover {
+          color: #ccc;
+        }
       }
     }
+  }
+
+  .copyright {
+    background-color: #2c2e30;
+    border-top: 1px solid #222;
   }
 }
 </style>

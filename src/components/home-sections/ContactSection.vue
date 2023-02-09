@@ -12,13 +12,13 @@
             <h2 class="fs-1 mb-5 text-center fw-bolder">Contact Info</h2>
             <ContactMethod
               iconClass="fa-solid fa-phone-volume"
-              hrefValue="tel:+201556239800"
-              value="01556239800"
+              hrefValue="tel:+201007876406"
+              value="01007876406"
             />
             <ContactMethod
               iconClass="fa-solid fa-envelope-circle-check"
-              hrefValue="mailto:developer.muhamed@gmail.com"
-              value="developer.muhamed@gmail.com"
+              hrefValue="mailto:alhwartmhmd@gmail.com"
+              value="alhwartmhmd@gmail.com"
             />
             <ContactMethod
               iconClass="fa-solid fa-location-dot"
@@ -51,7 +51,7 @@ export default {
       position: relative;
       width: 500px;
       height: 500px;
-      animation: up-and-down 5s linear infinite;
+      animation: up-and-down 5.5s linear infinite;
     }
 
     @keyframes up-and-down {
