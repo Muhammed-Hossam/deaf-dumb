@@ -17,15 +17,15 @@
       {{ description }}
     </p>
     <span
-      class="mission text-secondary fw-semibold position-absolute fst-italic translate-middle-x"
-      >{{ mission }}</span
+      class="role text-secondary fw-semibold position-absolute fst-italic translate-middle-x"
+      >{{ role }}</span
     >
   </div>
 </template>
 
 <script>
 export default {
-  props: ["imgSrc", "name", "description", "mission"],
+  props: ["imgSrc", "name", "description", "role"],
 };
 </script>
 
@@ -66,7 +66,7 @@ export default {
     font-size: 0.5rem;
   }
 
-  .mission {
+  .role {
     font-size: 0.4rem;
     bottom: 1rem;
   }
@@ -82,7 +82,7 @@ export default {
       letter-spacing: 0.8px;
     }
 
-    .mission {
+    .role {
       font-size: 0.75rem;
       letter-spacing: 1.5px;
     }

@@ -37,7 +37,7 @@
             </a>
             <!-- dropdown toggle for mobile -->
             <a
-              class="btn dropdown-toggle d-lg-none mobile-dropdown-toggle"
+              class="btn dropdown-toggle d-lg-none mobile-dropdown-toggle px-0"
               href="#"
               role="button"
               data-bs-toggle="dropdown"
