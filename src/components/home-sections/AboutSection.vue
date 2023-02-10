@@ -20,7 +20,7 @@
               stretch: 0,
               depth: 100,
               modifier: 1,
-              slideShadows: false,
+              slideShadows: true,
             }"
             :autoplay="{'delay': 5000}"
             :loop="true"
@@ -31,7 +31,7 @@
                 :imgSrc="require('../../assets/about/pic.jpg')"
                 name="Mohamed Hytham"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                mission="Web Developer"
+                role="Web Developer"
               />
             </swiper-slide>
             <swiper-slide>
@@ -39,7 +39,7 @@
                 :imgSrc="require('../../assets/about/pic.jpg')"
                 name="Mohamed Hytham"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                mission="Web Developer"
+                role="Web Developer"
               />
             </swiper-slide>
             <swiper-slide>
@@ -47,7 +47,7 @@
                 :imgSrc="require('../../assets/about/pic.jpg')"
                 name="Mohamed Hytham"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                mission="Web Developer"
+                role="Web Developer"
               />
             </swiper-slide>
             <swiper-slide>
@@ -55,7 +55,7 @@
                 :imgSrc="require('../../assets/about/pic.jpg')"
                 name="Mohamed Hytham"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                mission="Web Developer"
+                role="Web Developer"
               />
             </swiper-slide>
             <swiper-slide>
@@ -63,7 +63,7 @@
                 :imgSrc="require('../../assets/about/pic.jpg')"
                 name="Mohamed Hytham"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                mission="Web Developer"
+                role="Web Developer"
               />
             </swiper-slide>
             <swiper-slide>
@@ -71,7 +71,7 @@
                 :imgSrc="require('../../assets/about/pic.jpg')"
                 name="Mohamed Hytham"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                mission="Web Developer"
+                role="Web Developer"
               />
             </swiper-slide>
           </swiper>
