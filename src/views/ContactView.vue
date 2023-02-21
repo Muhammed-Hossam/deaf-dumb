@@ -1,5 +1,5 @@
 <template>
-  <div class="banner"></div>
+  <div class="banner rounded"></div>
   <div class="container-fluid">
     <div class="row my-5">
       <div class="col-12 col-md-6">
@@ -49,10 +49,10 @@ export default {};
 <style lang="scss" scoped>
 .banner {
   background: url("../assets/contact/contact-us-banner.jpg");
-  height: 70vh;
+  height: calc(100vh - 73.6px);
   background-size: cover;
   background-position: 50% 58%;
-  margin: 0 !important;
+  margin: 0.8rem;
 }
 
 form {

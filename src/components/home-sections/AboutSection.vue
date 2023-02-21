@@ -36,10 +36,10 @@
             </swiper-slide>
             <swiper-slide>
               <SwiperCardContent
-                :imgSrc="require('../../assets/about/pic.jpg')"
+                :imgSrc="require('../../assets/about/Mohamed-EL-Hawary.png')"
                 name="Mohamed Hytham"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Web Developer"
+                role="Team Leader"
               />
             </swiper-slide>
             <swiper-slide>

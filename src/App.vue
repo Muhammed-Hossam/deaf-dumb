@@ -11,11 +11,15 @@
 <script>
 import TheNavbar from './components/TheNavbar.vue';
 import TheFooter from './components/TheFooter.vue';
+import { db } from './firebaseConfig';
 export default {
   components: {
     TheNavbar,
     TheFooter
   },
+  mounted() {
+    console.log(db);
+  }
 }
 </script>
 
