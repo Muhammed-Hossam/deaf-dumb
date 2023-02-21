@@ -5,7 +5,8 @@ import ContactView from '../views/ContactView.vue';
 import PrivacyView from '../views/PrivacyView.vue';
 import AlphabetView from '../views/AlphabetView.vue';
 import CommonSignsView from '../views/CommonSignsView.vue';
-import SignsDictionaryView from '../views/SignsDictionaryView.vue';
+import DictionaryIndex from '../views/dictionary/index.vue';
+import DictionaryShow from '../views/dictionary/show.vue';
 import FlashCards from '../views/FlashCardsView.vue';
 
 const routes = [
@@ -26,8 +27,13 @@ const routes = [
   },
   {
     path: '/dictionary',
-    name: 'dictionary',
-    component: SignsDictionaryView
+    name: 'dictionary-index',
+    component: DictionaryIndex
+  },
+  {
+    path: '/dictionary/:id',
+    name: 'dictionary-show',
+    component: DictionaryShow
   },
   {
     path: '/flash-cards',
