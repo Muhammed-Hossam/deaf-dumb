@@ -24,7 +24,7 @@
               iconClass="fa-solid fa-location-dot"
               hrefValue="https://goo.gl/maps/Tf2mv4XMkFWBasCBA"
               target="_blank"
-              value="Mit-ghamr, Mansoura, Al-Daqahlia"
+              value="Dondiat, Mit-Ghamr, Al-Daqahlia"
             />
           </div>
         </div>
