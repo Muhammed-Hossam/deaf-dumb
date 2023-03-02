@@ -17,7 +17,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
-        class="collapse navbar-collapse justify-content-center"
+        class="collapse navbar-collapse justify-content-around"
         id="navbarNav"
       >
         <ul class="navbar-nav" role="navigation">
@@ -45,7 +45,7 @@
             >
               Dropdown
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu contents">
               <li>
                 <router-link class="dropdown-item text-muted" to="/alphabet"
                   >Sign Lang Alphabet</router-link
@@ -78,26 +78,81 @@
             <router-link class="nav-link" to="/privacy">Privacy</router-link>
           </li>
         </ul>
+        <ul v-if="!isLoggedIn" class="navbar-nav auth-links" role="navigation">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/register">Register</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/login">Login</router-link>
+          </li>
+        </ul>
+        <div v-else class="user-info dropdown">
+          <span class="userName fw-bold me-2"
+            ><span class="text-dark">Hi,</span> {{ userName }}</span
+          >
+          <button
+            class="user-img rounded-circle border d-inline-block fs-3"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
+            <img v-else :src="userPhoto" class="user-photo" alt="" />
+          </button>
+          <ul class="dropdown-menu text-center">
+            <li>
+              <button class="btn p-3 w-100 rounded-0" @click="logoutUser">
+                Logout
+              </button>
+            </li>
+            <li v-if="role === 'admin'">
+              <router-link class="dropdown-item" to="/dashboard"
+                >Dashboard</router-link
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import { signOut } from "@firebase/auth";
+import { auth } from "@/firebaseConfig";
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {};
   },
 
-  mounted() {
-    const navLinks = document.querySelectorAll(".nav-link");
-    const dropdownItems = document.querySelectorAll(".dropdown-item");
+  computed: {
+    ...mapGetters({
+      userName: "getUserName",
+      isLoggedIn: "getUserLoginState",
+      role: "getUserRole",
+      userPhoto: "getUserPhoto",
+    }),
+  },
 
+  methods: {
+    logoutUser() {
+      signOut(auth)
+        .then(() => {
+          console.log(auth);
+          this.$store.dispatch("setLoginState", false);
+          this.$router.push("/login");
+        })
+        .catch((error) => {
+          console.error(error.message);
+        });
+    },
     /*
       loop through navbar links and when click on any link of them add "active" class to clicked link 
       and remove it from others.
     */
-    function addActiveClassWhenLinkClicked(
+    addActiveClassWhenLinkClicked(
       links,
       linkSelector,
       removedClass,
@@ -110,15 +165,27 @@ export default {
           link.classList.add(addedClass);
         });
       });
-    }
+    },
+  },
 
-    addActiveClassWhenLinkClicked(
+  created() {
+    this.$store.dispatch("fetchCurrentUserData");
+  },
+
+  mounted() {
+    const navLinks = document.querySelectorAll(".nav-link");
+    const dropdownItems = document.querySelectorAll(".dropdown-item");
+
+    console.log("user Photo: ", this.userPhoto);
+
+    console.log(this.email);
+    this.addActiveClassWhenLinkClicked(
       navLinks,
       ".nav-link.active",
       "active",
       "active"
     );
-    addActiveClassWhenLinkClicked(
+    this.addActiveClassWhenLinkClicked(
       dropdownItems,
       ".dropdown-item.router-link-exact-active",
       "text-muted",
@@ -130,6 +197,43 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
+  .user-info {
+    .user-img {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      transition: all 0.3s ease-in-out;
+      border: 5px solid #ccc;
+      cursor: pointer;
+      &:hover,
+      &:focus {
+        box-shadow: 0 0px 3px 4px rgb(0 0 0 / 10%);
+      }
+
+      .user-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transform: translate(-6px, -4px);
+        border: 2px solid #ccc;
+      }
+    }
+    .userName {
+      color: #02b1b4;
+      vertical-align: super;
+    }
+
+    .dropdown-menu {
+      margin-top: 0.7rem;
+      button {
+        transition: all 0.3s ease-in-out;
+      }
+      button:hover {
+        background-color: #ddd;
+      }
+    }
+  }
   .navbar-brand {
     color: #02b1b4;
     transition: all 0.5s ease-in-out;
@@ -211,8 +315,10 @@ export default {
     }
 
     .dropdown {
-      &:hover .dropdown-menu {
-        display: block;
+      &:hover {
+        .dropdown-menu.contents {
+          display: block;
+        }
       }
     }
   }

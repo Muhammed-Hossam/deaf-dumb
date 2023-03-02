@@ -8,12 +8,17 @@ import CommonSignsView from '../views/CommonSignsView.vue';
 import DictionaryIndex from '../views/dictionary/index.vue';
 import DictionaryShow from '../views/dictionary/show.vue';
 import FlashCards from '../views/FlashCardsView.vue';
+import RegisterPage from '../views/auth/register.vue';
+import LoginPage from '../views/auth/login.vue';
+import ResetPage from '../views/auth/reset.vue';
+import AdminDashboard from '../views/dashboard/index.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    alias: '/home'
   },
   {
     path: '/alphabet',
@@ -54,6 +59,26 @@ const routes = [
     path: '/privacy',
     name: 'privacy',
     component: PrivacyView
+  },
+  {
+    path: '/register',
+    name: "register-page",
+    component: RegisterPage
+  },
+  {
+    path: '/login',
+    name: 'login-page',
+    component: LoginPage
+  },
+  {
+    path: '/reset',
+    name: 'reset-page',
+    component: ResetPage
+  },
+  {
+    path: '/dashboard',
+    name: 'admin-dashboard',
+    component: AdminDashboard
   }
 ]
 

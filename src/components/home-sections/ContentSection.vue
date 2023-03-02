@@ -10,7 +10,7 @@
         <div class="col-12 col-lg-8 mt-3">
           <div class="container-fluid">
             <div class="row flex-lg-nowrap column-gap-3">
-              <TheCard
+              <ContentCard
                 class="col-12 col-lg-6"
                 :cardImg="require('../../assets/contents/s-1.jpg')"
                 alt="F alphabet image"
@@ -18,7 +18,7 @@
                 cardText="Teach the chlidren the Sign Language Alphabet by interactive cards and images."
                 link="/alphabet"
               />
-              <TheCard
+              <ContentCard
                 class="col-12 col-lg-6"
                 :cardImg="require('../../assets/contents/s-2.jpg')"
                 alt="Most common Signs image"
@@ -29,7 +29,7 @@
               </div>
               <div class="row flex-lg-nowrap column-gap-3">
 
-                <TheCard
+                <ContentCard
                   class="col-12 col-lg-6"
                   :cardImg="require('../../assets/contents/s-3.jpg')"
                   alt="Signs dictionary image"
@@ -37,7 +37,7 @@
                   cardText="Teach the chlidren the Sign Language Alphabet by interactive cards and images."
                   link="/dictionary"
                 />
-                <TheCard
+                <ContentCard
                   class="col-12 col-lg-6"
                   :cardImg="require('../../assets/contents/s-4.jpg')"
                   alt="Flash Cards image"
@@ -55,12 +55,12 @@
 
 <script>
 import sectionContainer from "../SectionContainer.vue";
-import TheCard from "../TheCard.vue";
+import ContentCard from "../ContentCard.vue";
 
 export default {
   components: {
     sectionContainer,
-    TheCard,
+    ContentCard,
   },
 };
 </script>
