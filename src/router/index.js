@@ -13,7 +13,7 @@ import FlashCards from '../views/FlashCardsView.vue';
 import RegisterPage from '../views/auth/register.vue';
 import LoginPage from '../views/auth/login.vue';
 import ResetPage from '../views/auth/reset.vue';
-import AdminDashboard from '../views/dashboard/index.vue'
+import AdminDashboard from '../views/dashboard/index.vue';
 
 const routes = [
   {
