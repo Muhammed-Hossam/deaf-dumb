@@ -4,9 +4,11 @@ import AboutView from '../views/AboutView.vue';
 import ContactView from '../views/ContactView.vue';
 import PrivacyView from '../views/PrivacyView.vue';
 import AlphabetView from '../views/AlphabetView.vue';
-import CommonSignsView from '../views/CommonSignsView.vue';
+import CommonSignsView from '../views/common-signs/index.vue';
+import CommonSignDetails from '../views/common-signs/CommonSignDetails.vue';
 import DictionaryIndex from '../views/dictionary/index.vue';
-import DictionaryShow from '../views/dictionary/show.vue';
+import DictionaryShow from '../views/dictionary/ShowWords.vue';
+import ShowWordDetials from '../views/dictionary/ShowWordDetials.vue';
 import FlashCards from '../views/FlashCardsView.vue';
 import RegisterPage from '../views/auth/register.vue';
 import LoginPage from '../views/auth/login.vue';
@@ -31,14 +33,28 @@ const routes = [
     component: CommonSignsView
   },
   {
-    path: '/dictionary',
-    name: 'dictionary-index',
-    component: DictionaryIndex
+    path: '/common-signs/:word',
+    name: 'common-sign-details',
+    component: CommonSignDetails,
+    props: true
   },
   {
-    path: '/dictionary/:id',
+    path: '/dictionary',
+    name: 'dictionary-index',
+    component: DictionaryIndex,
+    
+  },
+  {
+    path: '/dictionary/:letter',
     name: 'dictionary-show',
-    component: DictionaryShow
+    component: DictionaryShow,
+    props: true,
+  },
+  {
+    path: '/dictionary/:letter/details',
+    name: 'show-word-detials',
+    component: ShowWordDetials,
+    // props: route => ({ word: route.query.word })
   },
   {
     path: '/flash-cards',

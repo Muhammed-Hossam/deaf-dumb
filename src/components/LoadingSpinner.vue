@@ -1,6 +1,6 @@
 <template>
-  <div class="overlay">
-    <div class="lds-spinner">
+    <div class="overlay">
+      <div class="lds-spinner">
       <div></div>
       <div></div>
       <div></div>
