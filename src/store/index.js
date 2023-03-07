@@ -12,7 +12,7 @@ const store = createStore({
       userName: "",
       isLoggedIn: false,
       role: "user",
-      userPhoto: ''
+      userPhoto: '',
     };
   },
   mutations: {

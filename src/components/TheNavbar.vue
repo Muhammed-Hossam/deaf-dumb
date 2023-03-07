@@ -208,7 +208,7 @@ export default {
       cursor: pointer;
       &:hover,
       &:focus {
-        box-shadow: 0 0px 3px 4px rgb(0 0 0 / 10%);
+        box-shadow: 0 1px 3px 5px rgb(0 0 0 / 10%);
       }
 
       .user-photo {
