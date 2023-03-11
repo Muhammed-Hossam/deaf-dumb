@@ -3,19 +3,19 @@
     <div id="homeSlider" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item img-1 active" data-bs-interval="3000">
-          <p>
+          <p class="text-light">
             Our mission is to bridge the communication gap for the deaf and dumb
             community by providing a platform for information and resources.
           </p>
         </div>
         <div class="carousel-item img-2" data-bs-interval="3000">
-          <p>
+          <p class="text-light">
             Our goal is to empower the deaf and dumb community by providing
             accessible information and resources.
           </p>
         </div>
         <div class="carousel-item img-3" data-bs-interval="3000">
-          <p>
+          <p class="text-light">
             Our website aims to provide helpful resources and support for
             individuals who are deaf and/or dumb.
           </p>

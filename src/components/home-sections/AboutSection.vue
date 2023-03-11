@@ -28,14 +28,6 @@
           >
             <swiper-slide>
               <SwiperCardContent
-                :imgSrc="require('../../assets/about/pic.jpg')"
-                name="Mohamed Hytham"
-                description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Web Developer"
-              />
-            </swiper-slide>
-            <swiper-slide>
-              <SwiperCardContent
                 :imgSrc="require('../../assets/about/Mohamed-EL-Hawary.png')"
                 name="Mohamed Hytham"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
@@ -44,34 +36,49 @@
             </swiper-slide>
             <swiper-slide>
               <SwiperCardContent
-                :imgSrc="require('../../assets/about/pic.jpg')"
-                name="Mohamed Hytham"
-                description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Web Developer"
+                :imgSrc="require('../../assets/about/ahmed-khaled.jpg')"
+                name="Ahmed Khaled"
+                description="24 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
+                role="Image Editing"
               />
             </swiper-slide>
             <swiper-slide>
               <SwiperCardContent
-                :imgSrc="require('../../assets/about/pic.jpg')"
-                name="Mohamed Hytham"
+                :imgSrc="require('../../assets/about/aya-baker.jpeg')"
+                name="Aya Baker"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Web Developer"
+                role="Frontend Developer"
               />
             </swiper-slide>
             <swiper-slide>
               <SwiperCardContent
-                :imgSrc="require('../../assets/about/pic.jpg')"
-                name="Mohamed Hytham"
+                :imgSrc="require('../../assets/about/fatma-elkhzamy.jpeg')"
+                name="fatma-Elkhzamy"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Web Developer"
+                role="Frontend Developer"
               />
             </swiper-slide>
             <swiper-slide>
               <SwiperCardContent
-                :imgSrc="require('../../assets/about/pic.jpg')"
-                name="Mohamed Hytham"
+                :imgSrc="require('../../assets/about/mahmoud-radwan.jpeg')"
+                name="Mahmoud Radwan"
+                description="24 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
+                role=" Content Creator"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <SwiperCardContent
+                :imgSrc="require('../../assets/about/noura-shrief.jpeg')"
+                name="Noura Shriaf"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Web Developer"
+                role="Database Developer"
+              />
+            </swiper-slide>
+            <swiper-slide><SwiperCardContent
+                :imgSrc="require('../../assets/about/abdrahman-mahmoud.jpeg')"
+                name="Abdrahman Mahmoud"
+                description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
+                role="Data Collector"
               />
             </swiper-slide>
           </swiper>

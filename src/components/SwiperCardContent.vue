@@ -69,6 +69,8 @@ export default {
   .role {
     font-size: 0.4rem;
     bottom: 1rem;
+    display: inline-block;
+    width: 100%;
   }
 
   @media (min-width: 992px) {
