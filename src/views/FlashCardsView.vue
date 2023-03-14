@@ -1,32 +1,34 @@
 <template>
   <div>
     <div class="banner"></div>
-    <div v-for="(card, index) in flashCards" :key="index" class="flash-cards">
+    <div v-for="(card, index) in flashCards" :key="index" class="flash-cards position-relative">
       <div class="container">
         <card-container>
+          <span v-if="card.correctAnswer" class="correct-icon position-absolute">
+            <font-awesome-icon icon="fa-solid fa-check-double" />
+          </span>
+          <span v-if="card.correctAnswer === false" class="wrong-icon position-absolute">
+            <font-awesome-icon icon="fa-solid fa-xmark" />
+          </span>
           <div class="question-card">
-            <QuestionFlipCard :card="card" :rotate="activeImg[index].rotate" />
+            <QuestionFlipCard :card="card" :rotate="card.rotate" />
           </div>
           <div class="answer-cards d-flex justify-content-around mt-5">
             <AnswerCard
-              v-for="(sign, signIndex) in [
-                card.firstSign,
-                card.secondSign,
-                card.thirdSign,
-                card.fourthSign,
-              ]"
+              v-for="(sign, signIndex) in card.signs"
               :key="signIndex"
               :imageUrl="sign.sign"
-              :isCorrect="correctAnswer"
-              :isActive="sign.sign === activeImg[index]?.sign"
-              @click="activeImg[index] = sign"
+              :isCorrect="card.correctAnswer"
+              :isActive="card.activeImg?.sign === sign.sign"
+              :isAnswerd="card.isAnswerd"
+              @click="activateAnswerCard(card, sign)"
             />
           </div>
           <div class="btn-wrapper text-end mt-3">
             <button
               class="btn text-success border-0"
-              :disabled="!this.activeImg[index]?.sign"
-              @click="checkAnswer(index)"
+              :disabled="!card.btnIsActive"
+              @click="checkAnswer(card)"
             >
               <font-awesome-icon class="fs-2" icon="fa-solid fa-circle-check" />
             </button>
@@ -54,59 +56,60 @@ export default {
   data() {
     return {
       flashCards: [],
-      activeImg: [],
-      correctAnswer: null,
-      rotate: false
     };
   },
-  computed: {
-    
-  },
+  computed: {},
   methods: {
     async retrievedData() {
       const flashCardsRef = collection(db, "flashCards");
       const querySnapshot = await getDocs(flashCardsRef);
       const flashCardsData = [];
       querySnapshot.forEach((doc) => {
-        flashCardsData.push(doc.data());
-        console.log(doc.data())
+        flashCardsData.push({
+          ...doc.data(),
+          activeImg: null,
+          correctAnswer: null,
+          rotate: false,
+          btnIsActive: false,
+          isAnswerd: false
+        });
       });
       this.flashCards = flashCardsData;
-      this.activeImg = flashCardsData.map(() => ({ sign: null, rotate: false })); // Initialize activeImg array
+      console.log('flashCards: ', this.flashCards)
     },
-    checkAnswer(index) {
-      this.correctAnswer = this.activeImg[index].isCorrect;
-      console.log(this.correctAnswer)
-      if (!this.correctAnswer) {
-        this.activeImg[index].rotate = true;
+    activateAnswerCard(card, sign) {
+      card.activeImg = sign;
+      card.btnIsActive = true;
+    },
+    checkAnswer(card) {
+      console.log('check-card: ', card)
+      if (card.activeImg.isCorrect) {
+        card.correctAnswer = true;
+        card.rotate = false
+      }else {
+        card.correctAnswer = false;
+        card.rotate = true;
       }
+      card.btnIsActive = false;
+      card.isAnswerd = true;
+      // card.rotate = card.activeImg !== card.correctAnswer;
     },
   },
   async created() {
     await this.retrievedData();
-    // this.activeImg = {}
-  },
-  watch: {
-    activeImg(newValue) {
-      console.log('activeImg: ', newValue);
-    },
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.banner {
-  background-image: url("../assets/contents/flash-cards-banner.jpg");
-  width: 100%;
-  height: 500px;
-  background-size: cover;
-  background-position: center -10rem;
+
+<style scoped>
+.correct-icon {
+  font-size: 8rem;
+  color: rgb(10, 223, 10);
 }
 
-.btn:hover {
-  svg {
-    transition: all 0.3s ease-in-out;
-    color: rgb(24 183 106) !important;
-  }
+.wrong-icon {
+  font-size: 8rem;
+  color: rgb(211, 16, 16);
 }
 </style>
