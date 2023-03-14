@@ -19,6 +19,7 @@ import { faEnvelopeCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const app = createApp(App);
 library.add(
@@ -29,7 +30,8 @@ library.add(
   faEnvelopeCircleCheck,
   faLocationDot,
   faUser,
-  faCircleXmark
+  faCircleXmark,
+  faCircleCheck
 );
 app.use(store);
 app.use(router);
