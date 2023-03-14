@@ -101,8 +101,14 @@ export default {
 };
 </script>
 
-
 <style scoped>
+.banner {
+  background-image: url('../assets/contents/flash-cards-banner.jpg');
+  background-size: cover;
+  height: 500px;
+  background-position: center -11rem;
+}
+
 .correct-icon {
   font-size: 8rem;
   color: rgb(10, 223, 10);
