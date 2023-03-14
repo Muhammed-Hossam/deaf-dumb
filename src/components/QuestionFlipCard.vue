@@ -23,11 +23,12 @@ export default {
   },
   mounted() {
     const card = this.card
-    for (const key in card) {
-      if (card[key].isCorrect) {
-        this.correctImg = card[key].sign;
+    card.signs.forEach(signObj => {
+      if (signObj.isCorrect) {
+        this.correctImg = signObj.sign;
       }
-    }
+    })
+    console.log('Card: ', card)
   }
 }
 </script>

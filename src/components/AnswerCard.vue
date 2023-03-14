@@ -5,6 +5,8 @@
       active: isActive && isCorrect === null,
       correct: isActive && isCorrect === true,
       wrong: isActive && isCorrect === false,
+      disabled: !isActive && isAnswerd,
+      unclickable: isActive && isAnswerd
     }"
     @click="$emit('click')"
   >
@@ -14,7 +16,7 @@
 
 <script>
 export default {
-  props: ["imageUrl", "isCorrect", "isActive"],
+  props: ["imageUrl", "isCorrect", "isActive", "isAnswerd"],
 };
 </script>
 
@@ -42,4 +44,12 @@ export default {
   border: 2px solid rgb(211, 16, 16);
 }
 
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.unclickable {
+  pointer-events: none;
+}
 </style>
