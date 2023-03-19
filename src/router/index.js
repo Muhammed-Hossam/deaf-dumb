@@ -21,6 +21,7 @@ import RegisterPage from '../views/auth/register.vue';
 import LoginPage from '../views/auth/login.vue';
 import ResetPage from '../views/auth/reset.vue';
 import AdminDashboard from '../views/dashboard/addNewItem.vue';
+import store from '@/store';
 
 const routes = [
   {
@@ -86,12 +87,26 @@ const routes = [
   {
     path: '/register',
     name: "register-page",
-    component: RegisterPage
+    component: RegisterPage,
+    beforeEnter(to, from, next) {
+      if (store.getters.getUserLoginState) {
+        next({ name: 'home' });
+      }else {
+        next();
+      }
+    }
   },
   {
     path: '/login',
     name: 'login-page',
-    component: LoginPage
+    component: LoginPage,
+    beforeEnter(to, from, next) {
+      if (store.getters.getUserLoginState) {
+        next({ name: 'home' });
+      }else {
+        next();
+      }
+    }
   },
   {
     path: '/reset',
@@ -101,13 +116,20 @@ const routes = [
   {
     path: '/dashboard',
     name: 'admin-dashboard',
-    component: AdminDashboard
+    component: AdminDashboard,
+    beforeEnter(to, from, next) {
+      if (store.getters.getUserLoginState && store.getters.getUserRole === 'admin') {
+        next();
+      }else {
+        next({ name: 'home' })
+      }
+    }
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
 
 export default router

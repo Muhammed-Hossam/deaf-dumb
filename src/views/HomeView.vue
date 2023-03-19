@@ -1,27 +1,31 @@
 <template>
   <div>
     <TheSlider />
-    <hr>
-    <service-section />
-    <hr>
+    <hr />
+    <ContentSection />
+    <hr />
     <ContactSection />
-    <hr>
+    <hr />
     <AboutSection />
+    <hr />
+    <PrivacySection />
   </div>
 </template>
 
 <script>
 import TheSlider from "../components/TheSlider.vue";
-import ServiceSection from "../components/home-sections/ContentSection.vue";
+import ContentSection from "../components/home-sections/ContentSection.vue";
 import ContactSection from "../components/home-sections/ContactSection.vue";
-import AboutSection from "../components/home-sections/AboutSection.vue"
+import AboutSection from "../components/home-sections/AboutSection.vue";
+import PrivacySection from "@/components/home-sections/PrivacySection.vue";
 
 export default {
   components: {
     TheSlider,
-    ServiceSection,
+    ContentSection,
     ContactSection,
-    AboutSection
+    AboutSection,
+    PrivacySection
   },
   data() {
     return {};

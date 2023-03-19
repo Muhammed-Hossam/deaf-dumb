@@ -49,7 +49,7 @@ export default {};
 <style lang="scss" scoped>
 .banner {
   background: url("../assets/contact/contact-us-banner.jpg");
-  height: calc(100vh - 73.6px);
+  height: calc(100vh - 100px);
   background-size: cover;
   background-position: 50% 58%;
   margin: 0.8rem;

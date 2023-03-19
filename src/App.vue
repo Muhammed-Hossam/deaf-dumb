@@ -1,15 +1,13 @@
 <template>
   <div>
-    <header>
-      <TheNavbar />
-    </header>
+    <TheHeader />
     <router-view />
     <TheFooter />
   </div>
 </template>
 
 <script>
-import TheNavbar from "./components/TheNavbar.vue";
+import TheHeader from "./components/TheHeader.vue";
 import TheFooter from "./components/TheFooter.vue";
 import { mapActions, mapGetters } from "vuex";
 import { onAuthStateChanged } from "@firebase/auth";
@@ -18,7 +16,7 @@ import { doc, updateDoc } from "@firebase/firestore";
 
 export default {
   components: {
-    TheNavbar,
+    TheHeader,
     TheFooter,
   },
   data() {
