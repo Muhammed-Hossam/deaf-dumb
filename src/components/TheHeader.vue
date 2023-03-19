@@ -1,120 +1,122 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
-    <div class="container-fluid">
-      <router-link to="/" class="navbar-brand py-0">
-        <img src="../assets/logo.png" alt="logo" width="70" height="70" />
-        <span>Deaf & Dumb</span>
-      </router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        class="collapse navbar-collapse justify-content-around"
-        id="navbarNav"
-      >
-        <ul class="navbar-nav" role="navigation">
-          <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/"
-              >Home</router-link
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
+      <div class="container-fluid">
+        <router-link to="/" class="navbar-brand py-0">
+          <img src="../assets/logo.png" alt="logo" width="70" height="70" />
+          <span>Deaf & Dumb</span>
+        </router-link>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-around"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav" role="navigation">
+            <li class="nav-item">
+              <router-link class="nav-link active" aria-current="page" to="/"
+                >Home</router-link
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <!-- dropdown -->
+              <a
+                href="#"
+                class="btn dropdown-toggle text-muted d-none d-lg-block"
+                aria-expanded="false"
+              >
+                contents
+              </a>
+              <!-- dropdown toggle for mobile -->
+              <a
+                class="btn dropdown-toggle d-lg-none mobile-dropdown-toggle px-0"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu contents">
+                <li>
+                  <router-link class="dropdown-item text-muted" to="/alphabet"
+                    >Sign Lang Alphabet</router-link
+                  >
+                </li>
+                <li>
+                  <router-link class="dropdown-item text-muted" to="/common-signs"
+                    >Common Signs</router-link
+                  >
+                </li>
+                <li>
+                  <router-link class="dropdown-item text-muted" to="/dictionary"
+                    >Signs Dictionary</router-link
+                  >
+                </li>
+                <li>
+                  <router-link class="dropdown-item text-muted" to="/flash-cards"
+                    >Flash Cards</router-link
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/contact">Contact Us</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/about">About Us</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/privacy">Privacy</router-link>
+            </li>
+          </ul>
+          <ul v-if="!isLoggedIn" class="navbar-nav auth-links" role="navigation">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/register">Register</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/login">Login</router-link>
+            </li>
+          </ul>
+          <div v-else class="user-info dropdown">
+            <span class="userName fw-bold me-2"
+              ><span class="text-dark">Hi,</span> {{ userName }}</span
             >
-          </li>
-          <li class="nav-item dropdown">
-            <!-- dropdown -->
-            <a
-              href="#"
-              class="btn dropdown-toggle text-muted d-none d-lg-block"
-              aria-expanded="false"
-            >
-              contents
-            </a>
-            <!-- dropdown toggle for mobile -->
-            <a
-              class="btn dropdown-toggle d-lg-none mobile-dropdown-toggle px-0"
-              href="#"
-              role="button"
+            <button
+              class="user-img rounded-circle border d-inline-block fs-3"
+              type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Dropdown
-            </a>
-            <ul class="dropdown-menu contents">
+              <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
+              <img v-else :src="userPhoto" class="user-photo" alt="" />
+            </button>
+            <ul class="dropdown-menu text-center">
               <li>
-                <router-link class="dropdown-item text-muted" to="/alphabet"
-                  >Sign Lang Alphabet</router-link
-                >
+                <button class="btn p-3 w-100 rounded-0" @click="logoutUser">
+                  Logout
+                </button>
               </li>
-              <li>
-                <router-link class="dropdown-item text-muted" to="/common-signs"
-                  >Common Signs</router-link
-                >
-              </li>
-              <li>
-                <router-link class="dropdown-item text-muted" to="/dictionary"
-                  >Signs Dictionary</router-link
-                >
-              </li>
-              <li>
-                <router-link class="dropdown-item text-muted" to="/flash-cards"
-                  >Flash Cards</router-link
+              <li v-if="role === 'admin'">
+                <router-link class="dropdown-item" to="/dashboard"
+                  >Dashboard</router-link
                 >
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/contact">Contact Us</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/about">About Us</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/privacy">Privacy</router-link>
-          </li>
-        </ul>
-        <ul v-if="!isLoggedIn" class="navbar-nav auth-links" role="navigation">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/register">Register</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/login">Login</router-link>
-          </li>
-        </ul>
-        <div v-else class="user-info dropdown">
-          <span class="userName fw-bold me-2"
-            ><span class="text-dark">Hi,</span> {{ userName }}</span
-          >
-          <button
-            class="user-img rounded-circle border d-inline-block fs-3"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
-            <img v-else :src="userPhoto" class="user-photo" alt="" />
-          </button>
-          <ul class="dropdown-menu text-center">
-            <li>
-              <button class="btn p-3 w-100 rounded-0" @click="logoutUser">
-                Logout
-              </button>
-            </li>
-            <li v-if="role === 'admin'">
-              <router-link class="dropdown-item" to="/dashboard"
-                >Dashboard</router-link
-              >
-            </li>
-          </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 </template>
 
 <script>
@@ -161,7 +163,7 @@ export default {
       links.forEach((link) => {
         link.addEventListener("click", () => {
           const activeLink = document.querySelector(linkSelector);
-          activeLink.classList.remove(removedClass);
+          activeLink ? activeLink.classList.remove(removedClass) : null;
           link.classList.add(addedClass);
         });
       });

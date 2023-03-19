@@ -11,40 +11,27 @@
           <div class="container-fluid">
             <div class="row flex-lg-nowrap column-gap-3">
               <ContentCard
+                v-for="(card, index) in firstRow"
+                :key="index"
                 class="col-12 col-lg-6"
-                :cardImg="require('../../assets/contents/s-1.jpg')"
-                alt="F alphabet image"
-                cardTitle="Learn SL Alphabet"
-                cardText="Teach the chlidren the Sign Language Alphabet by interactive cards and images."
-                link="/alphabet"
+                :cardImg="card.imgPath"
+                :alt="card.alt"
+                :cardTitle="card.title"
+                :cardText="card.text"
+                :link="card.link"
               />
+            </div>
+            <div class="row flex-lg-nowrap column-gap-3">
               <ContentCard
+                v-for="(card, index) in secondRow"
+                :key="index"
                 class="col-12 col-lg-6"
-                :cardImg="require('../../assets/contents/s-2.jpg')"
-                alt="Most common Signs image"
-                cardTitle="Most Common Signs"
-                cardText="Learn most common signs to make your level up by knowing the most common signs."
-                link="/common-signs"
+                :cardImg="card.imgPath"
+                :alt="card.alt"
+                :cardTitle="card.title"
+                :cardText="card.text"
+                :link="card.link"
               />
-              </div>
-              <div class="row flex-lg-nowrap column-gap-3">
-
-                <ContentCard
-                  class="col-12 col-lg-6"
-                  :cardImg="require('../../assets/contents/s-3.jpg')"
-                  alt="Signs dictionary image"
-                  cardTitle="Signs Dictionary"
-                  cardText="Teach the chlidren the Sign Language Alphabet by interactive cards and images."
-                  link="/dictionary"
-                />
-                <ContentCard
-                  class="col-12 col-lg-6"
-                  :cardImg="require('../../assets/contents/s-4.jpg')"
-                  alt="Flash Cards image"
-                  cardTitle="Flash Cards"
-                  cardText="Test your memorization of signs by using incredible flash cards way."
-                  link="/flash-cards"
-                />
             </div>
           </div>
         </div>
@@ -56,11 +43,51 @@
 <script>
 import sectionContainer from "../SectionContainer.vue";
 import ContentCard from "../ContentCard.vue";
+import firstCardImg from '../../assets/contents/s-1.jpg';
+import secondCardImg from '../../assets/contents/s-2.jpg';
+import thirdCardImg from '../../assets/contents/s-3.jpg';
+import fourthCardImg from '../../assets/contents/s-4.jpg';
 
 export default {
   components: {
     sectionContainer,
     ContentCard,
+  },
+  data() {
+    return {
+      firstRow: [
+        {
+          imgPath: firstCardImg,
+          alt: "F alphabet image",
+          title: "Learn SL Alphabets",
+          text: "Teach the chlidren the Sign Language Alphabet by interactive cards and images.",
+          link: "/alphabet",
+        },
+        {
+          imgPath: secondCardImg,
+          alt: "Most common Signs image",
+          title: "Most Common Signs",
+          text: "Learn most common signs to make your level up by knowing the most common signs.",
+          link: "/common-signs",
+        },
+      ],
+      secondRow: [
+        {
+          imgPath: thirdCardImg,
+          alt: "Signs dictionary image",
+          title: "Signs Dictionary",
+          text: "English Words with corresponding sign language images arranged alphabetically.",
+          link: "/dictionary",
+        },
+        {
+          imgPath: fourthCardImg,
+          alt: "Flash Cards image",
+          title: "Flash Cards",
+          text: "Test your memorization of signs by using incredible flash cards interactive way.",
+          link: "/flash-cards",
+        },
+      ],
+    };
   },
 };
 </script>
