@@ -1,7 +1,9 @@
 <template>
-  <router-link :to="`/dictionary/${letter}`" class="letter p-2 my-3 d-flex justify-content-center align-items-center text-decoration-none text-black">
-    <span class="fs-1 fw-bold">{{ letter }}</span>
-  </router-link>
+  <div class="col-4 col-md-3 col-lg-2">
+    <router-link :to="`/dictionary/${letter}`" class="letter p-2 my-3 d-flex justify-content-center align-items-center text-decoration-none text-black">
+      <span class="fs-1 fw-bold">{{ letter }}</span>
+    </router-link>
+  </div>
 </template>
 
 <script>

@@ -13,16 +13,18 @@
           <div class="question-card">
             <QuestionFlipCard :card="card" :rotate="card.rotate" />
           </div>
-          <div class="answer-cards d-flex justify-content-around mt-5">
-            <AnswerCard
-              v-for="(sign, signIndex) in card.signs"
-              :key="signIndex"
-              :imageUrl="sign.sign"
-              :isCorrect="card.correctAnswer"
-              :isActive="card.activeImg?.sign === sign.sign"
-              :isAnswerd="card.isAnswerd"
-              @click="activateAnswerCard(card, sign)"
-            />
+          <div class="container">
+            <div class="answer-cards row flex-nowrap justify-content-center mt-5">
+              <AnswerCard
+                v-for="(sign, signIndex) in card.signs"
+                :key="signIndex"
+                :imageUrl="sign.sign"
+                :isCorrect="card.correctAnswer"
+                :isActive="card.activeImg?.sign === sign.sign"
+                :isAnswerd="card.isAnswerd"
+                @click="activateAnswerCard(card, sign)"
+              />
+            </div>
           </div>
           <div class="btn-wrapper text-end mt-3">
             <button
@@ -101,12 +103,16 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
+
 .banner {
   background-image: url('../assets/contents/flash-cards-banner.jpg');
   background-size: cover;
   height: 500px;
-  background-position: center -11rem;
+  background-position: center -10rem;
+  background-repeat: no-repeat;
 }
 
 .correct-icon {
@@ -117,5 +123,11 @@ export default {
 .wrong-icon {
   font-size: 8rem;
   color: rgb(211, 16, 16);
+}
+
+@include media-breakpoint-down(lg) {
+  .banner {
+    background-position: center -7.5rem;
+  }
 }
 </style>
