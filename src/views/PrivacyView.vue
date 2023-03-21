@@ -8,7 +8,7 @@
             Privacy policy
           </h2>
         </div>
-        <p class="my-5 fs-4 text-secondary text-center lh-lg">
+        <p class="my-5 fs-4 text-secondary text-center lh-lg mx-1">
           Thank you for using our website. We take your privacy seriously, and
           we want you to know how we collect and use your information. This
           privacy policy explains what information we collect from you, how we
@@ -95,7 +95,8 @@
 </template>
 
 <script>
-export default {};
+export default {
+};
 </script>
 
 <style lang="scss" scoped>
@@ -108,6 +109,8 @@ export default {};
 }
 
 .privacy-content {
+  border: 2px solid #000;
+  border-radius: 5px;
   .heading {
     position: relative;
 
@@ -124,6 +127,8 @@ export default {};
 
   .accordion {
     border: none;
+    margin-right: 1rem;
+    margin-left: 1rem;
     .accordion-button {
       transition: all 0.3s ease-in-out;
       font-weight: bold;
