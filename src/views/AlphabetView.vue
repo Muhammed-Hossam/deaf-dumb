@@ -2,9 +2,8 @@
   <div class="position-relative">
     <div class="container">
       <div class="row mt-5">
-        <div class="col-md-6">
+        <div class="col-6">
           <iframe
-            width="560"
             height="315"
             src="https://www.youtube.com/embed/NlhebzQCpKU"
             title="YouTube video player"
@@ -13,7 +12,7 @@
             allowfullscreen
           ></iframe>
         </div>
-        <div class="col-md-6">
+        <div class="col-6">
           <iframe
             width="560"
             height="315"
@@ -27,34 +26,65 @@
       </div>
     </div>
     <div class="container">
-      <h2 class="text-center mt-5 mb-2 fs-1 fw-bolder">English Letters Signs</h2>
-      <div class="d-flex justify-content-between flex-wrap" style="gap: 2rem">
-          <AlphabetCard
-            v-for="letter in letters"
-            :key="letter"
-            :letter="letter.letter"
-            :img-src="letter.signImage"
-          />
+      <h2 class="text-center mt-5 mb-2 fs-1 fw-bolder">
+        English Letters Signs
+      </h2>
+      <div class="row">
+        <AlphabetCard
+          v-for="letter in letters"
+          :key="letter"
+          :letter="letter.letter"
+          :img-src="letter.signImage"
+          @show-content="showContent"
+          @show-letter="showLetter"
+          @show-img-src="showImg"
+        />
       </div>
+    </div>
+    <div class="container">
+      <AlphabetCardContent
+        :show="show"
+        :letter="letter"
+        :img-src="imgSrc"
+        @close-content="closeContent"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import AlphabetCard from "@/components/AlphabetCard.vue";
+import AlphabetCardContent from "@/components/AlphabetCardContent.vue";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "@/firebaseConfig";
 
 export default {
   components: {
     AlphabetCard,
+    AlphabetCardContent,
   },
   data() {
     return {
       letters: [],
+      show: false,
+      letter: "",
+      imgSrc: "",
     };
   },
   methods: {
+    showContent(payload) {
+      this.show = payload;
+    },
+    closeContent(payload) {
+      this.show = payload;
+    },
+    showLetter(payload) {
+      this.letter = payload;
+    },
+    showImg(payload) {
+      this.imgSrc = payload;
+    },
+
     async retrievedData() {
       const lettersRef = collection(db, "letters");
       const querySnapshot = await getDocs(lettersRef);
@@ -79,4 +109,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+iframe {
+  width: 100%;
+}
+</style>

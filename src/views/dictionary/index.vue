@@ -17,7 +17,7 @@
     </div>
     <div class="container">
       <h2 class="text-center mt-5 mb-2 fs-1 fw-bolder">English Signs Dictionary</h2>
-      <div class="d-flex justify-content-between flex-wrap" style="gap: 3rem">
+      <div class="row">
           <LetterCard v-for="letter in letters" :key="letter" :link="`/dictionary/${letter}`" :letter="letter"/>
       </div>
     </div>
