@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="position-fixed top-0 w-100">
     <div
       v-if="isLoggedIn"
       class="greeting-user greeting-user-mobile dropdown text-center py-3 bg-light"
@@ -132,7 +132,10 @@
               <router-link class="nav-link" to="/login">Login</router-link>
             </li>
           </ul>
-          <div v-else class="greeting-user dropdown greeting-user-desktop d-none">
+          <div
+            v-else
+            class="greeting-user dropdown greeting-user-desktop d-none"
+          >
             <span class="userName fw-bold me-2"
               ><span class="text-dark">Hi,</span> {{ userName }}</span
             >
@@ -248,6 +251,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
+header {
+  z-index: 1111;
+  box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
 .greeting-user {
   .user-img {
     width: 50px;
@@ -354,7 +364,7 @@ export default {
     // }
   }
 }
-@media (min-width: 992px) {
+@include media-breakpoint-up(lg) {
   .greeting-user-mobile {
     display: none !important;
   }
@@ -365,11 +375,11 @@ export default {
   .dropdown-item {
     &.router-link-exact-active {
       &::after {
-        width: 85%;
+        width: 85% !important;
       }
     }
     &:hover::after {
-      width: 85%;
+      width: 85% !important;
     }
   }
 

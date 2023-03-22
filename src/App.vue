@@ -1,7 +1,9 @@
 <template>
   <div>
     <TheHeader />
-    <router-view />
+    <main>
+      <router-view />
+    </main>
     <TheFooter />
   </div>
 </template>
@@ -58,7 +60,7 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
-// @import "./scss/custom.scss";
+@import "@/scss/custom.scss";
 
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -74,5 +76,17 @@ export default {
   top: 0;
   left: 0;
   z-index: 0;
+}
+
+@include media-breakpoint-down(lg) {
+  main {
+    margin-top: 9.6rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  main {
+    margin-top: 5rem;
+  }
 }
 </style>
