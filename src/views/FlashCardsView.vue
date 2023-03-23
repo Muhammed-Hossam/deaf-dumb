@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-8 mt-down-lg-12">
     <div class="banner"></div>
     <div v-for="(card, index) in flashCards" :key="index" class="flash-cards position-relative">
       <div class="container">

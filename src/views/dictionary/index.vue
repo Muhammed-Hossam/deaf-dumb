@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-8 mt-down-lg-12">
     <div class="container">
       <div class="row">
         <div class="col">

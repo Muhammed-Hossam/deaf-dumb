@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="privacy-policy mt-6">
     <div class="banner rounded"></div>
     <div class="container">
       <div class="privacy-content my-5 py-5">
@@ -100,6 +100,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
 .banner {
   background-image: url("../assets/privacy/privacy-banner.jpg");
   background-size: cover;
@@ -143,6 +145,12 @@ export default {
     .accordion-collapse {
       transition: all 0.3s ease-in-out;
     }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .privacy-policy {
+    margin-top: 10.5rem;
   }
 }
 </style>

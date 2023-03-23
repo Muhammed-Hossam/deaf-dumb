@@ -22,7 +22,7 @@
               modifier: 1,
               slideShadows: true,
             }"
-            :autoplay="{'delay': 5000}"
+            :autoplay="{ delay: 5000 }"
             :loop="true"
             :modules="modules"
           >
@@ -53,7 +53,7 @@
             <swiper-slide>
               <SwiperCardContent
                 :imgSrc="require('../../assets/about/fatma-elkhzamy.jpeg')"
-                name="fatma-Elkhzamy"
+                name="Fatma Elkhzamy"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
                 role="Frontend Developer"
               />
@@ -74,10 +74,19 @@
                 role="Database Developer"
               />
             </swiper-slide>
-            <swiper-slide><SwiperCardContent
+            <swiper-slide
+              ><SwiperCardContent
                 :imgSrc="require('../../assets/about/abdrahman-mahmoud.jpeg')"
                 name="Abdrahman Mahmoud"
                 description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
+                role="Data Collector"
+              />
+            </swiper-slide>
+            <swiper-slide
+              ><SwiperCardContent
+                :imgSrc="require('../../assets/about/Amir-khaled.jpeg')"
+                name="Amir Khaled"
+                description="24 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
                 role="Data Collector"
               />
             </swiper-slide>
