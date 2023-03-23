@@ -1,5 +1,5 @@
 <template>
-  <div class="position-relative">
+  <div class="mt-8 mt-down-lg-12">
     <div class="container">
       <div class="row mt-5">
         <div class="col-6">
@@ -110,6 +110,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
 iframe {
   width: 100%;
 }

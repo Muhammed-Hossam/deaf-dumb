@@ -78,15 +78,25 @@ export default {
   z-index: 0;
 }
 
+.mt-8 {
+  margin-top: 8rem;
+}
+.mt-6 {
+  margin-top: 5.5rem;
+}
+
 @include media-breakpoint-down(lg) {
   main {
     margin-top: 9.6rem;
+  }
+  .mt-down-lg-12 {
+    margin-top: 12rem;
   }
 }
 
 @include media-breakpoint-up(lg) {
   main {
-    margin-top: 5rem;
+    margin-top: 4.7rem;
   }
 }
 </style>

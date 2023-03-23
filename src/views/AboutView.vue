@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="about-us mt-6">
     <div class="banner rounded"></div>
     <div class="container my-5 py-5">
       <div class="row justify-content-center mb-5">
@@ -110,6 +110,8 @@
 
 
 <style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
 .banner {
   background-image: url("../assets/about/team-banner-bg.jpg");
   background-size: cover;
@@ -122,4 +124,20 @@
   height: 150px;
   border: 5px solid #ccc;
 }
+
+@include media_breakpoint_down(lg) {
+  .about-us {
+    margin-top: 10.5rem;
+
+    .pic {
+      width: 50px;
+      height: 50px;
+      border: 3px solid #ccc;
+    }
+    .name {
+      font-size: 8px;
+    }
+  }
+}
+
 </style>

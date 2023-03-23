@@ -1,5 +1,5 @@
 <template>
-  <header class="position-fixed top-0 w-100">
+  <header class="position-fixed top-0 w-100 bg-white">
     <div
       v-if="isLoggedIn"
       class="greeting-user greeting-user-mobile dropdown text-center py-3 bg-light"
@@ -253,6 +253,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/custom.scss";
 
+
 header {
   z-index: 1111;
   box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.1);
@@ -344,7 +345,7 @@ header {
 
     &.router-link-exact-active {
       &::after {
-        width: 100%;
+        width: 90%;
       }
     }
 
@@ -390,5 +391,8 @@ header {
       }
     }
   }
+}
+a {
+  height: 100%;
 }
 </style>
