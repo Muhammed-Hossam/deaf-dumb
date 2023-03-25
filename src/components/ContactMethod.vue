@@ -16,9 +16,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
 .info {
   border-radius: 50px;
-  box-shadow: 0 1px 5px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.1);
   font-size: 0.8rem;
 
   .icon {

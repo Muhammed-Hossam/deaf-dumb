@@ -126,6 +126,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/scss/custom.scss";
+
 .swiper {
   width: 100%;
   height: 30rem;
@@ -138,7 +140,7 @@ export default {
       text-align: center;
       font-size: 18px;
       background: #fff;
-      box-shadow: 0 1px 5px 5px rgb(0 0 0 / 10%);
+      box-shadow: $main-shadow;
       border-radius: 5px;
 
       /* Center slide text vertically */

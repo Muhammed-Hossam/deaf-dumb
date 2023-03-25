@@ -4,8 +4,10 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
 div {
-  box-shadow: 0 1px 5px 5px rgb(0 0 0 / 10%);
+  box-shadow: $main-shadow;
 }
 </style>

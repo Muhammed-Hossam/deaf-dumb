@@ -62,7 +62,7 @@ export default {};
 form {
   width: 80%;
   margin-top: 7rem;
-  box-shadow: 0 1px 5px 5px rgb(0 0 0 / 10%);
+  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
 
   h4 {
     color: #f60;
