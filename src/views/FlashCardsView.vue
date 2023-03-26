@@ -111,7 +111,7 @@ export default {
   background-image: url('../assets/contents/flash-cards-banner.jpg');
   background-size: cover;
   height: 500px;
-  background-position: center -10rem;
+  background-position: center -11rem;
   background-repeat: no-repeat;
 }
 

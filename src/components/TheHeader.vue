@@ -1,44 +1,36 @@
 <template>
   <header class="position-fixed top-0 w-100 bg-white">
-    <div
-      v-if="isLoggedIn"
-      class="greeting-user greeting-user-mobile dropdown text-center py-3 bg-light"
-      style="position: unset"
-    >
-      <span class="userName fw-bold me-2"
-        ><span class="text-dark">Hi,</span> {{ userName }}</span
-      >
-      <button
-        class="user-img rounded-circle border d-inline-block fs-3"
-        type="button"
-        @click="clickOnUserImg"
-      >
+    <!-- Start greeting-user for mobile device -->
+    <div  v-if="isLoggedIn" class="greeting-user greeting-user-mobile dropdown text-center py-3 bg-light" style="position: unset">
+      <span class="userName fw-bold me-2">
+        <span class="text-dark">Hi,</span>{{ userName }}
+      </span>
+      <button  class="user-img rounded-circle border d-inline-block fs-3" type="button" @click="clickOnUserImg">
         <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
         <img v-else :src="userPhoto" class="user-photo" alt="" />
       </button>
-      <ul
-        class="dropdown-menu text-center end-0"
-        :class="{ show: isUserImgClicked }"
-        style="position: unset !important"
-      >
+      <ul class="dropdown-menu text-center end-0" :class="{ show: isUserImgClicked }" style="position: unset !important">
         <li>
           <button class="btn p-3 w-100 rounded-0" @click="logoutUser">
             Logout
           </button>
         </li>
         <li v-if="role === 'admin'">
-          <router-link class="dropdown-item" to="/dashboard"
-            >Dashboard</router-link
-          >
+          <router-link class="dropdown-item" to="/dashboard">Dashboard</router-link>
         </li>
       </ul>
     </div>
+    <!-- End greeting-user for mobile device -->
+
+    
     <nav class="navbar navbar-expand-lg p-0">
       <div class="container-fluid">
+        <!-- Start Logo -->
         <router-link to="/" class="navbar-brand py-0">
           <img src="../assets/logo.png" alt="logo" width="70" height="70" />
           <span>Deaf & Dumb</span>
         </router-link>
+        <!-- End Logo -->
         <button
           class="navbar-toggler"
           type="button"
