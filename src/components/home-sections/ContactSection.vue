@@ -45,6 +45,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
 .container-fluid {
   .img {
     img {
@@ -67,7 +69,7 @@ export default {
   }
   .contact-info {
     padding: 1rem;
-    box-shadow: 0 1px 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: $main-shadow;
     border-radius: 5px;
     width: 100%;
 

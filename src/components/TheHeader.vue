@@ -33,7 +33,7 @@
         </li>
       </ul>
     </div>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
+    <nav class="navbar navbar-expand-lg p-0">
       <div class="container-fluid">
         <router-link to="/" class="navbar-brand py-0">
           <img src="../assets/logo.png" alt="logo" width="70" height="70" />
@@ -256,7 +256,7 @@ export default {
 
 header {
   z-index: 1111;
-  box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: $main-shadow;
 }
 
 .greeting-user {
@@ -270,7 +270,7 @@ header {
     cursor: pointer;
     &:hover,
     &:focus {
-      box-shadow: 0 1px 3px 5px rgb(0 0 0 / 10%);
+      box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.1);
     }
 
     .user-photo {

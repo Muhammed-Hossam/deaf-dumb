@@ -111,7 +111,8 @@ export default {
 }
 
 .privacy-content {
-  border: 2px solid #000;
+  // border: 2px solid #ccc;
+  box-shadow: $main-shadow;
   border-radius: 5px;
   .heading {
     position: relative;
@@ -137,11 +138,7 @@ export default {
       &::after {
         transform: all 0.3s ease-in-out !important;
       }
-      &:focus {
-        box-shadow: none;
-      }
     }
-
     .accordion-collapse {
       transition: all 0.3s ease-in-out;
     }

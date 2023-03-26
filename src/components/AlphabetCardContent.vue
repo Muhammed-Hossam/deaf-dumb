@@ -1,14 +1,12 @@
 <template>
+  <Teleport to="#app">
     <Transition>
-    <div v-if="show" @click="closeContent" class="overlay position-absolute top-0 end-0 bottom-0 start-0"></div>
-  </Transition>
+      <div v-if="show" @click="closeContent" class="overlay position-fixed top-0 end-0 bottom-0 start-0"></div>
+    </Transition>
+  </Teleport>
   <Transition>
-    <div v-if="show" class="content rounded p-3 position-fixed top-50 start-50">
-      <img
-        :src="imgSrc"
-        :alt="`${letter} sign language image`"
-        class="w-100 mt-5 py-3"
-      />
+    <div v-if="show" class="content rounded p-3 position-fixed start-50">
+      <img  :src="imgSrc"  :alt="`${letter} sign language image`"  class="w-100 mt-5"  />
       <div class="close-btn w-100 position-absolute top-0 end-0 rounded-top">
         <span @click="closeContent" class="close-icon">
           <font-awesome-icon icon="fa-regular fa-circle-xmark" class="fs-4" />
@@ -52,10 +50,16 @@ export default {
 }
 .content {
     width: 60%;
-    height: fit-content;
+    height: 500px;
     background-color: white;
     box-shadow: 0 1px 5px 2px rgb(0 0 0 / 10%);
     transform: translate(-50%, -50%);
+    z-index: 1111;
+    top: 55%;
+
+    img {
+      height: 420px;
+    }
   }
   .close-btn {
     // cursor: pointer;
@@ -82,6 +86,7 @@ export default {
     .content {
       width: 90%;
       height: 400px;
+      top: 60%;
       
       img {
         height: 90%;
