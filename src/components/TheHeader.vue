@@ -1,13 +1,13 @@
 <template>
   <header class="position-fixed top-0 w-100 bg-white">
-    <!-- Start greeting-user for mobile device -->
+    <!-- Start greeting-user for small screens (mobile, tablet) -->
     <div  v-if="isLoggedIn" class="greeting-user greeting-user-mobile dropdown text-center py-3 bg-light" style="position: unset">
       <span class="userName fw-bold me-2">
         <span class="text-dark">Hi,</span>{{ userName }}
       </span>
-      <button  class="user-img rounded-circle border d-inline-block fs-3" type="button" @click="clickOnUserImg">
+      <button  class="user-img-btn rounded-circle border d-inline-block fs-3" type="button" @click="clickOnUserImg">
         <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
-        <img v-else :src="userPhoto" class="user-photo" alt="" />
+        <img v-else :src="userPhoto" class="user-photo rounded-circle" alt="user-photo" />
       </button>
       <ul class="dropdown-menu text-center end-0" :class="{ show: isUserImgClicked }" style="position: unset !important">
         <li>
@@ -20,8 +20,7 @@
         </li>
       </ul>
     </div>
-    <!-- End greeting-user for mobile device -->
-
+    <!-- End greeting-user for small screens (mobile, tablet) -->
     
     <nav class="navbar navbar-expand-lg p-0">
       <div class="container-fluid">
@@ -31,77 +30,52 @@
           <span>Deaf & Dumb</span>
         </router-link>
         <!-- End Logo -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div
-          class="collapse navbar-collapse justify-content-around"
-          id="navbarNav"
-        >
+        <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
           <ul class="navbar-nav" role="navigation">
             <li class="nav-item">
-              <router-link class="nav-link active" aria-current="page" to="/"
-                >Home</router-link
-              >
+              <router-link class="nav-link active" aria-current="page" to="/">
+                Home
+              </router-link>
             </li>
             <li class="nav-item dropdown">
-              <!-- dropdown -->
-              <a
-                href="#"
-                class="btn dropdown-toggle text-muted d-none d-lg-block"
-                aria-expanded="false"
-              >
-                contents
+              <!-- dropdown for large screens (Desktop) -->
+              <a href="#" class="btn dropdown-toggle text-muted d-none d-lg-block" aria-expanded="false">
+                Contents
               </a>
-              <!-- dropdown toggle for mobile -->
-              <a
-                class="btn dropdown-toggle d-lg-none mobile-dropdown-toggle px-0"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
+              <!-- dropdown for small screens (mobile, tablet) -->
+              <a class="btn dropdown-toggle d-lg-none mobile-dropdown-toggle px-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Contents
               </a>
+              <!-- Start Contents Dropdown menu -->
               <ul class="dropdown-menu contents">
                 <li>
-                  <router-link class="dropdown-item text-muted" to="/alphabet"
-                    >Sign Lang Alphabet</router-link
-                  >
+                  <router-link class="dropdown-item text-muted" to="/alphabet">
+                    Sign Lang Alphabet
+                  </router-link>
                 </li>
                 <li>
-                  <router-link
-                    class="dropdown-item text-muted"
-                    to="/common-signs"
-                    >Common Signs</router-link
-                  >
+                  <router-link class="dropdown-item text-muted" to="/common-signs">
+                    Common Signs
+                  </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item text-muted" to="/dictionary"
-                    >Signs Dictionary</router-link
-                  >
+                  <router-link class="dropdown-item text-muted" to="/dictionary">
+                    Signs Dictionary
+                  </router-link>
                 </li>
                 <li>
-                  <router-link
-                    class="dropdown-item text-muted"
-                    to="/flash-cards"
-                    >Flash Cards</router-link
-                  >
+                  <router-link class="dropdown-item text-muted" to="/flash-cards">
+                    Flash Cards
+                  </router-link>
                 </li>
               </ul>
+              <!-- End Contents Dropdown menu -->
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/contact"
-                >Contact Us</router-link
-              >
+              <router-link class="nav-link" to="/contact">Contact Us</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/about">About Us</router-link>
@@ -110,35 +84,25 @@
               <router-link class="nav-link" to="/privacy">Privacy</router-link>
             </li>
           </ul>
-          <ul
-            v-if="!isLoggedIn"
-            class="navbar-nav auth-links"
-            role="navigation"
-          >
+          <!-- Start Authentication Links -->
+          <ul v-if="!isLoggedIn" class="navbar-nav auth-links" role="navigation">
             <li class="nav-item">
-              <router-link class="nav-link" to="/register"
-                >Register</router-link
-              >
+              <router-link class="nav-link" to="/register">Register</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/login">Login</router-link>
             </li>
           </ul>
-          <div
-            v-else
-            class="greeting-user dropdown greeting-user-desktop d-none"
-          >
-            <span class="userName fw-bold me-2"
-              ><span class="text-dark">Hi,</span> {{ userName }}</span
-            >
-            <button
-              class="user-img rounded-circle border d-inline-block fs-3"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
+          <!-- End Authentication Links -->
+
+          <!-- Start greeting-user for large screens (Desktop) -->
+          <div v-else class="greeting-user dropdown greeting-user-desktop d-none">
+            <span class="userName fw-bold me-2">
+              <span class="text-dark">Hi,</span> {{ userName }}
+            </span>
+            <button class="user-img-btn rounded-circle border d-inline-block fs-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
-              <img v-else :src="userPhoto" class="user-photo" alt="" />
+              <img v-else :src="userPhoto" class="user-photo rounded-circle" alt="user-photo" />
             </button>
             <ul class="dropdown-menu text-center end-0">
               <li>
@@ -147,12 +111,11 @@
                 </button>
               </li>
               <li v-if="role === 'admin'">
-                <router-link class="dropdown-item" to="/dashboard"
-                  >Dashboard</router-link
-                >
+                <router-link class="dropdown-item" to="/dashboard">Dashboard</router-link>
               </li>
             </ul>
           </div>
+          <!-- End greeting-user for large screens (Desktop) -->
         </div>
       </div>
     </nav>
@@ -184,7 +147,6 @@ export default {
     logoutUser() {
       signOut(auth)
         .then(() => {
-          console.log(auth);
           this.$store.dispatch("setLoginState", false);
           this.$router.push("/login");
         })
@@ -222,10 +184,8 @@ export default {
   mounted() {
     const navLinks = document.querySelectorAll(".nav-link");
     const dropdownItems = document.querySelectorAll(".dropdown-item");
+    
 
-    console.log("user Photo: ", this.userPhoto);
-
-    console.log(this.email);
     this.addActiveClassWhenLinkClicked(
       navLinks,
       ".nav-link.active",
@@ -252,9 +212,7 @@ header {
 }
 
 .greeting-user {
-  .user-img {
-    width: 50px;
-    height: 50px;
+  .user-img-btn {
     text-align: center;
     line-height: 50px;
     transition: all 0.3s ease-in-out;
@@ -265,10 +223,13 @@ header {
       box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.1);
     }
 
+    &,
     .user-photo {
       width: 50px;
       height: 50px;
-      border-radius: 50%;
+    }
+
+    .user-photo {
       transform: translate(-6px, -4px);
       border: 2px solid #ccc;
     }
