@@ -9,7 +9,7 @@
         </div>
         <div class="col-12 col-lg-8 mt-3">
           <div class="container-fluid">
-            <div class="row flex-lg-nowrap column-gap-3">
+            <div class="row flex-lg-nowrap column-gap-3 justify-content-center">
               <ContentCard
                 v-for="(card, index) in firstRow"
                 :key="index"
@@ -21,7 +21,7 @@
                 :link="card.link"
               />
             </div>
-            <div class="row flex-lg-nowrap column-gap-3">
+            <div class="row flex-lg-nowrap column-gap-3 justify-content-center">
               <ContentCard
                 v-for="(card, index) in secondRow"
                 :key="index"

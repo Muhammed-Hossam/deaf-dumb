@@ -3,11 +3,7 @@
     <div class="container-fluid">
       <div class="row align-items-center">
         <div class="col-12 col-md-5">
-          <img
-            src="../../assets/about/about-section.png"
-            alt="about us image"
-            class="w-100"
-          />
+          <img src="../../assets/about/about-section.png" class="w-100" alt="about us image" />
         </div>
         <div class="col-12 col-md-7">
           <swiper
@@ -26,68 +22,12 @@
             :loop="true"
             :modules="modules"
           >
-            <swiper-slide>
+            <swiper-slide v-for="(member, index) in teamMembers" :key="index">
               <SwiperCardContent
-                :imgSrc="require('../../assets/about/Mohamed-EL-Hawary.png')"
-                name="Mohamed Hytham"
-                description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Team Leader"
-              />
-            </swiper-slide>
-            <swiper-slide>
-              <SwiperCardContent
-                :imgSrc="require('../../assets/about/ahmed-khaled.jpg')"
-                name="Ahmed Khaled"
-                description="24 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Image Editing"
-              />
-            </swiper-slide>
-            <swiper-slide>
-              <SwiperCardContent
-                :imgSrc="require('../../assets/about/aya-baker.jpeg')"
-                name="Aya Baker"
-                description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Frontend Developer"
-              />
-            </swiper-slide>
-            <swiper-slide>
-              <SwiperCardContent
-                :imgSrc="require('../../assets/about/fatma-elkhzamy.jpeg')"
-                name="Fatma Elkhzamy"
-                description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Frontend Developer"
-              />
-            </swiper-slide>
-            <swiper-slide>
-              <SwiperCardContent
-                :imgSrc="require('../../assets/about/mahmoud-radwan.jpeg')"
-                name="Mahmoud Radwan"
-                description="24 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role=" Content Creator"
-              />
-            </swiper-slide>
-            <swiper-slide>
-              <SwiperCardContent
-                :imgSrc="require('../../assets/about/noura-shrief.jpeg')"
-                name="Noura Shriaf"
-                description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Database Developer"
-              />
-            </swiper-slide>
-            <swiper-slide
-              ><SwiperCardContent
-                :imgSrc="require('../../assets/about/abdrahman-mahmoud.jpeg')"
-                name="Abdrahman Mahmoud"
-                description="22 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Data Collector"
-              />
-            </swiper-slide>
-            <swiper-slide
-              ><SwiperCardContent
-                :imgSrc="require('../../assets/about/Amir-khaled.jpeg')"
-                name="Amir Khaled"
-                description="24 years old Ungraduated Student at Faculty of Specific education, Mansoura University"
-                role="Data Collector"
+                :imgSrc="member.imgSrc"
+                :name="member.name"
+                :description="member.description"
+                :role="member.role"
               />
             </swiper-slide>
           </swiper>
@@ -101,6 +41,16 @@
 import SectionContainer from "../SectionContainer.vue";
 import SwiperCardContent from "../SwiperCardContent.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
+
+// Import Team Members Pictures
+import mohamedHawary from "../../assets/about/Mohamed-EL-Hawary.png";
+import ahmedKhaled from "../../assets/about/ahmed-khaled.jpg";
+import ayaBaker from "../../assets/about/aya-baker.jpeg";
+import fatmaElKhzamy from "../../assets/about/fatma-elkhzamy.jpeg";
+import mahmoudRadwan from "../../assets/about/mahmoud-radwan.jpeg";
+import nouraShrief from "../../assets/about/noura-shrief.jpeg";
+import abdrahmanMahmoud from "../../assets/about/abdrahman-mahmoud.jpeg"
+import amirKhaled from "../../assets/about/Amir-khaled.jpeg";
 
 // Import Swiper Modules
 import { Autoplay, EffectCoverflow } from "swiper";
@@ -116,6 +66,21 @@ export default {
     SwiperCardContent,
     Swiper,
     SwiperSlide,
+  },
+  data() {
+    return {
+      teamMembers: [
+        { imgSrc: mohamedHawary, name: 'Mohamed Hytham', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Team Leader' },
+        { imgSrc: ahmedKhaled, name: 'Ahmed Khaled', description: '24 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Image Editing' },
+        { imgSrc: ayaBaker, name: 'Aya Baker', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Frontend Developer' },
+        { imgSrc: fatmaElKhzamy, name: 'Fatma Elkhzamy', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Frontend Developer' },
+        { imgSrc: mahmoudRadwan, name: 'Mahmoud Radwan', description: '24 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Content Creator' },
+        { imgSrc: nouraShrief, name: 'Noura Shrief', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Database Developer' },
+        { imgSrc: abdrahmanMahmoud, name: 'Abdrahman Mahmoud', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Data Collector' },
+        { imgSrc: amirKhaled, name: 'Amir Khaled', description: '24 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Frontend Developer' },
+
+      ]
+    }
   },
   setup() {
     return {

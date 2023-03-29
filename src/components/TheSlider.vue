@@ -43,15 +43,10 @@
   </section>
 </template>
 
-<script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>
 
 <style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
 section {
   background-color: #eee;
   padding: 0.8rem;
@@ -72,7 +67,6 @@ section {
     max-width: 100%;
     background-size: cover;
     height: 90vh;
-    // background-position: 63% 50%;
     background-repeat: no-repeat;
     position: relative;
     padding: 7rem 0;
@@ -80,11 +74,8 @@ section {
 
     p {
       position: absolute;
-      // top: 50%;
       left: 50%;
-      // transform: translateY(-50%);
       transform: translateX(-50%);
-      // font-size: 35px;
       font-size: 1.5rem;
       width: 70%;
       font-weight: 500;
@@ -93,20 +84,14 @@ section {
       color: #000;
       padding: 1rem;
       border-radius: 5px;
-      box-shadow: 0px 2px 4px 6px rgb(0, 0, 0, 0.1);
+      box-shadow: 0px 1px 5px 6px rgb(0, 0, 0, 0.1);
       background-color: rgba(0, 0, 0, 0.25);
     }
-
-    // @media (min-width: 992px) {
-    //   p {
-    //     font-size: 2.1rem;
-    //   }
-    // }
   }
 }
 
 .carousel {
-  @media (min-width: 992px) {
+  @include media-breakpoint-up(lg) {
     .carousel-item {
       padding: 0;
       background-position: center top;

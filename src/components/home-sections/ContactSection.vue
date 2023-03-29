@@ -74,7 +74,7 @@ export default {
     width: 100%;
 
     h2 {
-      color: #02b1b4;
+      color: $main-color;
     }
   }
 }

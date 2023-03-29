@@ -30,13 +30,15 @@
           <span>Deaf & Dumb</span>
         </router-link>
         <!-- End Logo -->
+        <!-- Start Navbar toggler for small screens (mobile, tablet) -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- End Navbar toggler for small screens (mobile, tablet) -->
         <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
           <ul class="navbar-nav" role="navigation">
             <li class="nav-item">
-              <router-link class="nav-link active" aria-current="page" to="/">
+              <router-link class="nav-link" active-class="active router-link-active" to="/">
                 Home
               </router-link>
             </li>
@@ -52,22 +54,22 @@
               <!-- Start Contents Dropdown menu -->
               <ul class="dropdown-menu contents">
                 <li>
-                  <router-link class="dropdown-item text-muted" to="/alphabet">
+                  <router-link class="dropdown-item" active-class="router-link-active text-dark" to="/alphabet">
                     Sign Lang Alphabet
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item text-muted" to="/common-signs">
+                  <router-link class="dropdown-item" active-class="router-link-active text-dark" to="/common-signs">
                     Common Signs
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item text-muted" to="/dictionary">
+                  <router-link class="dropdown-item" active-class="router-link-active text-dark" to="/dictionary">
                     Signs Dictionary
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item text-muted" to="/flash-cards">
+                  <router-link class="dropdown-item" active-class="router-link-active text-dark" to="/flash-cards">
                     Flash Cards
                   </router-link>
                 </li>
@@ -75,13 +77,13 @@
               <!-- End Contents Dropdown menu -->
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/contact">Contact Us</router-link>
+              <router-link class="nav-link" active-class="active router-link-active" to="/contact">Contact Us</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">About Us</router-link>
+              <router-link class="nav-link" active-class="active router-link-active" to="/about">About Us</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/privacy">Privacy</router-link>
+              <router-link class="nav-link" active-class="active router-link-active" to="/privacy">Privacy</router-link>
             </li>
           </ul>
           <!-- Start Authentication Links -->
@@ -111,7 +113,7 @@
                 </button>
               </li>
               <li v-if="role === 'admin'">
-                <router-link class="dropdown-item" to="/dashboard">Dashboard</router-link>
+                <router-link class="dropdown-item" active-class="router-link-active text-dark" to="/dashboard">Dashboard</router-link>
               </li>
             </ul>
           </div>
@@ -157,47 +159,10 @@ export default {
     clickOnUserImg() {
       this.isUserImgClicked = !this.isUserImgClicked;
     },
-    /*
-      loop through navbar links and when click on any link of them add "active" class to clicked link 
-      and remove it from others.
-    */
-    addActiveClassWhenLinkClicked(
-      links,
-      linkSelector,
-      removedClass,
-      addedClass
-    ) {
-      links.forEach((link) => {
-        link.addEventListener("click", () => {
-          const activeLink = document.querySelector(linkSelector);
-          activeLink ? activeLink.classList.remove(removedClass) : null;
-          link.classList.add(addedClass);
-        });
-      });
-    },
   },
 
   created() {
     this.$store.dispatch("fetchCurrentUserData");
-  },
-
-  mounted() {
-    const navLinks = document.querySelectorAll(".nav-link");
-    const dropdownItems = document.querySelectorAll(".dropdown-item");
-    
-
-    this.addActiveClassWhenLinkClicked(
-      navLinks,
-      ".nav-link.active",
-      "active",
-      "active"
-    );
-    this.addActiveClassWhenLinkClicked(
-      dropdownItems,
-      ".dropdown-item.router-link-exact-active",
-      "text-muted",
-      "text-dark"
-    );
   },
 };
 </script>
@@ -209,143 +174,135 @@ export default {
 header {
   z-index: 1111;
   box-shadow: $main-shadow;
-}
 
-.greeting-user {
-  .user-img-btn {
-    text-align: center;
-    line-height: 50px;
-    transition: all 0.3s ease-in-out;
-    border: 5px solid #ccc;
-    cursor: pointer;
-    &:hover,
-    &:focus {
-      box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    &,
-    .user-photo {
-      width: 50px;
-      height: 50px;
-    }
-
-    .user-photo {
-      transform: translate(-6px, -4px);
-      border: 2px solid #ccc;
-    }
-  }
-  .userName {
-    color: #02b1b4;
-    vertical-align: super;
-  }
-
-  .dropdown-menu {
-    margin-top: 0.7rem;
-    button {
+  .greeting-user {
+    .user-img-btn {
+      text-align: center;
+      line-height: 50px;
       transition: all 0.3s ease-in-out;
-    }
-    button:hover {
-      background-color: #ddd;
-    }
-  }
-}
-.navbar {
-  .navbar-brand {
-    color: #02b1b4;
-    transition: all 0.5s ease-in-out;
-    font-weight: 800;
-
-    &:hover {
-      color: orange;
-    }
-  }
-
-  .dropdown {
-    .dropdown-toggle {
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
+      border: 5px solid #ccc;
+      cursor: pointer;
+      &:hover,
       &:focus {
-        border: 0;
+        box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.1);
       }
-
-      &::after {
+  
+      &,
+      .user-photo {
+        width: 50px;
+        height: 50px;
+      }
+  
+      .user-photo {
+        transform: translate(-6px, -4px);
+        border: 2px solid #ccc;
+      }
+    }
+    .userName {
+      color: $main-color;
+      vertical-align: super;
+    }
+  
+    .dropdown-menu {
+      margin-top: 0.7rem;
+      button {
         transition: all 0.3s ease-in-out;
       }
-
+      button:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+  .navbar {
+    .navbar-brand {
+      color: $main-color;
+      transition: all 0.5s ease-in-out;
+      font-weight: 800;
+  
+      &:hover {
+        color: orange;
+      }
+    }
+  
+    .dropdown {
+      .dropdown-toggle {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        &:focus {
+          border: 0;
+        }
+  
+        &::after {
+          transition: all 0.3s ease-in-out;
+        }
+  
+        &:hover::after {
+          rotate: 180deg;
+        }
+      }
+  
+      .dropdown-menu {
+        transition: all 0.3s ease-in-out;
+        border-radius: 0;
+      }
+    }
+  
+    .nav-link,
+    .dropdown-item {
+      position: relative;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      transition: all 0.7s ease-in-out;
+      color: rgba(33, 37, 41, 0.75);
+  
+      &.router-link-active {
+        &::after {
+          width: 90%;
+        }
+      }
+  
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        display: block;
+        height: 5px;
+        width: 0%;
+        background: $main-color;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    .greeting-user-mobile {
+      display: none !important;
+    }
+    .greeting-user-desktop {
+      display: block !important;
+    }
+    .nav-link,
+    .dropdown-item {
+      &.router-link-active {
+        &::after {
+          width: 85% !important;
+        }
+      }
       &:hover::after {
-        rotate: 180deg;
-      }
-    }
-
-    .dropdown-menu {
-      transition: all 0.3s ease-in-out;
-      border-radius: 0;
-    }
-  }
-
-  .dropdown-item:hover,
-  .dropdown-item:focus {
-    background: #fff;
-    color: #000;
-  }
-
-  .nav-link,
-  .dropdown-item {
-    position: relative;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    transition: all 0.7s ease-in-out;
-
-    &.router-link-exact-active {
-      &::after {
-        width: 90%;
-      }
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      display: block;
-      height: 5px;
-      width: 0%;
-      background: #02b1b4;
-      transition: all 0.3s ease-in-out;
-    }
-
-    // &:hover::after {
-    //   width: 85%;
-    // }
-  }
-}
-@include media-breakpoint-up(lg) {
-  .greeting-user-mobile {
-    display: none !important;
-  }
-  .greeting-user-desktop {
-    display: block !important;
-  }
-  .nav-link,
-  .dropdown-item {
-    &.router-link-exact-active {
-      &::after {
         width: 85% !important;
       }
     }
-    &:hover::after {
-      width: 85% !important;
-    }
-  }
-
-  .dropdown {
-    &:hover {
-      .dropdown-menu.contents {
-        display: block;
+  
+    .dropdown {
+      &:hover {
+        .dropdown-menu.contents {
+          display: block;
+        }
       }
     }
   }
+  a {
+    height: 100%;
+  }
 }
-a {
-  height: 100%;
-}
+
 </style>

@@ -54,9 +54,7 @@
     </div>
     <p class="copyright text-light text-center m-0 p-2">
       Copyright &copy; created by
-      <a href="https://api.whatsapp.com/send?phone=01007876406"
-        target="_blank" class="text-decoration-none">El-Hawary Team</a
-      >.
+      <span class="text-primary">El-Hawary Team</span>.
     </p>
   </footer>
 </template>

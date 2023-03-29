@@ -34,7 +34,6 @@ export default {
     })
   },
   mounted() {
-    console.log(this.getUserName)
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is Signed in
