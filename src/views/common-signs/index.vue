@@ -1,5 +1,6 @@
 <template>
-  <div class="mt-8 mt-down-lg-12">
+  <LoadingSpinner v-if="isLoading" />
+  <div class="mt-8">
     <div class="container mt-5">
       <div class="row">
         <div class="col">
@@ -18,13 +19,20 @@
     <div class="container">
       <h2 class="text-center mt-5 mb-3 fs-1 fw-bolder">Common English Signs</h2>
       <div class="d-flex justify-content-between flex-wrap" style="gap: 1rem">
-        <WordCard v-for="sign in commonSigns" :key="sign.word" :link="`common-signs/${sign.word}`" :preview-img="sign.previewImg" :word="sign.word" />
+        <WordCard
+          v-for="sign in commonSigns"
+          :key="sign.word"
+          :link="`common-signs/${sign.word}`"
+          :preview-img="sign.previewImg"
+          :word="sign.word"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import WordCard from "@/components/WordCard.vue";
 import { db } from "@/firebaseConfig";
 import { collection, getDocs } from "@firebase/firestore";
@@ -32,11 +40,13 @@ import { collection, getDocs } from "@firebase/firestore";
 export default {
   components: {
     WordCard,
-  },
+    LoadingSpinner
+},
   name: "common-signs-view",
   data() {
     return {
       commonSigns: [],
+      isLoading: true
     };
   },
 
@@ -49,6 +59,7 @@ export default {
         commonSignsData.push(doc.data());
       });
       this.commonSigns = commonSignsData;
+      this.isLoading = false;
     },
   },
   async created() {

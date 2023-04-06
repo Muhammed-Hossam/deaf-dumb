@@ -1,7 +1,8 @@
 <template>
   <div class="about-us mt-6">
     <div class="banner rounded"></div>
-    <div class="container my-5 py-5">
+    <div class="container py-5">
+      <p class="h1 text-center mb-5 fw-bold text-primary py-1" style="background-color: #cfcfcf8c;">Our Team</p>
       <div class="row justify-content-center mb-5">
         <div class="col-4 w-auto">
           <div class="pic rounded-circle mx-auto">
