@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-8 mt-down-lg-12">
+  <div class="mt-8">
     <div class="container">
       <card-container>
         <h2 class="text-center">Add New Item</h2>
@@ -27,14 +27,16 @@
             <AddLetter />
           </div>
           <div
-            v-if="selectedPageType === 'common-signs'"  class="common-signs-inputs">
-            <AddCommonSign  />
+            v-if="selectedPageType === 'common-signs'"
+            class="common-signs-inputs"
+          >
+            <AddCommonSign />
           </div>
           <div v-if="selectedPageType === 'dictionary'">
             <AddToDictionary />
           </div>
           <div v-if="selectedPageType === 'flash-cards'">
-            <AddFlashCard  />
+            <AddFlashCard />
           </div>
         </div>
       </card-container>
@@ -49,7 +51,6 @@ import AddCommonSign from "./AddCommonSign.vue";
 import AddToDictionary from "./AddToDictionary.vue";
 import AddFlashCard from "./AddFlashCard.vue";
 
-
 export default {
   name: "admin-dashboard",
   components: {
@@ -61,7 +62,6 @@ export default {
   },
   data() {
     return {
-      isLoading: false,
       pageTypes: [
         { label: "Sign Language Alphabets", value: "alphabets" },
         { label: "Common Signs", value: "common-signs" },
@@ -72,15 +72,8 @@ export default {
       selectedLetter: "",
     };
   },
-  computed: {
-    
-  },
-  methods: {
-  },
   mounted() {
     this.selectedPageType = this.pageTypes[0].value;
   },
 };
 </script>
-
-

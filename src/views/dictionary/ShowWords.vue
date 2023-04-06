@@ -1,4 +1,5 @@
 <template>
+  <LoadingSpinner v-if="isLoading" />
   <div>
     <div class="container">
       <div class="row">
@@ -18,6 +19,7 @@
 
 
 <script>
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import WordCard from '@/components/WordCard.vue';
 import { db } from '@/firebaseConfig';
 import { doc, getDoc } from '@firebase/firestore';
@@ -26,12 +28,14 @@ export default {
   name: 'dictionary-show',
   props: ['letter'],
   components: {
-    WordCard
-  },
+    WordCard,
+    LoadingSpinner
+},
 
   data() {
     return {
-      dictionary: []
+      dictionary: [],
+      isLoading: true
     };
   },
 
@@ -49,12 +53,12 @@ export default {
             const words = doc.data().words;
             words.forEach(word => {
               this.dictionary.push(word);
+              this.isLoading = false;
             })
           }
         })
-        console.log(this.dictionary)
       }
-    }
+    },
   }
 }
 </script>

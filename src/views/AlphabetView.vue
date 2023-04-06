@@ -1,5 +1,6 @@
 <template>
-  <div class="mt-8 mt-down-lg-12">
+  <LoadingSpinner v-if="isLoading" />
+  <div class="mt-8">
     <div class="container">
       <div class="row mt-5">
         <div class="col-6">
@@ -57,15 +58,18 @@ import AlphabetCard from "@/components/AlphabetCard.vue";
 import AlphabetCardContent from "@/components/AlphabetCardContent.vue";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "@/firebaseConfig";
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
 export default {
   components: {
     AlphabetCard,
     AlphabetCardContent,
-  },
+    LoadingSpinner
+},
   data() {
     return {
       letters: [],
+      isLoading: true,
       show: false,
       letter: "",
       imgSrc: "",
@@ -93,18 +97,11 @@ export default {
         lettersData.push(doc.data());
       });
       this.letters = lettersData;
+      this.isLoading = false;
     },
   },
   async created() {
     await this.retrievedData();
-  },
-  watch: {
-    letters: {
-      immediate: true,
-      handler(newVal) {
-        console.log(newVal);
-      },
-    },
   },
 };
 </script>

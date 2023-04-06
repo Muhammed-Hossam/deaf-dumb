@@ -26,7 +26,13 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['setLoginState'])
+    ...mapActions(['setLoginState']),
+    setMarginTopToPageContentBasedOnHeaderHeight() {
+      const header = document.querySelector('header');
+      const main = document.querySelector('main');
+      const headerHeight = header.offsetHeight;
+      main.style.marginTop = `${headerHeight}px`;
+    }
   },
   computed: {
     ...mapGetters({
@@ -53,6 +59,8 @@ export default {
         this.setLoginState(false);
       }
     });
+
+    this.setMarginTopToPageContentBasedOnHeaderHeight();
   },
 };
 </script>
@@ -84,18 +92,4 @@ export default {
   margin-top: 5.5rem;
 }
 
-@include media-breakpoint-down(lg) {
-  main {
-    margin-top: 9.6rem;
-  }
-  .mt-down-lg-12 {
-    margin-top: 12rem;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  main {
-    margin-top: 4.7rem;
-  }
-}
 </style>

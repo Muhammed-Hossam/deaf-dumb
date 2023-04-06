@@ -1,20 +1,33 @@
 <template>
-  <div class="mt-8 mt-down-lg-12">
+  <LoadingSpinner v-if="isLoading" />
+  <div class="mt-8">
     <div class="banner"></div>
-    <div v-for="(card, index) in flashCards" :key="index" class="flash-cards position-relative">
+    <div
+      v-for="(card, index) in flashCards"
+      :key="index"
+      class="flash-cards position-relative"
+    >
       <div class="container">
         <card-container>
-          <span v-if="card.correctAnswer" class="correct-icon position-absolute">
+          <span
+            v-if="card.correctAnswer"
+            class="correct-icon position-absolute"
+          >
             <font-awesome-icon icon="fa-solid fa-check-double" />
           </span>
-          <span v-if="card.correctAnswer === false" class="wrong-icon position-absolute">
+          <span
+            v-if="card.correctAnswer === false"
+            class="wrong-icon position-absolute"
+          >
             <font-awesome-icon icon="fa-solid fa-xmark" />
           </span>
           <div class="question-card">
             <QuestionFlipCard :card="card" :rotate="card.rotate" />
           </div>
           <div class="container">
-            <div class="answer-cards row flex-nowrap justify-content-center mt-5">
+            <div
+              class="answer-cards row flex-nowrap justify-content-center mt-5"
+            >
               <AnswerCard
                 v-for="(sign, signIndex) in card.signs"
                 :key="signIndex"
@@ -48,16 +61,19 @@ import AnswerCard from "@/components/AnswerCard.vue";
 
 import { db } from "@/firebaseConfig";
 import { collection, getDocs } from "@firebase/firestore";
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
 export default {
   components: {
     CardContainer,
     QuestionFlipCard,
     AnswerCard,
-  },
+    LoadingSpinner
+},
   data() {
     return {
       flashCards: [],
+      isLoading: true
     };
   },
   computed: {},
@@ -73,22 +89,22 @@ export default {
           correctAnswer: null,
           rotate: false,
           btnIsActive: false,
-          isAnswerd: false
+          isAnswerd: false,
         });
       });
       this.flashCards = flashCardsData;
-      console.log('flashCards: ', this.flashCards)
+      this.isLoading = false;
     },
     activateAnswerCard(card, sign) {
       card.activeImg = sign;
       card.btnIsActive = true;
     },
     checkAnswer(card) {
-      console.log('check-card: ', card)
+      console.log("check-card: ", card);
       if (card.activeImg.isCorrect) {
         card.correctAnswer = true;
-        card.rotate = false
-      }else {
+        card.rotate = false;
+      } else {
         card.correctAnswer = false;
         card.rotate = true;
       }
@@ -106,9 +122,8 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/custom.scss";
 
-
 .banner {
-  background-image: url('../assets/contents/flash-cards-banner.jpg');
+  background-image: url("../assets/contents/flash-cards-banner.jpg");
   background-size: cover;
   height: 500px;
   background-position: center -11rem;

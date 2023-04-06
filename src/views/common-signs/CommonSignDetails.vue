@@ -1,4 +1,5 @@
 <template>
+  <LoadingSpinner v-if="isLoading" />
   <div>
     <WordDetials :word="word" :description="description" :innerImg="innerImg" />
   </div>
@@ -6,6 +7,7 @@
 
 
 <script>
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import WordDetials from '@/components/WordDetials.vue';
 
 import { db } from '@/firebaseConfig';
@@ -15,13 +17,15 @@ export default {
   props: ['word'],
 
   components: {
-    WordDetials
-  },
+    WordDetials,
+    LoadingSpinner
+},
 
   data() {
     return {
       innerImg: '',
-      description: ''
+      description: '',
+      isLoading: true
     };
   },
   watch: {
@@ -34,6 +38,7 @@ export default {
             const data = doc.data();
             this.innerImg = data.innerImg;
             this.description = data.description;
+            this.isLoading = false;
           }else {
             console.log('No such document!')
           }

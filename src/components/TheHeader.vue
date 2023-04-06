@@ -7,7 +7,7 @@
       </span>
       <button  class="user-img-btn rounded-circle border d-inline-block fs-3" type="button" @click="clickOnUserImg">
         <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
-        <img v-else :src="userPhoto" class="user-photo rounded-circle" alt="user-photo" />
+        <img v-else :src="userPhoto" class="user-photo rounded-circle" alt="user-pic"  referrerpolicy="no-referrer"/>
       </button>
       <ul class="dropdown-menu text-center end-0" :class="{ show: isUserImgClicked }" style="position: unset !important">
         <li>
@@ -104,7 +104,7 @@
             </span>
             <button class="user-img-btn rounded-circle border d-inline-block fs-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
-              <img v-else :src="userPhoto" class="user-photo rounded-circle" alt="user-photo" />
+              <img v-else :src="userPhoto" class="user-photo rounded-circle" alt="user-pic" referrerpolicy="no-referrer" />
             </button>
             <ul class="dropdown-menu text-center end-0">
               <li>
