@@ -2,7 +2,7 @@
   <LoadingSpinner v-if="isLoading" />
   <div class="container">
     <div class="row">
-      <div class="col-none col-md-6">
+      <div class="d-none d-md-block col-md-6">
         <img
           src="../../assets/auth/login.png"
           class="w-100"

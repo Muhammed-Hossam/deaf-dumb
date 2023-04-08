@@ -71,7 +71,7 @@
           </form>
         </card-container>
       </div>
-      <div class="col-none col-md-6">
+      <div class="d-none d-md-block col-md-6">
         <img
           src="../../assets/auth/register.png"
           class="w-100"
