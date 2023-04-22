@@ -5,12 +5,7 @@
   <form @submit.prevent="submitForm">
     <div class="mb-3">
       <label for="letters-select" class="form-label">Select a letter:</label>
-      <select
-        name="letters"
-        class="form-select"
-        id="letters-select"
-        v-model="alphabet.letter"
-      >
+      <select name="letters" class="form-select" id="letters-select" v-model="alphabet.letter">
         <option v-for="letter in letters" :key="letter" :value="letter">
           {{ letter }}
         </option>
@@ -116,10 +111,11 @@ export default {
       });
     },
     async submitForm() {
+      const toast = useToast();
       if (this.alphabet.letter && this.alphabet.signImage) {
         this.uploadLettersImgs();
       }else {
-        console.error('Letter or sign image not selected')
+        toast.error('Letter or sign image not selected', this.toastOptions)
       }
     }
   },

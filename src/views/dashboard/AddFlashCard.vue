@@ -289,6 +289,7 @@ export default {
         });
     },
     submitForm() {
+      const toast = useToast();
       if (
         this.flashCards.word &&
         this.flashCards.signs[0].sign &&
@@ -297,6 +298,8 @@ export default {
         this.flashCards.signs[3].sign
       ) {
         this.uploadFlashCardsData();
+      }else {
+        toast.error('You should Complete All fields!', this.toastOptions);
       }
     },
   },

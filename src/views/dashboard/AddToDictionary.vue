@@ -181,7 +181,7 @@ export default {
         this.uploadDictionaryData();
       }else {
         const toast = useToast();
-        toast.error('You should Complete All fields!')
+        toast.error('You should Complete All fields!', this.toastOptions)
       }
     },
   },

@@ -27,9 +27,7 @@
             <AddLetter />
           </div>
           <div
-            v-if="selectedPageType === 'common-signs'"
-            class="common-signs-inputs"
-          >
+            v-if="selectedPageType === 'common-signs'" class="common-signs-inputs">
             <AddCommonSign />
           </div>
           <div v-if="selectedPageType === 'dictionary'">

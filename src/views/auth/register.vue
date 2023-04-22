@@ -1,11 +1,16 @@
 <template>
+  <!-- Display loading spinner when the page is loading -->
   <LoadingSpinner v-if="isLoading" />
   <div class="container">
     <div class="row">
       <div class="col-md-6">
+        <!-- The CardContainer.vue component which makes the register form box-shadow -->
         <card-container>
+          <!-- Register Heading -->
           <h4 class="text-center fw-bold mb-4" style="color: #f60">Register</h4>
+          <!-- Register form -->
           <form @submit.prevent="handleSubmit">
+            <!-- Username input -->
             <div class="mb-3">
               <input
                 type="text"
@@ -14,10 +19,12 @@
                 v-model="userName"
                 :class="{ 'is-invalid': validationErrors.userName }"
               />
+              <!-- Show error message if username is not entered -->
               <div v-if="validationErrors.userName" class="invalid-feedback">
                 {{ validationErrors.userName }}
               </div>
             </div>
+            <!-- Email input -->
             <div class="mb-3">
               <input
                 type="email"
@@ -26,10 +33,12 @@
                 v-model="email"
                 :class="{ 'is-invalid': validationErrors.email }"
               />
+              <!-- Show error message if the email address is not valid -->
               <div v-if="validationErrors.email" class="invalid-feedback">
                 {{ validationErrors.email }}
               </div>
             </div>
+            <!-- Password Input -->
             <div class="mb-3">
               <input
                 type="password"
@@ -38,10 +47,12 @@
                 v-model="password"
                 :class="{ 'is-invalid': validationErrors.password }"
               />
+              <!-- Show error message if the password is not valid -->
               <div v-if="validationErrors.password" class="invalid-feedback">
                 {{ validationErrors.password }}
               </div>
             </div>
+            <!-- Confirm Password Input -->
             <div class="mb-3">
               <input
                 type="password"
@@ -50,18 +61,18 @@
                 v-model="confirmPassword"
                 :class="{ 'is-invalid': validationErrors.confirmPassword }"
               />
-              <div
-                v-if="validationErrors.confirmPassword"
-                class="invalid-feedback"
-              >
+              <!-- Show error message if password confirmation doesn't match with password -->
+              <div v-if="validationErrors.confirmPassword" class="invalid-feedback">
                 {{ validationErrors.confirmPassword }}
               </div>
             </div>
+            <!-- Register Button -->
             <div class="d-grid mx-auto">
               <button type="submit" class="btn btn-primary border border-0" :disabled="isLoading || !isValid">
                 Register
               </button>
             </div>
+            <!-- If the user has registered before; he can go to the login page from here -->
             <p class="mt-2 mb-0">
               You have already an account?
               <router-link class="text-decoration-none" to="/login"
@@ -71,6 +82,7 @@
           </form>
         </card-container>
       </div>
+      <!-- Login page image -->
       <div class="d-none d-md-block col-md-6">
         <img
           src="../../assets/auth/register.png"
@@ -137,6 +149,12 @@ export default {
             ? null
             : "Passwords do not match.",
       };
+      /*
+        Extract the values of the validationErrors object and loop through it by "every" method
+        The "every" method takes a callback function that takes a single paramter "error"
+        it check if the "error" value is falsy, the callback function returns true
+        and if the "error" value is truthy, the callback function returns false  
+      */ 
       return Object.values(this.validationErrors).every((error) => !error);
     },
     handleSubmit() {
@@ -162,14 +180,10 @@ export default {
             this.$router.push("/login");
           })
           .catch((error) => {
-            // const errorCode = error.code;
             const errorMessage = error.message;
 
-            if (
-              errorMessage === "Firebase: Error (auth/email-already-in-use)."
-            ) {
-              this.validationErrors.email =
-                "You have already registered by this email!";
+            if (errorMessage === "Firebase: Error (auth/email-already-in-use).") {
+              this.validationErrors.email =  "You have already registered by this email!";
             }
 
             this.isLoading = false;
