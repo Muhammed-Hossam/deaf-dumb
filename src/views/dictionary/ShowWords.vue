@@ -13,6 +13,7 @@
       <div class="d-flex justify-content-between flex-wrap" style="gap: 3rem">
         <WordCard v-for="sign in dictionary" :key="sign.word" :link="`/dictionary/${letter}/details?word=${sign.word}`" :word="sign.word" :previewImg="sign.previewImg" />
       </div>
+      <h3 v-if="notFoundMessage" class="text-center my-5 text-body-tertiary fw-bold">{{ notFoundMessage }}</h3>
     </div>
   </div>
 </template>
@@ -35,7 +36,8 @@ export default {
   data() {
     return {
       dictionary: [],
-      isLoading: true
+      isLoading: true,
+      notFoundMessage: ''
     };
   },
 
@@ -51,6 +53,10 @@ export default {
         getDoc(dictionaryRef).then((doc) => {
           if (doc.exists()) {
             const words = doc.data().words;
+            if (words.length === 0) {
+              this.isLoading = false;
+              this.notFoundMessage = `There are no words yet! Please Upload the words that begins by ${newLetter} letter`;
+            }
             words.forEach(word => {
               this.dictionary.push(word);
               this.isLoading = false;
