@@ -18,7 +18,7 @@
     </div>
     <div class="container">
       <h2 class="text-center mt-5 mb-3 fs-1 fw-bolder">Common English Signs</h2>
-      <div class="d-flex justify-content-between flex-wrap" style="gap: 1rem">
+      <div class="row">
         <WordCard
           v-for="sign in commonSigns"
           :key="sign.word"
