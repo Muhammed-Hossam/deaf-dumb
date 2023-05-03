@@ -2,11 +2,14 @@
   <LoadingSpinner v-if="isLoading" />
   <div class="mt-8">
     <div class="banner"></div>
-    <div
-      v-for="(card, index) in flashCards"
-      :key="index"
-      class="flash-cards position-relative"
-    >
+    <div class="questions-details">
+      <h2 class="text-center h1 mb-5">Number of Questions: {{ flashCards.length }}</h2>
+      <div class="d-flex justify-content-around mb-5">
+        <h4 class="correct-answer h2 p-3 fw-bold rounded">Correct Answers: {{ correctAnswersCount }}</h4>
+        <h4 class="wrong-answer h2 p-3 fw-bold rounded">Wrong Answers: {{ wrongAnswersCount }}</h4>
+      </div>
+    </div>
+    <div v-for="(card, index) in flashCards" :key="index" class="flash-cards position-relative">
       <div class="container">
         <card-container>
           <span
@@ -73,7 +76,9 @@ export default {
   data() {
     return {
       flashCards: [],
-      isLoading: true
+      isLoading: true,
+      correctAnswersCount: 0,
+      wrongAnswersCount: 0
     };
   },
   computed: {},
@@ -104,9 +109,11 @@ export default {
       if (card.activeImg.isCorrect) {
         card.correctAnswer = true;
         card.rotate = false;
+        this.correctAnswersCount++;
       } else {
         card.correctAnswer = false;
         card.rotate = true;
+        this.wrongAnswersCount++;
       }
       card.btnIsActive = false;
       card.isAnswerd = true;
@@ -122,6 +129,9 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/custom.scss";
 
+$correct-color: rgb(10, 223, 10);
+$wrong-color: rgb(211, 16, 16);
+
 .banner {
   background-image: url("../assets/contents/flash-cards-banner.jpg");
   background-size: cover;
@@ -130,14 +140,28 @@ export default {
   background-repeat: no-repeat;
 }
 
+.correct-answer {
+  background-color: $correct-color;
+  color: #fff;
+}
+.wrong-answer {
+  background-color: $wrong-color;
+  color: #fff;
+}
+
+.correct-answer,
+.wrong-answer {
+  box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
 .correct-icon {
   font-size: 8rem;
-  color: rgb(10, 223, 10);
+  color: $correct-color;
 }
 
 .wrong-icon {
   font-size: 8rem;
-  color: rgb(211, 16, 16);
+  color: $wrong-color;
 }
 
 @include media-breakpoint-down(lg) {
