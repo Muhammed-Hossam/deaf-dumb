@@ -10,7 +10,7 @@
     </div>
     <div class="container">
       <h2 class="text-center mt-5 mb-3 fs-1 fw-bolder">Words that start with {{ letter }}</h2>
-      <div class="d-flex justify-content-between flex-wrap" style="gap: 3rem">
+      <div class="row">
         <WordCard v-for="sign in dictionary" :key="sign.word" :link="`/dictionary/${letter}/details?word=${sign.word}`" :word="sign.word" :previewImg="sign.previewImg" />
       </div>
       <h3 v-if="notFoundMessage" class="text-center my-5 text-body-tertiary fw-bold">{{ notFoundMessage }}</h3>
