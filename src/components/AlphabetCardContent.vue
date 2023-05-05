@@ -12,6 +12,9 @@
           <font-awesome-icon icon="fa-regular fa-circle-xmark" class="fs-4" />
         </span>
       </div>
+      <div class="letter position-absolute">
+        <span class="fw-bold">{{ letter }}</span>
+      </div>
     </div>
   </Transition>
 </template>
@@ -80,6 +83,16 @@ export default {
         }
       }
     }
+
+  }
+  .letter {
+    top: 5%;
+    left: 6%;
+
+    span {
+      font-size: 9rem;
+      color: #bde910;
+    }
   }
 
   @include media-breakpoint-down(lg) {
@@ -90,6 +103,13 @@ export default {
       
       img {
         height: 90%;
+      }
+      .letter {
+        top: 12%;
+        left: 6%;
+        span {
+          font-size: 6rem;
+        }
       }
     }
   }
