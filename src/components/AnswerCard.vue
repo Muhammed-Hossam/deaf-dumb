@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded image-card col-3 py-3"
+    class="rounded image-card col-5 col-md-2 mx-0"
     :class="{
       active: isActive && isCorrect === null,
       correct: isActive && isCorrect === true,
@@ -23,7 +23,6 @@ export default {
 
 <style lang="scss" scoped>
 .image-card {
-  // width: 200px;
   height: 200px;
   background-color: #fff;
   box-shadow: 0 1px 5px 2px rgb(0 0 0 / 10%);
