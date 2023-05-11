@@ -4,7 +4,7 @@
     <div class="banner"></div>
     <div class="questions-details">
       <h2 class="text-center h1 mb-5">Number of Questions: {{ flashCards.length }}</h2>
-      <div class="d-flex justify-content-around mb-5">
+      <div class="score d-flex justify-content-around mb-5">
         <h4 class="correct-answer h2 p-3 fw-bold rounded">Correct Answers: {{ correctAnswersCount }}</h4>
         <h4 class="wrong-answer h2 p-3 fw-bold rounded">Wrong Answers: {{ wrongAnswersCount }}</h4>
       </div>
@@ -28,9 +28,7 @@
             <QuestionFlipCard :card="card" :rotate="card.rotate" />
           </div>
           <div class="container">
-            <div
-              class="answer-cards row flex-nowrap justify-content-center mt-5"
-            >
+            <div class="answer-cards row mt-5 justify-content-between">
               <AnswerCard
                 v-for="(sign, signIndex) in card.signs"
                 :key="signIndex"
@@ -167,6 +165,17 @@ $wrong-color: rgb(211, 16, 16);
 @include media-breakpoint-down(lg) {
   .banner {
     background-position: center -7.5rem;
+  }
+
+  .score {
+    gap: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+
+    h4 {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
   }
 }
 </style>

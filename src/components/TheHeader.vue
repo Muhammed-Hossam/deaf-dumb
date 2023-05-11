@@ -31,14 +31,14 @@
         </router-link>
         <!-- End Logo -->
         <!-- Start Navbar toggler for small screens (mobile, tablet) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" @click="toggleNavbar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <font-awesome-icon class="toggler-icon" :icon="togglerIcon" size="xl" />
         </button>
         <!-- End Navbar toggler for small screens (mobile, tablet) -->
-        <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-around" ref="collapseNavbar" id="navbarNav">
           <ul class="navbar-nav" role="navigation">
             <li class="nav-item">
-              <router-link class="nav-link" active-class="active router-link-active" to="/">
+              <router-link class="nav-link" active-class="active router-link-active" @click="closeNavbar" to="/">
                 Home
               </router-link>
             </li>
@@ -54,22 +54,22 @@
               <!-- Start Contents Dropdown menu -->
               <ul class="dropdown-menu contents">
                 <li>
-                  <router-link class="dropdown-item" active-class="router-link-active text-dark" to="/alphabet">
+                  <router-link class="dropdown-item" active-class="router-link-active text-dark" @click="closeNavbar" to="/alphabet">
                     Sign Lang Alphabet
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" active-class="router-link-active text-dark" to="/common-signs">
+                  <router-link class="dropdown-item" active-class="router-link-active text-dark" @click="closeNavbar" to="/common-signs">
                     Common Signs
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" active-class="router-link-active text-dark" to="/dictionary">
+                  <router-link class="dropdown-item" active-class="router-link-active text-dark" @click="closeNavbar" to="/dictionary">
                     Signs Dictionary
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" active-class="router-link-active text-dark" to="/flash-cards">
+                  <router-link class="dropdown-item" active-class="router-link-active text-dark" @click="closeNavbar" to="/flash-cards">
                     Flash Cards
                   </router-link>
                 </li>
@@ -77,22 +77,22 @@
               <!-- End Contents Dropdown menu -->
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" active-class="active router-link-active" to="/contact">Contact Us</router-link>
+              <router-link class="nav-link" active-class="active router-link-active" @click="closeNavbar" to="/contact">Contact Us</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" active-class="active router-link-active" to="/about">About Us</router-link>
+              <router-link class="nav-link" active-class="active router-link-active" @click="closeNavbar" to="/about">About Us</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" active-class="active router-link-active" to="/privacy">Privacy</router-link>
+              <router-link class="nav-link" active-class="active router-link-active" @click="closeNavbar" to="/privacy">Privacy</router-link>
             </li>
           </ul>
           <!-- Start Authentication Links -->
           <ul v-if="!isLoggedIn" class="navbar-nav auth-links" role="navigation">
             <li class="nav-item">
-              <router-link class="nav-link" to="/register">Register</router-link>
+              <router-link class="nav-link" @click="closeNavbar" to="/register">Register</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/login">Login</router-link>
+              <router-link class="nav-link" @click="closeNavbar" to="/login">Login</router-link>
             </li>
           </ul>
           <!-- End Authentication Links -->
@@ -128,11 +128,13 @@
 import { signOut } from "@firebase/auth";
 import { auth } from "@/firebaseConfig";
 import { mapGetters } from "vuex";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   data() {
     return {
       isUserImgClicked: false,
+      isNavbarOpened: false
     };
   },
 
@@ -143,6 +145,9 @@ export default {
       role: "getUserRole",
       userPhoto: "getUserPhoto",
     }),
+    togglerIcon() {
+      return this.isNavbarOpened ? faXmark : faBars;
+    }
   },
 
   methods: {
@@ -159,6 +164,13 @@ export default {
     clickOnUserImg() {
       this.isUserImgClicked = !this.isUserImgClicked;
     },
+    toggleNavbar() {
+      this.isNavbarOpened = !this.isNavbarOpened;
+    },
+    closeNavbar() {
+      this.$refs.collapseNavbar.classList.remove('show');
+      this.isNavbarOpened = false;
+    }
   },
 
   created() {
@@ -223,7 +235,6 @@ header {
         color: orange;
       }
     }
-  
     .dropdown {
       .dropdown-toggle {
         padding-top: 1.5rem;
