@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-4 col-lg-3">
+  <div class="col-md-6 col-lg-4">
     <router-link :to="link" class="word-card bg-white d-flex align-items-center text-decoration-none text-black">
       <img :src="previewImg" :alt="`${word}-sign-preview`" />
       <p class="text-center my-auto fs-3 fw-bold">{{ word }}</p>
