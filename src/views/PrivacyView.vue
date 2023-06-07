@@ -150,4 +150,12 @@ export default {
     margin-top: 10.5rem;
   }
 }
+
+@include media-breakpoint-down(md) {
+  .privacy-content {
+    p {
+      font-size: 1rem !important;
+    }
+  }
+} 
 </style>

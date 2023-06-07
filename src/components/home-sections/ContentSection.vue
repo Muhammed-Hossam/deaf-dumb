@@ -19,6 +19,8 @@
                 :cardTitle="card.title"
                 :cardText="card.text"
                 :link="card.link"
+                data-aos="zoom-in"
+                :data-aos-delay="card.aosDelay"
               />
             </div>
             <div class="row flex-lg-nowrap column-gap-3 justify-content-center">
@@ -31,6 +33,8 @@
                 :cardTitle="card.title"
                 :cardText="card.text"
                 :link="card.link"
+                data-aos="zoom-in"
+                :data-aos-delay="card.aosDelay"
               />
             </div>
           </div>
@@ -48,6 +52,9 @@ import secondCardImg from '../../assets/contents/s-2.jpg';
 import thirdCardImg from '../../assets/contents/s-3.jpg';
 import fourthCardImg from '../../assets/contents/s-4.jpg';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default {
   components: {
     sectionContainer,
@@ -62,6 +69,7 @@ export default {
           title: "Learn SL Alphabets",
           text: "Teach the chlidren the Sign Language Alphabet by interactive cards and images.",
           link: "/alphabet",
+          aosDelay: 400
         },
         {
           imgPath: secondCardImg,
@@ -69,6 +77,7 @@ export default {
           title: "Most Common Signs",
           text: "Learn most common signs to make your level up by knowing the most common signs.",
           link: "/common-signs",
+          aosDelay: 800
         },
       ],
       secondRow: [
@@ -78,6 +87,7 @@ export default {
           title: "Signs Dictionary",
           text: "English Words with corresponding sign language images arranged alphabetically.",
           link: "/dictionary",
+          aosDelay: 1000,
         },
         {
           imgPath: fourthCardImg,
@@ -85,10 +95,15 @@ export default {
           title: "Flash Cards",
           text: "Test your memorization of signs by using incredible flash cards interactive way.",
           link: "/flash-cards",
+          aosDelay: 1200,
         },
       ],
     };
   },
+
+  mounted() {
+    AOS.init();
+  }
 };
 </script>
 

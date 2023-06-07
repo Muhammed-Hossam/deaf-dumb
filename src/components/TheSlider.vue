@@ -48,7 +48,6 @@
 @import "@/scss/custom.scss";
 
 section {
-  background-color: #eee;
   padding: 0.8rem;
 .carousel {
   .img-1 {

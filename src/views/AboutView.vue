@@ -7,7 +7,7 @@
         <div class="col-4 w-auto">
           <div class="pic rounded-circle mx-auto">
             <img
-              src="../assets/about/Mohamed-EL-Hawary.png"
+              src="../assets/about/pic.jpg"
               class="w-100 h-100 rounded-circle"
               alt=""
             />
@@ -18,90 +18,30 @@
         </div>
       </div>
       <div class="row mt-5 justify-content-around mb-5">
-        <div class="col-4 w-auto">
+        <div class="col-4 w-auto" v-for="member in teamMembers.firstRow" :key="member.name">
           <div class="pic rounded-circle mx-auto">
             <img
-              src="../assets/about/aya-baker.jpeg"
+              src="../assets/about/pic.jpg"
               class="w-100 h-100 rounded-circle"
-              alt=""
+              :alt="member.name"
             />
           </div>
           <h5 class="name text-center fw-bold text-primary mt-2">
-            Aya Baker
-          </h5>
-        </div>
-        <div class="col-4 w-auto">
-          <div class="pic rounded-circle mx-auto">
-            <img
-              src="../assets/about/fatma-elkhzamy.jpeg"
-              class="w-100 h-100 rounded-circle"
-              alt=""
-            />
-          </div>
-          <h5 class="name text-center fw-bold text-primary mt-2">
-            Fatma Elkhzamy
-          </h5>
-        </div>
-        <div class="col-4 w-auto">
-          <div class="pic rounded-circle mx-auto">
-            <img
-              src="../assets/about/noura-shrief.jpeg"
-              class="w-100 h-100 rounded-circle"
-              alt=""
-            />
-          </div>
-          <h5 class="name text-center fw-bold text-primary mt-2">
-            Noura Shrief
+            {{ member.name }}
           </h5>
         </div>
       </div>
       <div class="row justify-content-between">
-        <div class="col-4 w-auto">
+        <div class="col-4 w-auto" v-for="member in teamMembers.secondRow" :key="member.name">
           <div class="pic rounded-circle mx-auto">
             <img
-              src="../assets/about/abdrahman-mahmoud.jpeg"
+              src="../assets/about/pic.jpg"
               class="w-100 h-100 rounded-circle"
-              alt=""
+              :alt="member.name"
             />
           </div>
           <h5 class="name text-center fw-bold text-primary mt-2">
-            Abdrahman Mahmoud
-          </h5>
-        </div>
-        <div class="col-4 w-auto">
-          <div class="pic rounded-circle mx-auto">
-            <img
-              src="../assets/about/ahmed-khaled.jpg"
-              class="w-100 h-100 rounded-circle"
-              alt=""
-            />
-          </div>
-          <h5 class="name text-center fw-bold text-primary mt-2">
-            Ahmed Khaled
-          </h5>
-        </div>
-        <div class="col-4 w-auto">
-          <div class="pic rounded-circle mx-auto">
-            <img
-              src="../assets/about/mahmoud-radwan.jpeg"
-              class="w-100 h-100 rounded-circle"
-              alt=""
-            />
-          </div>
-          <h5 class="name text-center fw-bold text-primary mt-2">
-            Mahmoud Radwan
-          </h5>
-        </div>
-        <div class="col-4 w-auto">
-          <div class="pic rounded-circle mx-auto">
-            <img
-              src="../assets/about/Amir-khaled.jpeg"
-              class="w-100 h-100 rounded-circle"
-              alt=""
-            />
-          </div>
-          <h5 class="name text-center fw-bold text-primary mt-2">
-            Amir Khaled
+            {{ member.name }}
           </h5>
         </div>
       </div>
@@ -109,6 +49,37 @@
   </div>
 </template>
 
+
+<script>
+// Import Team Members Pictures
+import ahmedKhaled from "../assets/about/ahmed-khaled.jpg";
+import ayaBaker from "../assets/about/aya-baker.jpeg";
+import fatmaElKhzamy from "../assets/about/fatma-elkhzamy.jpeg";
+import mahmoudRadwan from "../assets/about/mahmoud-radwan.jpeg";
+import nouraShrief from "../assets/about/noura-shrief.jpeg";
+import abdrahmanMahmoud from "../assets/about/abdrahman-mahmoud.jpeg"
+import amirKhaled from "../assets/about/Amir-khaled.jpeg";
+
+export default {
+  data() {
+    return {
+      teamMembers: {
+        firstRow: [
+          { imgSrc: ayaBaker , name: 'Aya Baker' },
+          { imgSrc: fatmaElKhzamy, name: 'Fatma Elkhzamy' },
+          { imgSrc: nouraShrief, name: 'Noura Shrief' },
+        ],
+        secondRow: [
+          { imgSrc: abdrahmanMahmoud, name: 'Abdrahman Mahmoud' },
+          { imgSrc: ahmedKhaled, name: 'Ahmed Khaled' },
+          { imgSrc: mahmoudRadwan, name: 'Mahmoud Radwan' },
+          { imgSrc: amirKhaled, name: 'Amir Khaled' },
+        ]
+      }
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 @import "@/scss/custom.scss";
