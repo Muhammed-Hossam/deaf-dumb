@@ -26,10 +26,10 @@
         </div>
       </div>
     </div>
+    <h2 class="text-center mt-5 mb-2 fs-1 fw-bolder">
+      English Letters Signs
+    </h2>
     <div class="container">
-      <h2 class="text-center mt-5 mb-2 fs-1 fw-bolder">
-        English Letters Signs
-      </h2>
       <div class="row">
         <AlphabetCard
           v-for="letter in letters"

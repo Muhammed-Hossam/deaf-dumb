@@ -24,7 +24,7 @@
           >
             <swiper-slide v-for="(member, index) in teamMembers" :key="index">
               <SwiperCardContent
-                :imgSrc="member.imgSrc"
+                :imgSrc="require('../../assets/about/pic.jpg')"
                 :name="member.name"
                 :description="member.description"
                 :role="member.role"
@@ -51,6 +51,8 @@ import mahmoudRadwan from "../../assets/about/mahmoud-radwan.jpeg";
 import nouraShrief from "../../assets/about/noura-shrief.jpeg";
 import abdrahmanMahmoud from "../../assets/about/abdrahman-mahmoud.jpeg"
 import amirKhaled from "../../assets/about/Amir-khaled.jpeg";
+
+// import testPic from "../../assets/about/pic.jpg";
 
 // Import Swiper Modules
 import { Autoplay, EffectCoverflow } from "swiper";
