@@ -78,9 +78,8 @@ export default {
         { imgSrc: fatmaElKhzamy, name: 'Fatma Elkhzamy', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Frontend Developer' },
         { imgSrc: mahmoudRadwan, name: 'Mahmoud Radwan', description: '24 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Content Creator' },
         { imgSrc: nouraShrief, name: 'Noura Shrief', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Database Developer' },
-        { imgSrc: abdrahmanMahmoud, name: 'Abdrahman Mahmoud', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Data Collector' },
+        { imgSrc: abdrahmanMahmoud, name: 'Abdrahman Mahmoud', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Full-Stack Developer' },
         { imgSrc: amirKhaled, name: 'Amir Khaled', description: '24 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Frontend Developer' },
-
       ]
     }
   },
