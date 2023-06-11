@@ -11,7 +11,7 @@
     </div>
     <div v-for="(card, index) in flashCards" :key="index" class="flash-cards position-relative">
       <div class="container">
-        <card-container>
+        <card-container  data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300">
           <span
             v-if="card.correctAnswer"
             class="correct-icon position-absolute"
@@ -64,6 +64,9 @@ import { db } from "@/firebaseConfig";
 import { collection, getDocs } from "@firebase/firestore";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default {
   components: {
     CardContainer,
@@ -79,7 +82,6 @@ export default {
       wrongAnswersCount: 0
     };
   },
-  computed: {},
   methods: {
     async retrievedData() {
       const flashCardsRef = collection(db, "flashCards");
@@ -121,6 +123,9 @@ export default {
   async created() {
     await this.retrievedData();
   },
+  mounted() {
+    AOS.init();
+  }
 };
 </script>
 

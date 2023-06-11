@@ -5,7 +5,7 @@
         <div class="col-12 col-md-5">
           <img src="../../assets/about/about-section.png" class="w-100" alt="about us image" />
         </div>
-        <div class="col-12 col-md-7">
+        <div class="team-members col-12 col-md-7">
           <swiper
             :slides-per-view="3"
             :space-between="30"
@@ -24,7 +24,7 @@
           >
             <swiper-slide v-for="(member, index) in teamMembers" :key="index">
               <SwiperCardContent
-                :imgSrc="require('../../assets/about/pic.jpg')"
+                :imgSrc="member.imgSrc"
                 :name="member.name"
                 :description="member.description"
                 :role="member.role"

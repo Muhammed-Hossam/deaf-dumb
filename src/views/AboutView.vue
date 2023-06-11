@@ -7,7 +7,7 @@
         <div class="col-4 w-auto">
           <div class="pic rounded-circle mx-auto">
             <img
-              src="../assets/about/pic.jpg"
+              src="../assets/about/Mohamed-EL-Hawary.png"
               class="w-100 h-100 rounded-circle"
               alt=""
             />
@@ -21,7 +21,7 @@
         <div class="col-4 w-auto" v-for="member in teamMembers.firstRow" :key="member.name">
           <div class="pic rounded-circle mx-auto">
             <img
-              src="../assets/about/pic.jpg"
+              :src="member.imgSrc"
               class="w-100 h-100 rounded-circle"
               :alt="member.name"
             />
@@ -35,7 +35,7 @@
         <div class="col-4 w-auto" v-for="member in teamMembers.secondRow" :key="member.name">
           <div class="pic rounded-circle mx-auto">
             <img
-              src="../assets/about/pic.jpg"
+              :src="member.imgSrc"
               class="w-100 h-100 rounded-circle"
               :alt="member.name"
             />
