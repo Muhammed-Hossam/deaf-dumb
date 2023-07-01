@@ -52,7 +52,6 @@ import nouraShrief from "../../assets/about/noura-shrief.jpeg";
 import abdrahmanMahmoud from "../../assets/about/abdrahman-mahmoud.jpeg"
 import amirKhaled from "../../assets/about/Amir-khaled.jpeg";
 
-// import testPic from "../../assets/about/pic.jpg";
 
 // Import Swiper Modules
 import { Autoplay, EffectCoverflow } from "swiper";
@@ -80,14 +79,9 @@ export default {
         { imgSrc: nouraShrief, name: 'Noura Shrief', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Database Developer' },
         { imgSrc: abdrahmanMahmoud, name: 'Abdrahman Mahmoud', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Data Collector' },
         { imgSrc: amirKhaled, name: 'Amir Khaled', description: '24 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Frontend Developer' },
-
-      ]
-    }
-  },
-  setup() {
-    return {
+      ],
       modules: [Autoplay, EffectCoverflow],
-    };
+    }
   },
 };
 </script>
@@ -113,7 +107,6 @@ export default {
       /* Center slide text vertically */
       display: flex;
       justify-content: center;
-      // align-items: center;
     }
   }
 }

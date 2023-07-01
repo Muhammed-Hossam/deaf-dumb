@@ -1,34 +1,10 @@
 <template>
   <div>
     <TheSlider />
-    <ContentSection
-      data-aos="zoom-in-up"
-      data-aos-duration="1200"
-      data-aos-delay="300"
-      data-aos-offset="150"
-      data-aos-easing="ease-in-out"
-    />
-    <ContactSection 
-      data-aos="zoom-in-up"
-      data-aos-duration="1200"
-      data-aos-delay="300"
-      data-aos-offset="150"
-      data-aos-easing="ease-in-out"
-    />
-    <AboutSection 
-      data-aos="zoom-in-up"
-      data-aos-duration="1200"
-      data-aos-delay="300"
-      data-aos-offset="150"
-      data-aos-easing="ease-in-out"
-    />
-    <PrivacySection 
-      data-aos="zoom-in-up"
-      data-aos-duration="1200"
-      data-aos-delay="300"
-      data-aos-offset="150"
-      data-aos-easing="ease-in-out"
-    />
+    <ContentSection />
+    <ContactSection />
+    <AboutSection />
+    <PrivacySection />
   </div>
 </template>
 
@@ -39,8 +15,6 @@ import ContactSection from "../components/home-sections/ContactSection.vue";
 import AboutSection from "../components/home-sections/AboutSection.vue";
 import PrivacySection from "@/components/home-sections/PrivacySection.vue";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 export default {
   components: {
@@ -52,10 +26,6 @@ export default {
   },
   data() {
     return {};
-  },
-
-  mounted() {
-    AOS.init();
   },
 };
 </script>

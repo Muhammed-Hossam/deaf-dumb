@@ -14,17 +14,23 @@
               iconClass="fa-solid fa-phone-volume"
               hrefValue="tel:+201007876406"
               value="01007876406"
+              data-aos="fade-left"
+              data-aos-delay="300"
             />
             <ContactMethod
               iconClass="fa-solid fa-envelope-circle-check"
               hrefValue="mailto:alhwartmhmd@gmail.com"
               value="alhwartmhmd@gmail.com"
+              data-aos="fade-left"
+              data-aos-delay="600"
             />
             <ContactMethod
               iconClass="fa-solid fa-location-dot"
               hrefValue="https://goo.gl/maps/Tf2mv4XMkFWBasCBA"
               target="_blank"
               value="Dondiat, Mit-Ghamr, Al-Daqahlia"
+              data-aos="fade-left"
+              data-aos-delay="900"
             />
           </div>
         </div>
@@ -36,11 +42,19 @@
 <script>
 import SectionContainer from "../SectionContainer.vue";
 import ContactMethod from "../ContactMethod.vue";
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default {
   components: {
     SectionContainer,
     ContactMethod,
   },
+
+  mounted() {
+    AOS.init();
+  }
 };
 </script>
 
