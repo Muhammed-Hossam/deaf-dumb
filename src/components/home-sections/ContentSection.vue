@@ -69,7 +69,7 @@ export default {
           title: "Learn SL Alphabets",
           text: "Teach the chlidren the Sign Language Alphabet by interactive cards and images.",
           link: "/alphabet",
-          aosDelay: 400
+          aosDelay: 300
         },
         {
           imgPath: secondCardImg,
@@ -77,7 +77,7 @@ export default {
           title: "Most Common Signs",
           text: "Learn most common signs to make your level up by knowing the most common signs.",
           link: "/common-signs",
-          aosDelay: 800
+          aosDelay: 600
         },
       ],
       secondRow: [
@@ -87,7 +87,7 @@ export default {
           title: "Signs Dictionary",
           text: "English Words with corresponding sign language images arranged alphabetically.",
           link: "/dictionary",
-          aosDelay: 1000,
+          aosDelay: 800,
         },
         {
           imgPath: fourthCardImg,
@@ -95,7 +95,7 @@ export default {
           title: "Flash Cards",
           text: "Test your memorization of signs by using incredible flash cards interactive way.",
           link: "/flash-cards",
-          aosDelay: 1200,
+          aosDelay: 1000,
         },
       ],
     };

@@ -9,48 +9,63 @@
         <h4 class="wrong-answer h2 p-3 fw-bold rounded">Wrong Answers: {{ wrongAnswersCount }}</h4>
       </div>
     </div>
-    <div v-for="(card, index) in flashCards" :key="index" class="flash-cards position-relative">
-      <div class="container">
-        <card-container  data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300">
-          <span
-            v-if="card.correctAnswer"
-            class="correct-icon position-absolute"
-          >
-            <font-awesome-icon icon="fa-solid fa-check-double" />
-          </span>
-          <span
-            v-if="card.correctAnswer === false"
-            class="wrong-icon position-absolute"
-          >
-            <font-awesome-icon icon="fa-solid fa-xmark" />
-          </span>
-          <div class="question-card">
-            <QuestionFlipCard :card="card" :rotate="card.rotate" />
-          </div>
-          <div class="container">
-            <div class="answer-cards row mt-5 justify-content-between">
-              <AnswerCard
-                v-for="(sign, signIndex) in card.signs"
-                :key="signIndex"
-                :imageUrl="sign.sign"
-                :isCorrect="card.correctAnswer"
-                :isActive="card.activeImg?.sign === sign.sign"
-                :isAnswerd="card.isAnswerd"
-                @click="activateAnswerCard(card, sign)"
-              />
-            </div>
-          </div>
-          <div class="btn-wrapper text-end mt-3">
-            <button
-              class="btn text-success border-0"
-              :disabled="!card.btnIsActive"
-              @click="checkAnswer(card)"
-            >
-              <font-awesome-icon class="fs-2" icon="fa-solid fa-circle-check" />
-            </button>
-          </div>
-        </card-container>
-      </div>
+    <div class="container">
+      <card-container style="padding: 0 !important;">
+        <swiper
+        :pagination="{
+          type: 'progressbar',
+        }"
+        :space-between="50"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper h-100"
+        >
+          <swiper-slide v-for="(card, index) in flashCards" :key="index" class="position-relative p-5">
+            <!-- <div class="container"> -->
+              
+              <div>
+                <span
+                  v-if="card.correctAnswer"
+                  class="correct-icon position-absolute"
+                >
+                  <font-awesome-icon icon="fa-solid fa-check-double" />
+                </span>
+                <span
+                  v-if="card.correctAnswer === false"
+                  class="wrong-icon position-absolute"
+                >
+                  <font-awesome-icon icon="fa-solid fa-xmark" />
+                </span>
+                <div class="question-card">
+                  <QuestionFlipCard :card="card" :rotate="card.rotate" />
+                </div>
+                <div class="container">
+                  <div class="answer-cards row mt-5 justify-content-between">
+                    <AnswerCard
+                      v-for="(sign, signIndex) in card.signs"
+                      :key="signIndex"
+                      :imageUrl="sign.sign"
+                      :isCorrect="card.correctAnswer"
+                      :isActive="card.activeImg?.sign === sign.sign"
+                      :isAnswerd="card.isAnswerd"
+                      @click="activateAnswerCard(card, sign)"
+                    />
+                  </div>
+                </div>
+                <div class="btn-wrapper text-end mt-3">
+                  <button
+                    class="btn text-success border-0"
+                    :disabled="!card.btnIsActive"
+                    @click="checkAnswer(card)"
+                  >
+                    <font-awesome-icon class="fs-2" icon="fa-solid fa-circle-check" />
+                  </button>
+                </div>
+              </div>
+            <!-- </div> -->
+          </swiper-slide>
+        </swiper>
+      </card-container>
     </div>
   </div>
 </template>
@@ -64,22 +79,33 @@ import { db } from "@/firebaseConfig";
 import { collection, getDocs } from "@firebase/firestore";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from "swiper/vue";
+
+// Import Swiper styles
+import "swiper/scss";
+import "swiper/scss/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { Pagination, Navigation } from "swiper";
 
 export default {
   components: {
     CardContainer,
     QuestionFlipCard,
     AnswerCard,
-    LoadingSpinner
+    LoadingSpinner,
+    Swiper,
+    SwiperSlide
 },
   data() {
     return {
       flashCards: [],
       isLoading: true,
       correctAnswersCount: 0,
-      wrongAnswersCount: 0
+      wrongAnswersCount: 0,
+      modules: [Pagination, Navigation],
     };
   },
   methods: {
@@ -117,15 +143,11 @@ export default {
       }
       card.btnIsActive = false;
       card.isAnswerd = true;
-      // card.rotate = card.activeImg !== card.correctAnswer;
     },
   },
   async created() {
     await this.retrievedData();
   },
-  mounted() {
-    AOS.init();
-  }
 };
 </script>
 
@@ -165,6 +187,11 @@ $wrong-color: rgb(211, 16, 16);
 .wrong-icon {
   font-size: 8rem;
   color: $wrong-color;
+}
+
+.correct-icon,
+.wrong-icon {
+  left: 6rem;
 }
 
 @include media-breakpoint-down(lg) {
