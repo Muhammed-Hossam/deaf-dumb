@@ -84,6 +84,27 @@ export default {
   z-index: 0;
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  width: 3rem !important;
+  top: 93% !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease-in-out !important;
+
+  &::after {
+    font-size: 2rem !important;
+  }
+
+  &:hover {
+    background-color: rgb(238, 238, 238) !important;
+  }
+
+  &:active {
+    border: 2px solid #007aff !important;
+  }
+
+}
+
 .mt-8 {
   margin-top: 8rem;
 }
