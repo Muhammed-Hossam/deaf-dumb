@@ -54,7 +54,7 @@
     </div>
     <p class="copyright text-light text-center m-0 p-2">
       Copyright &copy; created by
-      <span class="text-primary">El-Hawary Team</span>.
+      <span class="text-primary"><a href="https://github.com/Muhammed-Hossam" class="text-decoration-none" target="_blank">Mohamed Haroun</a></span>.
     </p>
   </footer>
 </template>
