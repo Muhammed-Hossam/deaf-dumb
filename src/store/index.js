@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import { getFirestore, doc, onSnapshot } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
+
 const db = getFirestore();
 const auth = getAuth();
 
@@ -9,44 +10,28 @@ const store = createStore({
   modules: {},
   state() {
     return {
-      userName: "",
-      isLoggedIn: false,
+      userName: localStorage.getItem('userName') || "",
+      isLoggedIn: localStorage.getItem('loginState') === "true" || false,
       role: "user",
-      userPhoto: '',
+      userPhoto: localStorage.getItem('userPhoto') || "",
     };
   },
   mutations: {
     SET_USER_NAME(state, userName) {
       state.userName = userName;
-      localStorage.setItem('userName', JSON.stringify(userName));
+      localStorage.setItem('userName', userName);
     },
     SET_LOGIN_STATE(state, isLoggedIn) {
       state.isLoggedIn = isLoggedIn;
-      localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
-      console.log(state.isLoggedIn)
+      localStorage.setItem('loginState', isLoggedIn);
     },
     SET_ROLE(state, role) {
       state.role = role;
-      localStorage.setItem('role', JSON.stringify(role));
     },
     SET_USER_PHOTO(state, photoURL) {
       state.userPhoto = photoURL;
-      localStorage.setItem('userPhoto', JSON.stringify(photoURL));
+      localStorage.setItem('userPhoto', photoURL);
     },
-    RESTORE_STATE(state) {
-      const userName = JSON.parse(localStorage.getItem('userName'));
-      const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-      const role = JSON.parse(localStorage.getItem('role'));
-      const userPhoto = JSON.parse(localStorage.getItem('userPhoto'));
-      console.log('data from localStorage', {userName, isLoggedIn, role})
-
-      if (userName !== null && isLoggedIn !== null && role !== null && userPhoto !== null) {
-        state.userName = userName;
-        state.isLoggedIn = isLoggedIn;
-        state.role = role;
-        state.userPhoto = userPhoto;
-      }
-    }
   },
   actions: {
     setUserName({ commit }, payload) {
@@ -61,29 +46,27 @@ const store = createStore({
     setUserPhoto({ commit }, payload) {
       commit('SET_USER_PHOTO', payload);
     },
-
     fetchCurrentUserData({ commit }) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          // user is signed in
-          const userDoc = doc(db, 'users', user.uid);
-          onSnapshot(userDoc, (snapshot) => {
+          // User is signed in
+          const userRef = doc(db, 'users', user.uid);
+          onSnapshot(userRef, (snapshot) => {
             const userData = snapshot.data();
-            console.log('user', user)
-            if (user.displayName === null) {
-              commit('SET_USER_NAME', userData.userName);
-            }else {
-              commit('SET_USER_NAME', user.displayName);
-            }
+            commit('SET_USER_NAME', userData.userName);
             commit('SET_LOGIN_STATE', userData.isLoggedIn);
             commit('SET_ROLE', userData.role);
+            commit('SET_USER_PHOTO', userData.userPhoto);
           });
-        }else {
-          // user is singed out
+        } else {
+          // User is signed out
+          commit('SET_USER_NAME', '');
+          commit('SET_LOGIN_STATE', false);
+          commit('SET_ROLE', 'user');
+          // Reset any other user-related state properties
         }
-      })
-    }
-
+      });
+    },
   },
   getters: {
     getUserName(state) {
@@ -97,10 +80,9 @@ const store = createStore({
     },
     getUserPhoto(state) {
       return state.userPhoto;
-    }
+    },
   },
 });
 
-store.commit('RESTORE_STATE');
 
 export default store;

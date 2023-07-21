@@ -9,6 +9,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from "@fortawesome/free-regular-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import Toast from 'vue-toastification';
 import "vue-toastification/dist/index.css";
 
@@ -23,11 +24,13 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { faCheckDouble } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const app = createApp(App);
 library.add(
   fab,
   far,
+  fas,
   faArrowRightLong,
   faPhoneVolume,
   faEnvelopeCircleCheck,
@@ -36,7 +39,8 @@ library.add(
   faCircleXmark,
   faCircleCheck,
   faCheckDouble,
-  faXmark
+  faXmark,
+  faBars
 );
 app.use(store);
 app.use(router);

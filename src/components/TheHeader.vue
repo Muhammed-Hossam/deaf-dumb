@@ -126,7 +126,8 @@
 
 <script>
 import { signOut } from "@firebase/auth";
-import { auth } from "@/firebaseConfig";
+import { auth, db } from "@/firebaseConfig";
+import { doc, updateDoc } from "firebase/firestore";
 import { mapGetters } from "vuex";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -152,6 +153,15 @@ export default {
 
   methods: {
     logoutUser() {
+      const userId = auth.currentUser.uid;
+      const userRef = doc(db, 'users', userId);
+
+    // change isLoggedIn field to false when try to logout
+    updateDoc(userRef, {
+    isLoggedIn: false
+  })
+    .then(() => {
+      // logout user
       signOut(auth)
         .then(() => {
           this.$store.dispatch("setLoginState", false);
@@ -160,6 +170,11 @@ export default {
         .catch((error) => {
           console.error(error.message);
         });
+    })
+    .catch((error) => {
+      console.error("Error updating isLoggedIn field:", error);
+    });
+
     },
     clickOnUserImg() {
       this.isUserImgClicked = !this.isUserImgClicked;
@@ -173,7 +188,7 @@ export default {
     }
   },
 
-  created() {
+  mounted() {
     this.$store.dispatch("fetchCurrentUserData");
   },
 };

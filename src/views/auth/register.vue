@@ -40,11 +40,7 @@
             </div>
             <!-- Password Input -->
             <div class="mb-3">
-              <input
-                type="password"
-                class="form-control p-2"
-                placeholder="Type a Strong Password"
-                v-model="password"
+              <input type="password" class="form-control p-2" placeholder="Type a Strong Password" v-model="password"
                 :class="{ 'is-invalid': validationErrors.password }"
               />
               <!-- Show error message if the password is not valid -->
@@ -54,11 +50,7 @@
             </div>
             <!-- Confirm Password Input -->
             <div class="mb-3">
-              <input
-                type="password"
-                class="form-control p-2"
-                placeholder="Confirm your Password"
-                v-model="confirmPassword"
+              <input type="password" class="form-control p-2" placeholder="Confirm your Password" v-model="confirmPassword"
                 :class="{ 'is-invalid': validationErrors.confirmPassword }"
               />
               <!-- Show error message if password confirmation doesn't match with password -->
@@ -170,6 +162,7 @@ export default {
             try {
               setDoc(doc(db, "users", user.uid), {
                 userName: this.userName,
+                userPhoto: '',
                 isLoggedIn: false,
                 role: 'user'
               });
