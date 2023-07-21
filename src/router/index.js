@@ -12,7 +12,12 @@ const ShowWordDetials = () => import('../views/dictionary/ShowWordDetials.vue');
 const FlashCards = () => import('../views/FlashCardsView.vue');
 import RegisterPage from '../views/auth/register.vue';
 import LoginPage from '../views/auth/login.vue';
-import AdminDashboard from '../views/dashboard/index.vue';
+import ForgotPassword from '../views/auth/forgotPassword.vue';
+import ResetPassword from '../views/auth/resetPassword.vue';
+import DashboardIndexView from '../views/dashboard/index/indexView.vue';
+import DashboardOverview from '../views/dashboard/overview/DashboardOverview.vue'
+import AddNewItem from '../views/dashboard/addNewItem/AddNewItemView.vue'
+import ManageUsers from '../views/dashboard/manageUsers/ManageUsersView.vue'
 import store from '@/store';
 
 const routes = [
@@ -101,16 +106,57 @@ const routes = [
     }
   },
   {
+    path: '/forgot-password',
+    name: 'forgot-password',
+    component: ForgotPassword,
+    beforeEnter(to, from, next) {
+      if (store.getters.getUserLoginState) {
+        next({ name: 'home' });
+      }else {
+        next();
+      }
+    }
+  },
+  {
+    path: '/reset-password',
+    name: 'reset-password',
+    component: ResetPassword,
+    beforeEnter(to, from, next) {
+      if (store.getters.getUserLoginState) {
+        next({ name: 'home' });
+      }else {
+        next();
+      }
+    }
+  },
+  {
     path: '/dashboard',
-    name: 'admin-dashboard',
-    component: AdminDashboard,
+    redirect: '/dashboard/overview',
+    component: DashboardIndexView,
     beforeEnter(to, from, next) {
       if (store.getters.getUserLoginState && store.getters.getUserRole === 'admin') {
         next();
       }else {
         next({ name: 'home' })
       }
-    }
+    },
+    children: [
+      {
+        path: 'overview',
+        name: 'dashboard-overview',
+        component: DashboardOverview
+      },
+      {
+        path: 'addNewItem',
+        name: 'add-new-item',
+        component: AddNewItem
+      },
+      {
+        path: 'manageUsers',
+        name: 'manage-users',
+        component: ManageUsers
+      }
+    ]
   }
 ]
 

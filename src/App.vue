@@ -12,9 +12,7 @@
 import TheHeader from "./components/TheHeader.vue";
 import TheFooter from "./components/TheFooter.vue";
 import { mapActions, mapGetters } from "vuex";
-import { onAuthStateChanged } from "@firebase/auth";
-import { auth, db } from "./firebaseConfig";
-import { doc, updateDoc } from "@firebase/firestore";
+
 
 export default {
   components: {
@@ -26,7 +24,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['setLoginState']),
+    ...mapActions(['fetchCurrentUserData']),
     setMarginTopToPageContentBasedOnHeaderHeight() {
       const header = document.querySelector('header');
       const main = document.querySelector('main');
@@ -40,25 +38,8 @@ export default {
     })
   },
   mounted() {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is Signed in
-        updateDoc(doc(db, 'users', user.uid), {
-          isLoggedIn: this.isLoggedIn
-        })
-
-        if (user.photoURL) {
-          this.$store.dispatch('setUserPhoto', user.photoURL);
-        }else {
-          this.$store.dispatch('setUserPhoto', '');
-        }
-
-      } else {
-        // User is signed out
-        console.log("User is signed out");
-        this.setLoginState(false);
-      }
-    });
+    this.fetchCurrentUserData();
+    console.log(this.isLoggedIn);
 
     this.setMarginTopToPageContentBasedOnHeaderHeight();
   },

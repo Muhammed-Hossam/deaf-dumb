@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-8">
+  <div class="">
     <div class="container">
       <card-container>
         <h2 class="text-center">Add New Item</h2>
@@ -24,17 +24,17 @@
         </div>
         <div class="forms">
           <div v-if="selectedPageType === 'alphabets'" class="letters-inputs">
-            <AddLetter />
+            <LettersForm />
           </div>
           <div
             v-if="selectedPageType === 'common-signs'" class="common-signs-inputs">
-            <AddCommonSign />
+            <CommonSignForm />
           </div>
           <div v-if="selectedPageType === 'dictionary'">
-            <AddToDictionary />
+            <DictionaryForm />
           </div>
           <div v-if="selectedPageType === 'flash-cards'">
-            <AddFlashCard />
+            <FlashCardForm />
           </div>
         </div>
       </card-container>
@@ -44,19 +44,19 @@
 
 <script>
 import CardContainer from "@/components/CardContainer.vue";
-import AddLetter from "./AddLetter.vue";
-import AddCommonSign from "./AddCommonSign.vue";
-import AddToDictionary from "./AddToDictionary.vue";
-import AddFlashCard from "./AddFlashCard.vue";
+import LettersForm from "./LettersForm.vue";
+import CommonSignForm from "./CommonSignForm.vue";
+import DictionaryForm from "./DictionaryForm.vue";
+import FlashCardForm from "./FlashCardForm.vue";
 
 export default {
-  name: "admin-dashboard",
+  name: "add-new-item",
   components: {
     CardContainer,
-    AddLetter,
-    AddCommonSign,
-    AddToDictionary,
-    AddFlashCard,
+    LettersForm,
+    CommonSignForm,
+    DictionaryForm,
+    FlashCardForm,
   },
   data() {
     return {
