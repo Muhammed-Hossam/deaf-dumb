@@ -13,10 +13,9 @@
           <h4 class="text-center fw-bold mb-4" style="color: #f60">Login</h4>
           <!-- Login with Google provider -->
           <LoginProviderBtn :providerLogo="require('../../assets/auth/google-logo.svg')" providerName="Google"
-            alt="Google logo" @click="loginWithGoogle" />
+            alt="Google logo" providerColor="#4285f4" @click="loginWithGoogle" />
           <!-- Login with Facebook provider -->
-          <LoginProviderBtn :providerLogo="require('../../assets/auth/facebook-logo.svg')" providerName="Facebook"
-            alt="Facebook logo" />
+
           <!-- Login form -->
           <form @submit.prevent="handleSubmit">
             <!-- Email input -->
@@ -39,7 +38,7 @@
             </div>
             <!-- Login button -->
             <div class="d-grid mx-auto">
-              <button type="submit" class="btn btn-primary border border-0" :disabled="isLoading || !isEmailAndPasswordNotEmpty">
+              <button type="submit" class="login-btn btn btn-primary border border-0" :disabled="isLoading || !isEmailAndPasswordNotEmpty">
                 Login
               </button>
             </div>
@@ -193,7 +192,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-button {
+.login-btn {
   background-color: #e67c04;
 
   &:hover {
