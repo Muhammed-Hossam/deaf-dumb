@@ -16,10 +16,9 @@ export default {
 
 
 <style lang="scss" scoped>
-section {
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+@import '../scss/custom.scss';
 
+section {
   .title {
     display: inline-block;
     border: 2px solid #000;
@@ -37,7 +36,7 @@ section {
       width: 12px;
       height: 12px;
       // background-color: #2196f3;
-      background-color: #02b1b4;
+      background-color: $main-color;
       border-radius: 50%;
       top: 50%;
       transform: translateY(-50%);

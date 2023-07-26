@@ -43,14 +43,12 @@ import SwiperCardContent from "../SwiperCardContent.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 
 // Import Team Members Pictures
-import mohamedHawary from "../../assets/about/Mohamed-EL-Hawary.png";
-import ahmedKhaled from "../../assets/about/ahmed-khaled.jpg";
-import ayaBaker from "../../assets/about/aya-baker.jpeg";
-import fatmaElKhzamy from "../../assets/about/fatma-elkhzamy.jpeg";
-import mahmoudRadwan from "../../assets/about/mahmoud-radwan.jpeg";
-import nouraShrief from "../../assets/about/noura-shrief.jpeg";
-import abdrahmanMahmoud from "../../assets/about/abdrahman-mahmoud.jpeg"
-import amirKhaled from "../../assets/about/Amir-khaled.jpeg";
+import user1 from "../../assets/about/user1.jpg";
+import user2 from "../../assets/about/user2.webp";
+import user3 from "../../assets/about/user3.jpg";
+import user4 from "../../assets/about/user4.webp";
+import user5 from "../../assets/about/user5.jpg";
+import user6 from "../../assets/about/user6.jpg";
 
 
 // Import Swiper Modules
@@ -71,14 +69,12 @@ export default {
   data() {
     return {
       teamMembers: [
-        { imgSrc: mohamedHawary, name: 'Mohamed Hytham', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Team Leader' },
-        { imgSrc: ahmedKhaled, name: 'Ahmed Khaled', description: '24 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Image Editing' },
-        { imgSrc: ayaBaker, name: 'Aya Baker', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Frontend Developer' },
-        { imgSrc: fatmaElKhzamy, name: 'Fatma Elkhzamy', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Frontend Developer' },
-        { imgSrc: mahmoudRadwan, name: 'Mahmoud Radwan', description: '24 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Content Creator' },
-        { imgSrc: nouraShrief, name: 'Noura Shrief', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Database Developer' },
-        { imgSrc: abdrahmanMahmoud, name: 'Abdrahman Mahmoud', description: '22 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Full-Stack Developer' },
-        { imgSrc: amirKhaled, name: 'Amir Khaled', description: '24 years old Ungraduated Student at Faculty of Specific education, Mansoura University', role: 'Frontend Developer' },
+        { imgSrc: user1, name: 'Ahmed Hassan', description: 'This website changed my life; now I can communicate with ease.', role: 'Sign Language Interpreter' },
+        { imgSrc: user2, name: 'Khalid Al-Mansour', description: 'I\'m grateful for this platform; it empowers the deaf-dumb community.', role: 'Deaf Advocacy Specialist' },
+        { imgSrc: user3, name: 'Omar Farouk', description: 'Finally, a website that understands our needs and supports us!', role: 'Deaf Culture Educator' },
+        { imgSrc: user4, name: 'Karim Nasser', description: 'Using this site made me more confident in expressing myself.', role: 'Speech Therapist' },
+        { imgSrc: user5, name: 'Rami Ibrahim', description: 'I never thought technology could be so inclusive; thank you for this website!', role: 'Assistive Technology Consultant' },
+        { imgSrc: user6, name: 'Amin Khalil', description: 'The tools provided here helped me overcome communication barriers.', role: 'Communication Skills Coach' },
       ],
       modules: [Autoplay, EffectCoverflow],
     }

@@ -12,23 +12,23 @@
             <h2 class="fs-1 mb-5 text-center fw-bolder">Contact Info</h2>
             <ContactMethod
               iconClass="fa-solid fa-phone-volume"
-              hrefValue="tel:+201007876406"
-              value="01007876406"
+              hrefValue="tel:+201556239800"
+              value="01556239800"
               data-aos="fade-left"
               data-aos-delay="300"
             />
             <ContactMethod
               iconClass="fa-solid fa-envelope-circle-check"
-              hrefValue="mailto:alhwartmhmd@gmail.com"
-              value="alhwartmhmd@gmail.com"
+              hrefValue="mailto:developer.muhamed@gmail.com"
+              value="developer.muhamed@gmail.com"
               data-aos="fade-left"
               data-aos-delay="600"
             />
             <ContactMethod
               iconClass="fa-solid fa-location-dot"
-              hrefValue="https://goo.gl/maps/Tf2mv4XMkFWBasCBA"
+              hrefValue="https://goo.gl/maps/P7NL9SoGnrXrqQkD8"
               target="_blank"
-              value="Dondiat, Mit-Ghamr, Al-Daqahlia"
+              value="Al-Mansoura, Al-Daqahlia, Egypt"
               data-aos="fade-left"
               data-aos-delay="900"
             />

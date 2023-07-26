@@ -85,7 +85,7 @@ export default {
     }
 
     .role {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 1.5px;
     }
   }

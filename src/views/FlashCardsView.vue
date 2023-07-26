@@ -158,7 +158,7 @@ $correct-color: rgb(10, 223, 10);
 $wrong-color: rgb(211, 16, 16);
 
 .banner {
-  background-image: url("../assets/contents/flash-cards-banner.jpg");
+  background-image: url("../assets/contents/flash-cards-banner.png");
   background-size: cover;
   height: 500px;
   background-position: center -11rem;

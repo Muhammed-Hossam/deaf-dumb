@@ -1,6 +1,6 @@
 <template>
-  <div class="privacy-policy mt-6">
-    <div class="banner rounded"></div>
+  <div class="privacy-policy">
+    <div class="banner"></div>
     <div class="container">
       <div class="privacy-content my-5 py-5">
         <div class="text-center">
@@ -105,9 +105,8 @@ export default {
 .banner {
   background-image: url("../assets/privacy/privacy-banner.jpg");
   background-size: cover;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 65px);
   background-position: center -5rem;
-  margin: 0.8rem;
 }
 
 .privacy-content {

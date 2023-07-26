@@ -2,7 +2,7 @@
   <!-- Display loading spinner when the page is loading -->
   <LoadingSpinner v-if="isLoading" />
   <div class="container">
-    <div class="row">
+    <div class="row align-items-center">
       <div class="col-md-6">
         <!-- The CardContainer.vue component which makes the register form box-shadow -->
         <card-container>
