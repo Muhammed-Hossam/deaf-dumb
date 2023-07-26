@@ -2,7 +2,7 @@
   <section>
     <div id="homeSlider" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="50000">
+        <div class="carousel-item active" data-bs-interval="8000">
           <div class="slide-container">
             <!-- <img src="../assets/slider/1.jpg" alt="img-1"> -->
             <div class="img img-1"></div>
@@ -12,7 +12,7 @@
             </p>
           </div>
         </div>
-        <div class="carousel-item" data-bs-interval="50000">
+        <div class="carousel-item" data-bs-interval="8000">
           <div class="slide-container">
             <!-- <img src="../assets/slider/2.jpg" alt="img-2"> -->
             <div class="img img-2"></div>
@@ -22,7 +22,7 @@
             </p>
           </div>
         </div>
-        <div class="carousel-item" data-bs-interval="50000">
+        <div class="carousel-item" data-bs-interval="8000">
           <div class="slide-container">
             <!-- <img src="../assets/slider/3.jpg" alt="img-3"> -->
             <div class="img img-3"></div>
