@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <TheHeader />
     <main>
       <router-view />
@@ -57,13 +57,13 @@ export default {
   overflow-x: hidden;
 }
 
-.background {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
+// .background {
+//   position: absolute;
+//   display: block;
+//   top: 0;
+//   left: 0;
+//   z-index: 0;
+// }
 
 .swiper-button-prev,
 .swiper-button-next {

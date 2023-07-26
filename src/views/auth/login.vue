@@ -2,7 +2,7 @@
   <!-- Display the loading spinner when the page is loading -->
   <LoadingSpinner v-if="isLoading" />
   <div class="container">
-    <div class="row">
+    <div class="row align-items-center">
       <!-- The login page image -->
       <div class="d-none d-md-block col-md-6">
         <img src="../../assets/auth/login.png" class="w-100" alt="Login Image" />

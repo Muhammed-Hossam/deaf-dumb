@@ -1,13 +1,14 @@
-
-$main-color: #02b1b4;
+$app-bg: #f7f6f6;
+$main-color: darkcyan;
 $main-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.15);
 
+
+$accordion-bg: $app-bg;
 $accordion-button-focus-box-shadow: none;
 
 $input-btn-focus-box-shadow: $main-shadow !important;
 $form-select-focus-box-shadow: $main-shadow !important;
 
-$primary: rgb(79, 70, 229);
 
 $dropdown-link-hover-bg: #fff;
 $dropdown-link-active-bg: #fff;

@@ -1,6 +1,6 @@
 <template>
-  <div class="contact-us mt-6">
-    <div class="banner rounded"></div>
+  <div class="contact-us">
+    <div class="banner"></div>
     <div class="container-fluid">
       <div class="row my-5">
         <div class="col-12 col-md-6">
@@ -34,7 +34,7 @@
         </div>
         <div class="col-12 col-md-6">
           <img
-            src="../assets/contact/contactus-page-image.jpg"
+            src="../assets/contact/contactus-page-image.png"
             class="w-100"
             alt="contact us image"
           />
@@ -53,10 +53,9 @@ export default {};
 
 .banner {
   background: url("../assets/contact/contact-us-banner.jpg");
-  height: calc(100vh - 100px);
+  height: calc(100vh - 65px);
   background-size: cover;
   background-position: 50% 58%;
-  margin: 0.8rem;
 }
 
 form {
