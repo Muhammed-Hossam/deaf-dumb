@@ -9,15 +9,17 @@
             <div class="line line1">
               <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 640 395"><g stroke-width="5" stroke="hsl(227, 71%, 57%)" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-55,-209)"><path d="M138.74813950061798 218.5Q128.74813950061798 447.5 320.248139500618 400Q495.748139500618 347.5 501.748139500618 581.5 " marker-end="url(#SvgjsMarker2118)"></path></g><defs><marker markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" viewBox="0 0 5 5" orient="auto" id="SvgjsMarker2118"><polygon points="0,5 1.6666666666666667,2.5 0,0 5,2.5" fill="hsl(227, 71%, 57%)"></polygon></marker></defs></svg>
             </div>
-            <card-container class="mt-0 mb-0 p-3 fw-bold fst-italic lh-lg" style="width: 57%; margin-left: 45%;">
-              <p>
-                At Deaf & Dumb, our mission is to empower and elevate the lives 
-                of deaf-dumb individuals through innovative and inclusive technologies. 
-                We strive to bridge the communication gap and create a supportive 
-                environment where everyone can express themselves freely and with 
-                confidence.
-              </p>
-            </card-container>
+            <div class="card-wrapper">
+              <card-container class="mt-0 mb-0 p-3 fw-bold fst-italic lh-lg">
+                <p>
+                  At Deaf & Dumb, our mission is to empower and elevate the lives 
+                  of deaf-dumb individuals through innovative and inclusive technologies. 
+                  We strive to bridge the communication gap and create a supportive 
+                  environment where everyone can express themselves freely and with 
+                  confidence.
+                </p>
+              </card-container>
+            </div>
           </div>
           <div class="line line2">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 640 380"><g stroke-width="4" stroke="hsl(227, 71%, 57%)" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-1, 0, 0, 1, 695, -209)"><path d="M138.74813950061798 218.5Q128.74813950061798 447.5 320.248139500618 400Q495.748139500618 347.5 501.748139500618 581.5"></path></g><defs><marker markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" viewBox="0 0 5 5" orient="auto" id="SvgjsMarker2118"><polygon points="0,5 1.6666666666666667,2.5 0,0 5,2.5" fill="hsl(227, 71%, 57%)"></polygon></marker></defs></svg>
@@ -28,28 +30,30 @@
             <div class="line line3">
               <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 640 388"><g stroke-width="4" stroke="hsl(227, 71%, 57%)" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-1, 0, 0, 1, 695, -209)"><path d="M138.74813950061798 218.5Q128.74813950061798 447.5 320.248139500618 400Q495.748139500618 347.5 501.748139500618 581.5" marker-end="url(#SvgjsMarker2118)"></path></g><defs><marker markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" viewBox="0 0 5 5" orient="auto" id="SvgjsMarker2118"><polygon points="0,5 1.6666666666666667,2.5 0,0 5,2.5" fill="hsl(227, 71%, 57%)"></polygon></marker></defs></svg>
             </div>
-            <card-container class="mt-0 mb-0 fw-bold fst-italic lh-lg" style="width: 57%; margin-right: 45%; padding: 1rem !important;">
-              <div class="founder-details d-flex">
-                <div class="founder-pic border border-2 rounded-circle">
-                  <img src="../assets/about/founder-picture.jpg" class="w-100 h-100 rounded-circle" alt="founder-pic">
+            <div class="card-wrapper">
+              <card-container class="mt-0 mb-0 fw-bold fst-italic lh-lg">
+                <div class="founder-details d-flex">
+                  <div class="founder-pic border border-2 rounded-circle">
+                    <img src="../assets/about/founder-picture.jpg" class="w-100 h-100 rounded-circle" alt="founder-pic">
+                  </div>
+                  <div class="position-relative ms-1 mt-1">
+                    <span class="founder-name d-block fs-5">Mohamed Haroun</span>
+                    <span class="founder-job d-block position-absolute text-muted">Junior Frontend Developer</span>
+                  </div>
                 </div>
-                <div class="position-relative ms-1 mt-1">
-                  <span class="founder-name d-block fs-5">Mohamed Haroun</span>
-                  <span class="founder-job d-block position-absolute text-muted">Junior Frontend Developer</span>
+                <div class="founder-message position-relative">
+                    <font-awesome-icon icon="fa-solid fa-quote-left" class="position-absolute" />
+                  <p>
+                    As the founder of Deaf-Dumb Website, I'm dedicated to empowering 
+                    deaf-dumb individuals in their communication journey. Our mission is to 
+                    create an inclusive platform where they can express themselves with 
+                    confidence. Together, let's break communication barriers and build a more 
+                    connected world.
+                  </p>
+                    <font-awesome-icon icon="fa-solid fa-quote-right" class="position-absolute" />
                 </div>
-              </div>
-              <div class="founder-message position-relative">
-                  <font-awesome-icon icon="fa-solid fa-quote-left" class="position-absolute" />
-                <p>
-                  As the founder of Deaf-Dumb Website, I'm dedicated to empowering 
-                  deaf-dumb individuals in their communication journey. Our mission is to 
-                  create an inclusive platform where they can express themselves with 
-                  confidence. Together, let's break communication barriers and build a more 
-                  connected world.
-                </p>
-                  <font-awesome-icon icon="fa-solid fa-quote-right" class="position-absolute" />
-              </div>
-            </card-container>
+              </card-container>
+            </div>
           </div>
 
           <div class="line line4">
@@ -61,31 +65,33 @@
             <div class="line line5">
               <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 640 395"><g stroke-width="5" stroke="hsl(227, 71%, 57%)" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-55,-209)"><path d="M138.74813950061798 218.5Q128.74813950061798 447.5 320.248139500618 400Q495.748139500618 347.5 501.748139500618 581.5 " marker-end="url(#SvgjsMarker2118)"></path></g><defs><marker markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" viewBox="0 0 5 5" orient="auto" id="SvgjsMarker2118"><polygon points="0,5 1.6666666666666667,2.5 0,0 5,2.5" fill="hsl(227, 71%, 57%)"></polygon></marker></defs></svg>
             </div>
-            <card-container class="mt-0 mb-0 p-3 fw-bold fst-italic lh-lg" style="width: 57%; margin-left: 45%;  padding: 1.5rem !important;">
-              <span class="features-heading h3 d-block text-center fw-bold fst-normal">Upcoming Features</span>
-              <div class="features">
-                <div class="feature-1">
-                  <div class="point">
-                    <font-awesome-icon icon="fa-solid fa-bullseye" />
-                    <p class="d-inline fs-4">Create a profile page</p>
+            <div class="card-wrapper">
+              <card-container class="mt-0 mb-0 p-3 fw-bold fst-italic lh-lg">
+                <span class="features-heading h2 d-block text-center fw-bold fst-normal my-3">Upcoming Features</span>
+                <div class="features">
+                  <div class="feature-1">
+                    <div class="point">
+                      <font-awesome-icon icon="fa-solid fa-bullseye" class="goal-icon" />
+                      <p class="d-inline fs-4">Create a profile page</p>
+                    </div>
+                    <ul class="subpoints">
+                      <li>Enable users to change their profile picture and Username</li>
+                      <li>Enable user to save any sign or flash-cards question to favorite section in profile page </li>
+                    </ul>
                   </div>
-                  <div class="subpoints">
-                    <li>Enable users to change their profile picture and Username</li>
-                    <li>Enable user to save any sign or flash-cards question to favorite section in profile page </li>
+                  <div class="feature-2">
+                    <div class="point">
+                      <font-awesome-icon icon="fa-solid fa-bullseye" class="goal-icon" />
+                      <p class="d-inline fs-4">Update Dashboard</p>
+                    </div>
+                    <ul class="subpoints">
+                      <li>Create Dashboard "Overview" page that contain almost information about the website</li>
+                      <li>Create Dashboard "Manage Users" page to let admin control the users (change user role, delete user) </li>
+                    </ul>
                   </div>
                 </div>
-                <div class="feature-2">
-                  <div class="point">
-                    <font-awesome-icon icon="fa-solid fa-bullseye" />
-                    <p class="d-inline fs-4">Update Dashboard</p>
-                  </div>
-                  <div class="subpoints">
-                    <li>Create Dashboard "Overview" page that contain almost information about the website</li>
-                    <li>Create Dashboard "Manage Users" page to let admin control the users (change user role, delete user) </li>
-                  </div>
-                </div>
-              </div>
-            </card-container>
+              </card-container>
+            </div>
           </div>
         </div>
       </div>
@@ -100,11 +106,6 @@ import CardContainer from '@/components/CardContainer.vue';
 export default {
   components: {
     CardContainer
-  },
-  data() {
-    return {
-
-    }
   }
 }
 </script>
@@ -127,14 +128,27 @@ p.heading {
   margin-bottom: 0 !important;
 }
 
+.line1,
+.line5 {
+  width: 64%;
+  margin-left: 40%;
+}
+.line2 {
+  width: 64%;
+  margin-left: 20%;
+}
+.line3 {
+  width: 64%;
+  margin-right: 50%;
+}
+.line4 {
+  width: 64%;
+  margin-left: 9%;
+}
+
 .founder {
   .founder-heading {
     margin-right: 20%;
-  }
-
-  .line3 {
-    width: 30%;
-    margin-right: 43%;
   }
 
   .founder-details {
@@ -158,7 +172,7 @@ p.heading {
     p {
       font-family: 'Rubik', sans-serif;
       color: #6c757d;
-      font-size: 0.9rem;
+      font-size: 0.7rem;
       text-indent: 3rem;
       line-height: 1.7;
       font-weight: 500;
@@ -176,7 +190,7 @@ p.heading {
     }
     .fa-quote-right {
       bottom: -1rem;
-      left: 26.3rem;
+      left: 6.5rem;
     }
   }
 }
@@ -186,42 +200,163 @@ p.heading {
     color: $about-us-color;
   }
 
-  .features {
-    .point {
-      .fa-bullseye {
-        font-size: 2rem;
-        color: green;
-        margin-right: 0.5rem;
-        margin-bottom: 0.8rem;
+  .card-wrapper {
+    .card-container {
+      padding: 1rem !important;
+      .features {
+        .point {
+          .goal-icon {
+            font-size: 2rem;
+            color: green;
+            margin-right: 0.5rem;
+            margin-bottom: 0.8rem;
+          }
+        }
+        .subpoints {
+          margin-left: 2rem;
+    
+          li {
+            &::marker {
+              color: $about-us-color !important;
+            }
+          }
+        }
       }
     }
-    .subpoints {
-      margin-left: 2rem;
+  }
 
-      li {
-        &::marker {
-          color: $about-us-color !important;
+}
+
+@include media-breakpoint-down(sm) {
+  .goals {
+    .features {
+      .point {
+        p {
+          font-size: 1.25rem !important;
+        }
+      }
+      .subpoints {
+        li {
+          font-size: 0.88rem;
         }
       }
     }
   }
 }
 
+@include media-breakpoint-only(md) {
 
+.line1,
+.line5 {
+  width: 55%;
+  margin-left: 40%;
+}
 .line2 {
-  width: 37%;
-  margin-left: 29%;
+  width: 64%;
+  margin-left: 20%;
+}
+.line3 {
+  width: 55%;
+  margin-right: 60%;
+}
+.line4 {
+  width: 60%;
+  margin-left: 9%;
 }
 
-.line4 {
-  width: 37%;
-  margin-left: 24%;
+.mission {
+  .card-wrapper {
+    width: 90%;
+    margin-left: 20%;
+  }
 }
+
+.founder {
+  .card-wrapper {
+    width: 90%;
+    margin-right: 20%;
+    .card-container {
+      padding: 1rem !important;
+
+      .founder-message {
+        p {
+          font-size: 0.9rem;
+        }
+        .fa-quote-right {
+          left: 26.3rem;
+        }
+      }
+    }
+  }
+}
+
+.goals {
+  .card-wrapper {
+    width: 90%;
+    margin-left: 20%;
+    .card-container {
+      padding: 1.5rem !important;
+    }
+  }
+}
+
+}
+
+@include media-breakpoint-up(lg) {
 
 .line1,
 .line5 {
   width: 29%;
   margin-left: 21%
+}
+.line2 {
+  width: 37%;
+  margin-left: 29%;
+}
+.line3 {
+  width: 30%;
+  margin-right: 43%;
+}
+.line4 {
+  width: 37%;
+  margin-left: 24%;
+}
+
+.mission {
+  .card-wrapper {
+    width: 57%;
+    margin-left: 45%;
+  }
+}
+
+.founder {
+  .card-wrapper {
+    width: 57%;
+    margin-right: 45%;
+    .card-container {
+      padding: 1rem !important;
+
+      .founder-message {
+        p {
+          font-size: 0.9rem;
+        }
+        .fa-quote-right {
+          left: 26.3rem;
+        }
+      }
+    }
+  }
+}
+
+.goals {
+  .card-wrapper {
+    width: 57%;
+    margin-left: 45%;
+    .card-container {
+      padding: 1.5rem !important;
+    }
+  }
+}
 }
 
 </style>
