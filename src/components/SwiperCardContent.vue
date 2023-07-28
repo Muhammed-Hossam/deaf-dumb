@@ -1,5 +1,5 @@
-<template>
-  <div class="card-container w-100 position-relative">
+<template scoped>
+  <div class="swiper-card-wrapper w-100 position-relative">
     <div class="cover-bg"></div>
     <div class="rounded-image rounded-circle position-absolute start-50">
       <img
@@ -29,8 +29,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.card-container {
+<style lang="scss" scoped>
+.swiper-card-wrapper {
   background-color: #eee;
 
   .cover-bg {

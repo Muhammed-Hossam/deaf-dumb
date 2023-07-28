@@ -4,7 +4,6 @@
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="8000">
           <div class="slide-container">
-            <!-- <img src="../assets/slider/1.jpg" alt="img-1"> -->
             <div class="img img-1"></div>
             <p>
               Our mission is to bridge the communication gap for the deaf and dumb
@@ -14,7 +13,6 @@
         </div>
         <div class="carousel-item" data-bs-interval="8000">
           <div class="slide-container">
-            <!-- <img src="../assets/slider/2.jpg" alt="img-2"> -->
             <div class="img img-2"></div>
             <p>
               Our goal is to empower the deaf and dumb community by providing
@@ -24,7 +22,6 @@
         </div>
         <div class="carousel-item" data-bs-interval="8000">
           <div class="slide-container">
-            <!-- <img src="../assets/slider/3.jpg" alt="img-3"> -->
             <div class="img img-3"></div>
             <p>
               Our website aims to provide helpful resources and support for
@@ -72,7 +69,6 @@ section {
           background-repeat: no-repeat !important;
           background-position: center;
           clip-path: polygon(63% 0, 100% 0, 100% 30%, 100% 70%, 100% 100%, 30% 100%, 30% 100%, 43% 59%);
-          /* Adjust the values for the desired curve */
         }
 
         .img-1 {

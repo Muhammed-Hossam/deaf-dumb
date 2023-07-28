@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded p-5 my-5">
+  <div class="card-container rounded p-5 my-5">
     <slot></slot>
   </div>
 </template>
