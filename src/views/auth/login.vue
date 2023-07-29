@@ -158,24 +158,30 @@ export default {
                 // if the user is exist update document
                 if (docSnapshot.exists()) {
                   updateDoc(userRef, { isLoggedIn: true });
+                  if (docSnapshot.data().userPhoto === "") {
+                    updateDoc(userRef, { userPhoto: user.photoURL });
+                  }
                   this.$router.push("/");
                 } else {
                   // is the user not exist create a document
-                  try {
+                  
                     const userData = docSnapshot.data();
                     setDoc(userRef, {
                       userName: user.displayName,
                       userPhoto: user.photoURL,
                       isLoggedIn: true,
                       role: "user",
+                    })
+                    .then(() => {
+                      this.$router.push("/");
+                      this.$store.dispatch("setUserPhoto", userData.userPhoto);
+                      this.setLoginState(true);
+                    })
+                    .catch((error) => {
+                      console.error("Error When store user data in document: ", error.message);
                     });
 
-                    this.$store.dispatch("setUserPhoto", userData.userPhoto);
-                    this.setLoginState(true);
-                    this.$router.push("/");
-                  } catch (error) {
-                    console.error("Error When store user data in document: ", error.message);
-                  }
+                  
                 }
               })
               .catch((error) => {
