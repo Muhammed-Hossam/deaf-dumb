@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-2">
           <div class="logo text-center">
-            <img src="../assets/logo.png" width="250" height="250" alt="logo" />
+            <img src="../assets/logo.webp" width="250" height="250" alt="logo" />
           </div>
         </div>
         <div class="col-md-4">

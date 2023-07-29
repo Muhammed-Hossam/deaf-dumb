@@ -34,7 +34,7 @@
         </div>
         <div class="col-12 col-md-6">
           <img
-            src="../assets/contact/contactus-page-image.png"
+            src="../assets/contact/contactus-page-image.webp"
             class="w-100"
             alt="contact us image"
           />
@@ -52,7 +52,7 @@ export default {};
 @import "@/scss/custom.scss";
 
 .banner {
-  background: url("../assets/contact/contact-us-banner.jpg");
+  background: url("../assets/contact/contact-us-banner.webp");
   height: calc(100vh - 65px);
   background-size: cover;
   background-position: 50% 58%;

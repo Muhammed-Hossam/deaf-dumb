@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12 col-lg-4">
           <video class="h-100" autoplay loop muted>
-            <source src="../../assets/contents/home-video-design-1.mp4" />
+            <source src="../../assets/contents/home-video-design-1.webm" />
           </video>
         </div>
         <div class="col-12 col-lg-8 mt-3">
@@ -47,10 +47,10 @@
 <script>
 import sectionContainer from "../SectionContainer.vue";
 import ContentCard from "../ContentCard.vue";
-import firstCardImg from '../../assets/contents/s-1.jpg';
-import secondCardImg from '../../assets/contents/s-2.jpg';
-import thirdCardImg from '../../assets/contents/s-3.jpg';
-import fourthCardImg from '../../assets/contents/s-4.jpg';
+import firstCardImg from '../../assets/contents/s-1.webp';
+import secondCardImg from '../../assets/contents/s-2.webp';
+import thirdCardImg from '../../assets/contents/s-3.webp';
+import fourthCardImg from '../../assets/contents/s-4.webp';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';

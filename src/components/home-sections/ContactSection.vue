@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12 col-md-5">
           <div class="img">
-            <img src="../../assets/contact/contact-us-section-img.png" alt="" />
+            <img src="../../assets/contact/contact-us-section-img.webp" alt="" />
           </div>
         </div>
         <div class="col-12 col-md-7">

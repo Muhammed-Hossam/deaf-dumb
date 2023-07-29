@@ -103,7 +103,7 @@ export default {
 @import "@/scss/custom.scss";
 
 .banner {
-  background-image: url("../assets/privacy/privacy-banner.jpg");
+  background-image: url("../assets/privacy/privacy-banner.webp");
   background-size: cover;
   height: calc(100vh - 65px);
   background-position: center -5rem;
