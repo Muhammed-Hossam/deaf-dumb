@@ -4,7 +4,7 @@
       <div class="row align-items-center">
         <div class="col-12 col-md-5">
           <div class="img mb-5">
-            <img src="../../assets/privacy/privacy.jpg" class="w-100 rounded" height="350" alt="privacy image">
+            <img src="../../assets/privacy/privacy-section.webp" class="w-100 rounded" height="350" alt="privacy image">
           </div>
         </div>
         <div class="col-12 col-md-7">

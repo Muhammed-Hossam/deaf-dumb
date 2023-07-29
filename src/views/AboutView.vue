@@ -34,7 +34,7 @@
               <card-container class="mt-0 mb-0 fw-bold fst-italic lh-lg">
                 <div class="founder-details d-flex">
                   <div class="founder-pic border border-2 rounded-circle">
-                    <img src="../assets/about/founder-picture.jpg" class="w-100 h-100 rounded-circle" alt="founder-pic">
+                    <img src="../assets/about/founder-picture.webp" class="w-100 h-100 rounded-circle" alt="founder-pic">
                   </div>
                   <div class="position-relative ms-1 mt-1">
                     <span class="founder-name d-block fs-5">Mohamed Haroun</span>
@@ -117,7 +117,7 @@ export default {
 $about-us-color: hsl(227deg, 71%, 57%);
 
 .banner {
-  background-image: url("../assets/about/team-banner-bg.jpg");
+  background-image: url("../assets/about/team-banner-bg.webp");
   background-size: cover;
   height: calc(100vh - 65px);
 }

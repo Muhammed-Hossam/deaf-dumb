@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row align-items-center">
         <div class="col-12 col-md-5">
-          <img src="../../assets/about/about-section.png" class="w-100" alt="about us image" />
+          <img src="../../assets/about/about-section.webp" class="w-100" alt="about us image" />
         </div>
         <div class="team-members col-12 col-md-7">
           <swiper
@@ -43,12 +43,12 @@ import SwiperCardContent from "../SwiperCardContent.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 
 // Import Team Members Pictures
-import user1 from "../../assets/about/user1.jpg";
+import user1 from "../../assets/about/user1.webp";
 import user2 from "../../assets/about/user2.webp";
-import user3 from "../../assets/about/user3.jpg";
+import user3 from "../../assets/about/user3.webp";
 import user4 from "../../assets/about/user4.webp";
 import user5 from "../../assets/about/user5.jpg";
-import user6 from "../../assets/about/user6.jpg";
+import user6 from "../../assets/about/user6.webp";
 
 
 // Import Swiper Modules

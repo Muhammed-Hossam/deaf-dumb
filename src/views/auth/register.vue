@@ -77,7 +77,7 @@
       <!-- Login page image -->
       <div class="d-none d-md-block col-md-6">
         <img
-          src="../../assets/auth/register.png"
+          src="../../assets/auth/register.webp"
           class="w-100"
           alt="register image"
         />

@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <!-- Start Logo -->
         <router-link to="/" class="navbar-brand py-0">
-          <img src="../assets/logo.png" alt="logo" width="65" height="65" />
+          <img src="../assets/logo.webp" alt="logo" width="65" height="65" />
           <span>Deaf & Dumb</span>
         </router-link>
         <!-- End Logo -->

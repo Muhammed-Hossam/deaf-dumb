@@ -5,7 +5,7 @@
     <div class="row align-items-center">
       <!-- The login page image -->
       <div class="d-none d-md-block col-md-6">
-        <img src="../../assets/auth/login.png" class="w-100" alt="Login Image" />
+        <img src="../../assets/auth/login.webp" class="w-100" alt="Login Image" />
       </div>
       <div class="col-md-6">
         <!-- The CardContainer.vue component which makes the register form box-shadow -->
