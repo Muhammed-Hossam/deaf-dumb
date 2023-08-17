@@ -20,8 +20,8 @@
 
 
 <script>
-import LoadingSpinner from '@/components/LoadingSpinner.vue';
-import WordCard from '@/components/WordCard.vue';
+import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
+import WordCard from '@/components/common/WordCard.vue';
 import { db } from '@/firebaseConfig';
 import { doc, getDoc } from '@firebase/firestore';
 
