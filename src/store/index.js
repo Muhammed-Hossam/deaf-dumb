@@ -13,7 +13,10 @@ const store = createStore({
       userName: localStorage.getItem('userName') || "",
       isLoggedIn: localStorage.getItem('loginState') === "true" || false,
       role: "user",
-      userPhoto: localStorage.getItem('userPhoto') || "",
+      fullUserPhoto: localStorage.getItem('fullUserPhoto') || "",
+      croppedUserPhoto: localStorage.getItem('croppedUserPhoto') || "",
+      profileCoverImg: localStorage.getItem('profileCoverImg') || null,
+      profileCoverImgPosition: 50
     };
   },
   mutations: {
@@ -28,10 +31,21 @@ const store = createStore({
     SET_ROLE(state, role) {
       state.role = role;
     },
-    SET_USER_PHOTO(state, photoURL) {
-      state.userPhoto = photoURL;
-      localStorage.setItem('userPhoto', photoURL);
+    SET_FULL_USER_PHOTO(state, fullUserPhotoURL) {
+      state.fullUserPhoto = fullUserPhotoURL;
+      localStorage.setItem('fullUserPhoto', fullUserPhotoURL);
     },
+    SET_CROPPED_USER_PHOTO(state, croppedUserPhotoURL) {
+      state.croppedUserPhoto = croppedUserPhotoURL;
+      localStorage.setItem('croppedUserPhoto', croppedUserPhotoURL);
+    },
+    SET_PROFILE_COVER_IMG(state, profileCoverImg) {
+      state.profileCoverImg = profileCoverImg;
+      localStorage.setItem('profileCoverImg', profileCoverImg);
+    },
+    SET_PROFILE_COVER_IMG_POSITION(state, position) {
+      state.profileCoverImgPosition = position;
+    }
   },
   actions: {
     setUserName({ commit }, payload) {
@@ -43,27 +57,42 @@ const store = createStore({
     setUserRole({ commit }, payload) {
       commit("SET_ROLE", payload);
     },
-    setUserPhoto({ commit }, payload) {
-      commit('SET_USER_PHOTO', payload);
+    setFullUserPhoto({ commit }, payload) {
+      commit('SET_FULL_USER_PHOTO', payload);
     },
-    fetchCurrentUserData({ commit }) {
+    setCroppedUserPhoto({ commit }, payload) {
+      commit('SET_CROPPED_USER_PHOTO', payload);
+    },
+    setProfileCoverImg({ commit }, payload) {
+      commit('SET_PROFILE_COVER_IMG', payload);
+    },
+    setProfileCoverImgPosition({ commit }, payload) {
+      commit('SET_PROFILE_COVER_IMG_POSITION', payload);
+    },
+    fetchCurrentUserData() {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           // User is signed in
           const userRef = doc(db, 'users', user.uid);
           onSnapshot(userRef, (snapshot) => {
             const userData = snapshot.data();
-            commit('SET_USER_NAME', userData.userName);
-            commit('SET_LOGIN_STATE', userData.isLoggedIn);
-            commit('SET_ROLE', userData.role);
-            commit('SET_USER_PHOTO', userData.userPhoto);
+            this.dispatch('setUserName', userData.userName);
+            this.dispatch('setLoginState', userData.isLoggedIn);
+            this.dispatch('setUserRole', userData.role);
+            this.dispatch('setFullUserPhoto', userData.fullUserPhoto);
+            this.dispatch('setCroppedUserPhoto', userData.croppedUserPhoto);
+            this.dispatch('setProfileCoverImg', userData.profileCoverImg);
+            this.dispatch('setProfileCoverImgPosition', userData.profileCoverImgPosition);
           });
         } else {
           // User is signed out
-          commit('SET_USER_NAME', '');
-          commit('SET_LOGIN_STATE', false);
-          commit('SET_ROLE', 'user');
           // Reset any other user-related state properties
+            this.dispatch('setUserName', '');
+            this.dispatch('setLoginState', false);
+            this.dispatch('setUserRole', 'user');
+            this.dispatch('setFullUserPhoto', '');
+            this.dispatch('setCroppedUserPhoto', '');
+            this.dispatch('setProfileCoverImg', null);
         }
       });
     },
@@ -78,9 +107,18 @@ const store = createStore({
     getUserRole(state) {
       return state.role;
     },
-    getUserPhoto(state) {
-      return state.userPhoto;
+    getFullUserPhoto(state) {
+      return state.fullUserPhoto;
     },
+    getCroppedUserPhoto(state) {
+      return state.croppedUserPhoto;
+    },
+    getProfileCoverImg(state) {
+      return state.profileCoverImg;
+    },
+    getProfileCoverImgPosition(state) {
+      return state.profileCoverImgPosition;
+    }
   },
 });
 

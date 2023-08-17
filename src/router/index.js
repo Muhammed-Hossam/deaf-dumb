@@ -1,23 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue';
-import AboutView from '../views/AboutView.vue';
-import ContactView from '../views/ContactView.vue';
-import PrivacyView from '../views/PrivacyView.vue';
-const AlphabetView = () => import('../views/AlphabetView.vue');
-const CommonSignsView = () => import('../views/common-signs/index.vue');
-const CommonSignDetails = () => import('../views/common-signs/CommonSignDetails.vue')
-const DictionaryIndex = () => import('../views/dictionary/index.vue');
-const DictionaryShow = () => import('../views/dictionary/ShowWords.vue');
-const ShowWordDetials = () => import('../views/dictionary/ShowWordDetials.vue');
-const FlashCards = () => import('../views/FlashCardsView.vue');
-import RegisterPage from '../views/auth/register.vue';
-import LoginPage from '../views/auth/login.vue';
-import ForgotPassword from '../views/auth/forgotPassword.vue';
-import ResetPassword from '../views/auth/resetPassword.vue';
-import DashboardIndexView from '../views/dashboard/index/indexView.vue';
-import DashboardOverview from '../views/dashboard/overview/DashboardOverview.vue'
-import AddNewItem from '../views/dashboard/addNewItem/AddNewItemView.vue'
-import ManageUsers from '../views/dashboard/manageUsers/ManageUsersView.vue'
+import HomeView from '../views/Home.vue';
+const AboutView = () => import('../views/About.vue');
+const ContactView = () => import('../views/Contact.vue');
+const PrivacyView = () => import('../views/Privacy.vue');
+const AlphabetView = () => import('../views/Alphabet.vue');
+const CommonSignsView = () => import('../views/CommonSigns/Index.vue');
+const CommonSignDetails = () => import('../views/CommonSigns/Details.vue')
+const DictionaryIndex = () => import('../views/Dictionary/Index.vue');
+const DictionaryShow = () => import('../views/Dictionary/ShowWords.vue');
+const ShowWordDetials = () => import('../views/Dictionary/ShowWordDetials.vue');
+const FlashCards = () => import('../views/FlashCards.vue');
+const RegisterPage = () => import('../views/Auth/register.vue');
+const LoginPage = () => import('../views/Auth/login.vue');
+const ForgotPassword = () => import('../views/Auth/forgotPassword.vue');
+const ResetPassword = () => import('../views/Auth/resetPassword.vue');
+const DashboardIndexView = () => import('../views/Dashboard/Index.vue');
+const DashboardOverview = () => import('../views/Dashboard/Overview/DashboardOverview.vue');
+const AddNewItem = () => import('../views/Dashboard/AddNewItem/Index.vue');
+const ManageUsers = () => import('../views/Dashboard/ManageUsers/Index.vue');
+const UserProfile = () => import('../views/Profile/Index.vue');
+
 import store from '@/store';
 
 const routes = [
@@ -157,6 +159,18 @@ const routes = [
         component: ManageUsers
       }
     ]
+  },
+  {
+    path: '/profile',
+    name: 'user-profile',
+    component: UserProfile,
+    beforeEnter(to, from, next) {
+      if (store.getters.getUserLoginState) {
+        next();
+      }else {
+        next({ name: 'home' });
+      }
+    }
   }
 ]
 

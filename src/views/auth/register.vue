@@ -87,8 +87,8 @@
 </template>
 
 <script>
-import CardContainer from "@/components/CardContainer.vue";
-import LoadingSpinner from "@/components/LoadingSpinner.vue";
+import CardContainer from "@/components/common/CardContainer.vue";
+import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 
 import { getAuth, createUserWithEmailAndPassword } from "@firebase/auth";
 import { doc, setDoc } from "@firebase/firestore";
@@ -113,6 +113,39 @@ export default {
         password: null,
         confirmPassword: null,
       },
+      initialFavorites: {
+        letters: [],
+        commonSigns: [],
+        dictionary: {
+          A: [],
+          B: [],
+          C: [],
+          D: [],
+          E: [],
+          F: [],
+          G: [],
+          H: [],
+          I: [],
+          J: [],
+          K: [],
+          L: [],
+          M: [],
+          N: [],
+          O: [],
+          P: [],
+          Q: [],
+          R: [],
+          S: [],
+          T: [],
+          U: [],
+          V: [],
+          W: [],
+          X: [],
+          Y: [],
+          Z: [],
+        },
+        flashCards: []
+      }
     };
   },
   computed: {
@@ -162,9 +195,13 @@ export default {
             try {
               setDoc(doc(db, "users", user.uid), {
                 userName: this.userName,
-                userPhoto: '',
+                fullUserPhoto: '',
+                croppedUserPhoto: '',
+                profileCoverImg: null,
+                profileCoverImgPosition: 50,
                 isLoggedIn: false,
-                role: 'user'
+                role: 'user',
+                favorites: this.initialFavorites
               });
             } catch (e) {
               console.error("Error When store user data in document", e);

@@ -14,6 +14,8 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import Toast from 'vue-toastification';
 import "vue-toastification/dist/index.css";
 
+import { CircleStencil } from "vue-advanced-cropper";
+
 
 // Import fontawesome icons
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
@@ -47,4 +49,5 @@ app.use(store);
 app.use(router);
 app.use(Toast)
 app.component("font-awesome-icon", FontAwesomeIcon);
+app.component('circle-stencil', CircleStencil);
 app.mount("#app");

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import TheHeader from "./components/TheHeader.vue";
-import TheFooter from "./components/TheFooter.vue";
+import TheHeader from "./components/layout/TheHeader.vue";
+import TheFooter from "./components/layout/TheFooter.vue";
 import { mapActions, mapGetters } from "vuex";
 
 
@@ -57,14 +57,6 @@ export default {
   overflow-x: hidden;
 }
 
-// .background {
-//   position: absolute;
-//   display: block;
-//   top: 0;
-//   left: 0;
-//   z-index: 0;
-// }
-
 .swiper-button-prev,
 .swiper-button-next {
   width: 3rem !important;
@@ -84,13 +76,6 @@ export default {
     border: 2px solid #007aff !important;
   }
 
-}
-
-.mt-8 {
-  margin-top: 8rem;
-}
-.mt-6 {
-  margin-top: 5.5rem;
 }
 
 </style>

@@ -8,8 +8,8 @@
 
 
 <script>
-import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
-import WordDetials from "@/components/common/WordDetials.vue";
+import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
+import WordDetials from '@/components/common/WordDetials.vue';
 import FavoriteButton from '@/components/common/FavoriteButton.vue';
 
 
@@ -23,30 +23,27 @@ import {
   onSnapshot,
 } from "@firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-
-import { mapGetters } from "vuex";
-import { useToast } from "vue-toastification";
+import { useToast } from 'vue-toastification';
 
 export default {
+  name: 'common-sign-details',
+  props: ['word'],
+
   components: {
     WordDetials,
     LoadingSpinner,
     FavoriteButton
-  },
+},
+
   data() {
     return {
-      dictionaryKey: null,
-      word: "",
-      innerImg: "",
-      description: "",
+      innerImg: '',
+      description: '',
       isLoading: true,
-      isFavorited: false,
+      isFavorited: false
     };
   },
   computed: {
-    ...mapGetters({
-      isLoggedIn: "getUserLoginState",
-    }),
     toastOptions() {
       return {
         position: "top-right",
@@ -73,7 +70,7 @@ export default {
       if (user) {
         const userRef = doc(db, "users", user.uid);
         const favoritesUpdate = {
-          [`favorites.dictionary.${this.dictionaryKey}`]: this.isFavorited
+          [`favorites.commonSigns`]: this.isFavorited
             ? arrayUnion(this.word)
             : arrayRemove(this.word),
         };
@@ -91,10 +88,9 @@ export default {
           const userRef = doc(db, "users", user.uid);
           onSnapshot(userRef, (snapshot) => {
             const userData = snapshot.data();
-            const userFavoritesArray =
-              userData.favorites.dictionary[this.dictionaryKey];
-            console.log(userFavoritesArray);
-            userFavoritesArray.forEach((item) => {
+            const commonSignsFavoritesArray = userData.favorites.commonSigns;
+            console.log(commonSignsFavoritesArray);
+            commonSignsFavoritesArray.forEach((item) => {
               if (item === this.word) {
                 this.isFavorited = true;
               }
@@ -104,40 +100,27 @@ export default {
       });
     },
   },
-  mounted() {
-    console.log(this.word, this.description);
-    // this.checkIfWordIsFavorite();
-  },
-
   watch: {
-    $route: {
+    word: {
       immediate: true,
-      handler: function (newRoute) {
-        const queryWord = newRoute.query.word;
-        const newLetter = newRoute.params.letter;
-        const dictionaryRef = doc(db, "dictionary", newLetter);
-        getDoc(dictionaryRef).then((doc) => {
+      handler(newWord) {
+        const signRef = doc(db, 'commonSigns', newWord);
+        getDoc(signRef).then((doc) => {
           if (doc.exists()) {
-            const words = doc.data().words;
-            words.forEach((sign) => {
-              if (sign.word === queryWord) {
-                this.dictionaryKey = newLetter;
-                this.word = sign.word;
-                this.innerImg = sign.innerImg;
-                this.description = sign.description;
-                this.isLoading = false;
-                this.checkIfWordIsFavorite();
-              }
-            });
+            const data = doc.data();
+            this.innerImg = data.innerImg;
+            this.description = data.description;
+            this.isLoading = false;
+            this.checkIfWordIsFavorite();
+          }else {
+            console.log('No such document!')
           }
-        });
-      },
-    },
-  },
-};
+        })
+        .catch((error) => {
+          console.log('Error getting document: ', error)
+        })
+      }
+    }
+  }
+}
 </script>
-
-
-<style lang="scss" scoped>
-
-</style>

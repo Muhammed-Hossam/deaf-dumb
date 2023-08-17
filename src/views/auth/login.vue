@@ -55,9 +55,9 @@
 </template>
 
 <script>
-import CardContainer from "@/components/CardContainer.vue";
-import LoadingSpinner from "@/components/LoadingSpinner.vue";
-import LoginProviderBtn from "@/components/LoginProviderBtn.vue";
+import CardContainer from "@/components/common/CardContainer.vue";
+import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
+import LoginProviderBtn from "@/components/Login/LoginProviderBtn.vue";
 
 // import firebase required modules
 import {
@@ -84,6 +84,39 @@ export default {
       isLoading: false,
       emailError: "",
       passwordError: "",
+      initialFavorites: {
+        letters: [],
+        commonSigns: [],
+        dictionary: {
+          A: [],
+          B: [],
+          C: [],
+          D: [],
+          E: [],
+          F: [],
+          G: [],
+          H: [],
+          I: [],
+          J: [],
+          K: [],
+          L: [],
+          M: [],
+          N: [],
+          O: [],
+          P: [],
+          Q: [],
+          R: [],
+          S: [],
+          T: [],
+          U: [],
+          V: [],
+          W: [],
+          X: [],
+          Y: [],
+          Z: [],
+        },
+        flashCards: []
+      }
     };
   },
   computed: {
@@ -158,8 +191,11 @@ export default {
                 // if the user is exist update document
                 if (docSnapshot.exists()) {
                   updateDoc(userRef, { isLoggedIn: true });
-                  if (docSnapshot.data().userPhoto === "") {
-                    updateDoc(userRef, { userPhoto: user.photoURL });
+                  if (docSnapshot.data().fullUserPhoto === "" && docSnapshot.data().croppedUserPhoto === "") {
+                    updateDoc(userRef, { 
+                      fullUserPhoto: user.photoURL,
+                      croppedUserPhoto: user.photoURL
+                      });
                   }
                   this.$router.push("/");
                 } else {
@@ -168,13 +204,18 @@ export default {
                     const userData = docSnapshot.data();
                     setDoc(userRef, {
                       userName: user.displayName,
-                      userPhoto: user.photoURL,
+                      fullUserPhoto: user.photoURL,
+                      croppedUserPhoto: user.photoURL,
+                      profileCoverImg: null,
+                      profileCoverImgPosition: 50,
                       isLoggedIn: true,
                       role: "user",
+                      favorites: this.initialFavorites
                     })
                     .then(() => {
                       this.$router.push("/");
-                      this.$store.dispatch("setUserPhoto", userData.userPhoto);
+                      this.$store.dispatch("setFullUserPhoto", userData.fullUserPhoto);
+                      this.$store.dispatch("setCroppedUserPhoto", userData.CroppedUserPhoto);
                       this.setLoginState(true);
                     })
                     .catch((error) => {

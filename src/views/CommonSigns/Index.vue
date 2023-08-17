@@ -1,13 +1,13 @@
 <template>
   <LoadingSpinner v-if="isLoading" />
-  <div class="dictionary-page">
-    <div class="container">
+  <div class="common-signs-page">
+    <div class="container mt-5">
       <div class="row">
         <div class="col">
           <iframe
             width="100%"
             height="500"
-            src="https://www.youtube.com/embed/KeQoGjfvl3k"
+            src="https://www.youtube.com/embed/cSb6zeDPjLY"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -17,15 +17,14 @@
       </div>
     </div>
     <div class="container">
-      <h2 class="text-center mt-5 mb-2 fs-1 fw-bolder">
-        English Signs Dictionary
-      </h2>
+      <h2 class="text-center mt-5 mb-3 fs-1 fw-bolder">Common English Signs</h2>
       <div class="row">
-        <LetterCard
-          v-for="letter in letters"
-          :key="letter"
-          :link="`/dictionary/${letter}`"
-          :letter="letter"
+        <WordCard
+          v-for="sign in commonSigns"
+          :key="sign.word"
+          :link="`common-signs/${sign.word}`"
+          :preview-img="sign.previewImg"
+          :word="sign.word"
         />
       </div>
     </div>
@@ -33,48 +32,44 @@
 </template>
 
 <script>
-import LetterCard from "@/components/Dictionary/LetterCard.vue";
 import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
+import WordCard from "@/components/common/WordCard.vue";
 import { db } from "@/firebaseConfig";
 import { collection, getDocs } from "@firebase/firestore";
 
-// import { db } from "@/firebaseConfig";
-// import { collection, getDoc } from "@firebase/firestore";
-
 export default {
-  name: "dictionary-index",
   components: {
-    LetterCard,
+    WordCard,
     LoadingSpinner
 },
-
+  name: "common-signs-view",
   data() {
     return {
-      letters: [],
+      commonSigns: [],
       isLoading: true
     };
   },
+
   methods: {
-    async retrivedData() {
-      const dictionaryRef = collection(db, "dictionary");
-      const querySnapshot = await getDocs(dictionaryRef);
-      const letters = [];
+    async retrievedData() {
+      const commonSignsRef = collection(db, "commonSigns");
+      const querySnapshot = await getDocs(commonSignsRef);
+      const commonSignsData = [];
       querySnapshot.forEach((doc) => {
-        letters.push(doc.id);
+        commonSignsData.push(doc.data());
       });
-      this.letters = letters;
+      this.commonSigns = commonSignsData;
       this.isLoading = false;
     },
   },
-  async mounted() {
-    await this.retrivedData();
+  async created() {
+    await this.retrievedData();
   },
 };
 </script>
 
-
 <style lang="scss" scoped>
-.dictionary-page {
+.common-signs-page {
   margin-top: 8rem;
 }
 </style>

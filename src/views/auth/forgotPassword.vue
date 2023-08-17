@@ -35,8 +35,8 @@
 
 
 <script>
-import LoadingSpinner from '@/components/LoadingSpinner.vue';
-import CardContainer from '@/components/CardContainer.vue';
+import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
+import CardContainer from '@/components/common/CardContainer.vue';
 
 import { auth } from '@/firebaseConfig';
 import { sendPasswordResetEmail } from 'firebase/auth';
