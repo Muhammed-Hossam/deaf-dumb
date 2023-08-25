@@ -37,8 +37,6 @@
           :letter="letter.letter"
           :img-src="letter.signImage"
           @show-content="showContent"
-          @show-letter="showLetter"
-          @show-img-src="showImg"
         />
       </div>
     </div>
@@ -78,18 +76,13 @@ export default {
   },
   methods: {
     showContent(payload) {
-      this.show = payload;
+      this.show = payload.show;
+      this.letter = payload.letter;
+      this.imgSrc = payload.imgSrc;
     },
     closeContent(payload) {
       this.show = payload;
     },
-    showLetter(payload) {
-      this.letter = payload;
-    },
-    showImg(payload) {
-      this.imgSrc = payload;
-    },
-
     async retrievedData() {
       const lettersRef = collection(db, "letters");
       const querySnapshot = await getDocs(lettersRef);

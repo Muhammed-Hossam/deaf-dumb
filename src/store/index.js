@@ -16,7 +16,8 @@ const store = createStore({
       fullUserPhoto: localStorage.getItem('fullUserPhoto') || "",
       croppedUserPhoto: localStorage.getItem('croppedUserPhoto') || "",
       profileCoverImg: localStorage.getItem('profileCoverImg') || null,
-      profileCoverImgPosition: 50
+      profileCoverImgPosition: 50,
+      flashCardsFavoritesIds: JSON.parse(localStorage.getItem('flashCardsFavoritesIds')) || []
     };
   },
   mutations: {
@@ -45,6 +46,10 @@ const store = createStore({
     },
     SET_PROFILE_COVER_IMG_POSITION(state, position) {
       state.profileCoverImgPosition = position;
+    },
+    SET_FLASHCARDS_FAVORITES(state, flashCardsFavoritesIds) {
+      state.flashCardsFavoritesIds = flashCardsFavoritesIds;
+      localStorage.setItem('flashCardsFavoritesIds', JSON.stringify(flashCardsFavoritesIds));
     }
   },
   actions: {
@@ -69,6 +74,9 @@ const store = createStore({
     setProfileCoverImgPosition({ commit }, payload) {
       commit('SET_PROFILE_COVER_IMG_POSITION', payload);
     },
+    setFlashCardsFavoritesIds({ commit }, payload) {
+      commit('SET_FLASHCARDS_FAVORITES', payload)
+    },
     fetchCurrentUserData() {
       onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -83,6 +91,7 @@ const store = createStore({
             this.dispatch('setCroppedUserPhoto', userData.croppedUserPhoto);
             this.dispatch('setProfileCoverImg', userData.profileCoverImg);
             this.dispatch('setProfileCoverImgPosition', userData.profileCoverImgPosition);
+            this.dispatch('setFlashCardsFavoritesIds', userData.favorites.flashCards);
           });
         } else {
           // User is signed out
@@ -93,6 +102,7 @@ const store = createStore({
             this.dispatch('setFullUserPhoto', '');
             this.dispatch('setCroppedUserPhoto', '');
             this.dispatch('setProfileCoverImg', null);
+            this.dispatch('setFlashCardsFavoritesIds', []);
         }
       });
     },
@@ -118,6 +128,9 @@ const store = createStore({
     },
     getProfileCoverImgPosition(state) {
       return state.profileCoverImgPosition;
+    },
+    getFlashCardsFavoritesIds(state) {
+      return state.flashCardsFavoritesIds;
     }
   },
 });

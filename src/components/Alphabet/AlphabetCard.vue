@@ -11,7 +11,7 @@
 <script>
 export default {
   props: ['letter', 'imgSrc'],
-  emits: ['show-content', 'showLetter', 'showImgSrc'],
+  emits: ['show-content'],
   data() {
     return {
       show: false
@@ -20,9 +20,12 @@ export default {
   methods: {
     showContent() {
       this.show = true;
-      this.$emit('show-content', this.show);
-      this.$emit('showLetter', this.letter);
-      this.$emit('showImgSrc', this.imgSrc);
+      const content = {
+        show: this.show,
+        letter: this.letter,
+        imgSrc: this.imgSrc
+      }
+      this.$emit('show-content', content);
     },
     closeContent() {
       this.show = false;

@@ -3,7 +3,7 @@
     <span class="userName fw-bold me-2">
       <span class="text-dark">Hi,</span> {{ userName }}
     </span>
-    <button class="user-img-btn rounded-circle border d-inline-block fs-3" type="button" data-bs-toggle="dropdown"
+    <button class="user-img-btn rounded-circle border d-inline-block" type="button" data-bs-toggle="dropdown"
       aria-expanded="false">
       <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
       <img v-else :src="userPhoto" class="user-photo rounded-circle" alt="user-pic" referrerpolicy="no-referrer" />
@@ -45,12 +45,11 @@ export default {
     text-align: center;
     line-height: 50px;
     transition: all 0.3s ease-in-out;
-    border: 5px solid #ccc;
     cursor: pointer;
 
     &:hover,
     &:focus {
-      box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.12);
     }
 
     &,

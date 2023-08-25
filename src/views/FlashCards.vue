@@ -2,26 +2,36 @@
   <LoadingSpinner v-if="isLoading" />
   <div class="flash-cards-page">
     <div class="banner"></div>
-    <div class="questions-details">
-      <h2 class="text-center h1 mb-5">Number of Questions: {{ flashCards.length }}</h2>
-      <div class="score d-flex justify-content-around mb-5">
-        <h4 class="correct-answer h2 p-3 fw-bold rounded">Correct Answers: {{ correctAnswersCount }}</h4>
-        <h4 class="wrong-answer h2 p-3 fw-bold rounded">Wrong Answers: {{ wrongAnswersCount }}</h4>
+    <div class="flash-cards-slider">
+      <div class="questions-details">
+        <h2 class="text-center h1 mb-5">
+          Number of Questions: {{ flashCards.length }}
+        </h2>
+        <div class="score d-flex justify-content-around mb-5">
+          <h4 class="correct-answer h2 p-3 fw-bold rounded">
+            Correct Answers: {{ correctAnswersCount }}
+          </h4>
+          <h4 class="wrong-answer h2 p-3 fw-bold rounded">
+            Wrong Answers: {{ wrongAnswersCount }}
+          </h4>
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <card-container style="padding: 0 !important;">
-        <swiper
-        :pagination="{
-          type: 'progressbar',
-        }"
-        :space-between="50"
-        :navigation="true"
-        :modules="modules"
-        class="mySwiper h-100"
-        >
-          <swiper-slide v-for="(card, index) in flashCards" :key="index" class="position-relative p-5">
-              <FavoriteButton :isFavorited="card.isFavorited" @toggle-favorite="toggleFavBtn(card)"  style="top: 3rem !important" />
+      <div class="container">
+        <card-container style="padding: 0 !important">
+          <swiper
+            :pagination="{
+              type: 'progressbar',
+            }"
+            :space-between="50"
+            :navigation="true"
+            :modules="modules"
+            class="mySwiper h-100"
+          >
+            <swiper-slide v-for="(card, index) in flashCards" :key="index" class="position-relative p-5">
+              <FavoriteButton
+                :isFavorited="card.isFavorited"
+                @toggle-favorite="toggleFavBtn(card)"
+              />
               <div>
                 <span
                   v-if="card.correctAnswer"
@@ -57,13 +67,17 @@
                     :disabled="!card.btnIsActive"
                     @click="checkAnswer(card)"
                   >
-                    <font-awesome-icon class="fs-2" icon="fa-solid fa-circle-check" />
+                    <font-awesome-icon
+                      class="fs-2"
+                      icon="fa-solid fa-circle-check"
+                    />
                   </button>
                 </div>
               </div>
-          </swiper-slide>
-        </swiper>
-      </card-container>
+            </swiper-slide>
+          </swiper>
+        </card-container>
+      </div>
     </div>
   </div>
 </template>
@@ -73,11 +87,6 @@ import CardContainer from "@/components/common/CardContainer.vue";
 import QuestionFlipCard from "@/components/FlashCards/QuestionFlipCard.vue";
 import AnswerCard from "@/components/FlashCards/AnswerCard.vue";
 import FavoriteButton from '@/components/common/FavoriteButton.vue';
-
-
-import { auth, db } from "@/firebaseConfig";
-import {  arrayRemove, arrayUnion, collection, doc, getDocs, onSnapshot, updateDoc } from "@firebase/firestore";
-import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -90,19 +99,25 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 import { useToast } from 'vue-toastification';
-import { onAuthStateChanged } from 'firebase/auth';
+
+import { collection, getDocs } from "@firebase/firestore";
+import { auth, db } from '@/firebaseConfig';
+import { arrayRemove, arrayUnion, doc,  updateDoc } from 'firebase/firestore';
+
+import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
+import { mapGetters } from 'vuex';
 
 export default {
-  name: 'flash-cards-view',
+  name: "flash-cards-view",
   components: {
+    LoadingSpinner,
     CardContainer,
     QuestionFlipCard,
     AnswerCard,
-    LoadingSpinner,
     FavoriteButton,
     Swiper,
     SwiperSlide,
-},
+  },
   data() {
     return {
       flashCards: [],
@@ -112,26 +127,28 @@ export default {
       modules: [Pagination, Navigation],
     };
   },
-  methods: {
-    async retrievedData() {
-      const flashCardsRef = collection(db, "flashCards");
-      const querySnapshot = await getDocs(flashCardsRef);
-      const flashCardsData = [];
-      querySnapshot.forEach((doc) => {
-        flashCardsData.push({
-          ...doc.data(),
-          activeImg: null,
-          correctAnswer: null,
-          rotate: false,
-          btnIsActive: false,
-          isAnswerd: false,
-          isFavorited: false,
-        });
-      });
-      this.flashCards = flashCardsData;
-      // this.retrieveUserFavorites();
-      this.isLoading = false;
+    computed: {
+    toastOptions() {
+      return {
+        position: "top-right",
+        timeout: 4000,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: "button",
+        icon: true,
+        rtl: false,
+      };
     },
+    ...mapGetters({
+      flashCardsFavoritesIds: 'getFlashCardsFavoritesIds'
+    })
+  },
+  methods: {
     activateAnswerCard(card, sign) {
       card.activeImg = sign;
       card.btnIsActive = true;
@@ -163,6 +180,7 @@ export default {
             : arrayRemove(card.word),
         };
         await updateDoc(userRef, favoritesUpdate);
+        console.log(card)
       } else {
         console.log("Login first to use this feature!");
         const toast = useToast();
@@ -170,54 +188,38 @@ export default {
         card.isFavorited = false;
       }
     },
-    retrieveUserFavorites() {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          const userRef = doc(db, "users", user.uid);
-          onSnapshot(userRef, (snapshot) => {
-            const userData = snapshot.data();
-            const userFavorites = userData.favorites.flashCards;
-            
-            this.flashCards.forEach( (card) => {
-              card.isFavorited = userFavorites.includes(card.word);
-            });
-          })
-        }
-      })
+    async retrieveFlashCards() {
+      const flashCardsRef = collection(db, "flashCards");
+      const querySnapshot = await getDocs(flashCardsRef);
+      const flashCardsData = [];
+      querySnapshot.forEach((doc) => {
+        flashCardsData.push({
+          ...doc.data(),
+          activeImg: null,
+          correctAnswer: null,
+          rotate: false,
+          btnIsActive: false,
+          isAnswerd: false,
+          isFavorited: false,
+        });
+      });
+      this.flashCards = flashCardsData;
+      this.isLoading = false;
+    },
+    isCardFavorited(card) {
+      card.isFavorited = this.flashCardsFavoritesIds.includes(card.word);
     },
   },
-  computed: {
-    toastOptions() {
-      return {
-        position: "top-right",
-        timeout: 4000,
-        closeOnClick: true,
-        pauseOnFocusLoss: true,
-        pauseOnHover: true,
-        draggable: true,
-        draggablePercent: 0.6,
-        showCloseButtonOnHover: false,
-        hideProgressBar: true,
-        closeButton: "button",
-        icon: true,
-        rtl: false,
-      };
-    },
-  },
-  async created() {
-    await this.retrievedData();
-    this.retrieveUserFavorites();
+  created() {
+    this.retrieveFlashCards();
   },
   watch: {
-    $route: {
-      immediate: true,
-      handler(newRoute) {
-        if(newRoute.path === '/flash-cards') {
-          this.retrieveUserFavorites()
-        }
-      }
-    }
-  }
+    flashCards(newValue) {
+      newValue.forEach(card => {
+        this.isCardFavorited(card);
+      })
+    },
+    },
 };
 </script>
 
@@ -237,7 +239,7 @@ $wrong-color: rgb(211, 16, 16);
     background-position: center -11rem;
     background-repeat: no-repeat;
   }
-  
+
   .correct-answer {
     background-color: $correct-color;
     color: #fff;
@@ -246,37 +248,37 @@ $wrong-color: rgb(211, 16, 16);
     background-color: $wrong-color;
     color: #fff;
   }
-  
+
   .correct-answer,
   .wrong-answer {
     box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.1);
   }
-  
+
   .correct-icon {
     font-size: 8rem;
     color: $correct-color;
   }
-  
+
   .wrong-icon {
     font-size: 8rem;
     color: $wrong-color;
   }
-  
+
   .correct-icon,
   .wrong-icon {
     left: 6rem;
   }
-  
+
   @include media-breakpoint-down(lg) {
     .banner {
       background-position: center -7.5rem;
     }
-  
+
     .score {
       gap: 1rem;
       margin-left: 0.5rem;
       margin-right: 0.5rem;
-  
+
       h4 {
         font-size: 0.9rem;
         padding: 0.5rem;
@@ -284,5 +286,4 @@ $wrong-color: rgb(211, 16, 16);
     }
   }
 }
-
 </style>

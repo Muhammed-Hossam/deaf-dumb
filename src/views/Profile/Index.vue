@@ -35,11 +35,7 @@
       <ProfileCoverMediaMenu v-if="isAddCoverBtnClicked" @loading-state="handleLoading" />
     </div>
     <ProfileUserData />
-    <div class="container">
-      <div class="row">
-        <h1>Favourites...</h1>
-      </div>
-    </div>
+    <ProfileFavorites />
   </div>
 </template>
 
@@ -51,6 +47,7 @@ import { auth, db } from "@/firebaseConfig";
 import ProfileCoverMediaMenu from "@/components/Profile/ProfileCoverMediaMenu.vue";
 import ProfileCoverLoader from "@/components/Profile/ProfileCoverLoadingSpinner.vue";
 import ProfileUserData from '@/components/Profile/ProfileUserData.vue';
+import ProfileFavorites from '@/components/Profile/favorites/ProfileFavorites.vue';
 
 export default {
   name: "user-profile",
@@ -58,6 +55,7 @@ export default {
     ProfileCoverMediaMenu,
     ProfileCoverLoader,
     ProfileUserData,
+    ProfileFavorites
   },
   data() {
     return {

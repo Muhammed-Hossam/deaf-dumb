@@ -20,9 +20,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../scss/custom.scss";
+
 .favorite-btn {
   right: 3rem;
   top: 7rem;
   color: red;
+  top: 3rem;
 }
+
+@include media-breakpoint-down(md) {
+    .favorite-btn {
+      right: 1rem !important;
+    }
+  }
 </style>

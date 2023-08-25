@@ -6,9 +6,9 @@
     </div>
     <div class="col-lg-8">
       <div class="card-body">
-        <h5 class="card-title text-center">{{ cardTitle }}</h5>
-        <p class="card-text">{{ cardText }}</p>
-        <router-link class="text-decoration-none" :to="link">learn more <font-awesome-icon icon="fa-solid fa-arrow-right-long" /></router-link>
+        <div class="h5 card-title text-center">{{ cardTitle }}</div>
+        <p class="card-text text-center">{{ cardText }}</p>
+        <router-link class="learn-more text-decoration-none" :to="link">learn more <font-awesome-icon icon="fa-solid fa-arrow-right-long" /></router-link>
       </div>
     </div>
   </div>
@@ -25,6 +25,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/custom.scss";
+
 .card {
   height: fit-content;
 
@@ -45,5 +47,32 @@ export default {
       margin-left: 0.5rem;
     }
   }
+  @include media-breakpoint-down(sm) {
+    .card-body {
+      .card-title {
+        font-size: 2rem;
+      }
+      .card-text {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  @include media-breakpoint-only(md) {
+    .card-body {
+      .card-title {
+        font-size: 4rem;
+      }
+      .card-text {
+        font-size: 2.5rem;
+      }
+      .learn-more {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
 }
+
+
 </style>

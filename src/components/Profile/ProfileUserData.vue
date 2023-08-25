@@ -119,7 +119,7 @@ export default {
 
 
 <style lang="scss" scoped>
-@import "../../scss/_variables.scss";
+@import "../../scss/custom.scss";
 
 .profile-user-data {
   height: 9rem;
@@ -174,6 +174,12 @@ export default {
         }
       }
     }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .profile-user-photo {
+    width: 100% !important;
   }
 }
 </style>
