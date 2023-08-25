@@ -139,6 +139,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../scss/custom.scss";
+
 .overlay {
   display: none;
   background-color: rgba(0, 0, 0, 0.1);
@@ -182,6 +184,12 @@ export default {
         }
       }
     }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .control-profile-cover-img {
+    top: 0.5rem;
   }
 }
 </style>

@@ -281,7 +281,8 @@ header {
     }
 
     .user-greeting-section-desktop {
-      display: block !important;
+      display: flex !important;
+      align-items: center;
     }
 
     .nav-item:not(:last-of-type) {

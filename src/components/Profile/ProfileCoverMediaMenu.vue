@@ -294,6 +294,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../scss/custom.scss";
+
 .media-menu {
   width: 34rem;
   background-color: #fff;
@@ -346,6 +348,31 @@ export default {
 
       &:active {
         background-color: #f0f0f0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .media-menu {
+    width: 96% !important;
+    top: 3rem !important;
+
+    .nav {
+      .nav-item {
+        .nav-link {
+          padding-left: 0.5rem !important;
+          padding-right: 0.5rem !important;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .remove-btn {
+      button {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        font-size: 0.9rem;
       }
     }
   }

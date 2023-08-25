@@ -3,7 +3,7 @@
     <span class="userName fw-bold me-2">
       <span class="text-dark">Hi,</span> {{ userName }}
     </span>
-    <button class="user-img-btn rounded-circle border d-inline-block" type="button" data-bs-toggle="dropdown"
+    <button class="user-img-btn rounded-circle border d-inline-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown"
       aria-expanded="false">
       <font-awesome-icon v-if="!userPhoto" icon="fa-solid fa-user" />
       <img v-else :src="userPhoto" class="user-photo rounded-circle" alt="user-pic" referrerpolicy="no-referrer" />
@@ -59,14 +59,12 @@ export default {
     }
 
     .user-photo {
-      transform: translate(-6px, -4px);
       border: 2px solid #ccc;
     }
   }
 
   .userName {
     color: $main-color;
-    vertical-align: super;
   }
 
   .dropdown-menu {
@@ -97,6 +95,13 @@ export default {
 @include media-breakpoint-down(md) {
   .user-greeting-section-mobile {
     position: unset !important;
+
+    .userName {
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 1rem;
+    }
+
     .dropdown-menu {
       position: unset !important;
     }

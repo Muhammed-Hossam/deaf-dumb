@@ -62,6 +62,8 @@ export default {
 
 
 <style lang="scss">
+@import "../../../../scss/custom.scss";
+
 .modal-body {
   overflow: auto;
   .cropper {
@@ -78,6 +80,13 @@ export default {
     width: 10rem;
     height: 10rem;
     border: 2px solid #888;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .preview-cropper-img {
+    width: 6rem !important;
+    height: 6rem !important;
   }
 }
 </style>

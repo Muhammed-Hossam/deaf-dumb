@@ -1,67 +1,69 @@
 <template>
   <div class="profile-user-photo-modal position-relative">
-    <card-container
-      class="w-50 bg-light position-absolute top-50 start-50 translate-middle"
-    >
-      <ModalHeader
-        :modalMode="modalMode"
-        @return-default="returnToDefaultMode"
-        @close-modal="closeModal"
-      />
+    <div class="profile-user-photo-modal-wrapper w-50 position-absolute top-50 start-50 translate-middle">
+      <card-container
+        class="w-100 bg-light"
+      >
+        <ModalHeader
+          :modalMode="modalMode"
+          @return-default="returnToDefaultMode"
+          @close-modal="closeModal"
+        />
 
-      <!-- Start Default Mode -->
-      <DefaultModalBody
-        v-if="modalMode === 'default'"
-        :userPhoto="croppedUserPhoto"
-      />
-      <DefaultModalFooter
-        v-if="modalMode === 'default'"
-        @action-mode="changeModalMode"
-      />
-      <!-- End Default Mode -->
+        <!-- Start Default Mode -->
+        <DefaultModalBody
+          v-if="modalMode === 'default'"
+          :userPhoto="croppedUserPhoto"
+        />
+        <DefaultModalFooter
+          v-if="modalMode === 'default'"
+          @action-mode="changeModalMode"
+        />
+        <!-- End Default Mode -->
 
-      <!-- Start Edit Mode -->
-      <EditModalBody
-        v-if="modalMode === 'edit'"
-        :fullUserPhoto="fullUserPhoto"
-        :isLoading="editModaLoadingState"
-        @cropped-image="getCroppedImage"
-      />
-      <EditModalFooter
-        v-if="modalMode === 'edit'"
-        :croppedImageURL="croppedImageURL"
-        @is-loading="getEditLoadingState"
-      />
-      <!-- End Edit Mode -->
+        <!-- Start Edit Mode -->
+        <EditModalBody
+          v-if="modalMode === 'edit'"
+          :fullUserPhoto="fullUserPhoto"
+          :isLoading="editModaLoadingState"
+          @cropped-image="getCroppedImage"
+        />
+        <EditModalFooter
+          v-if="modalMode === 'edit'"
+          :croppedImageURL="croppedImageURL"
+          @is-loading="getEditLoadingState"
+        />
+        <!-- End Edit Mode -->
 
-      <!-- Start Add Mode -->
-      <AddModalBody
-        v-if="modalMode === 'add'"
-        :userPhoto="croppedUserPhoto"
-        :isLoading="addModaLoadingState"
-        :isCameraOpened="isCameraOpened"
-        @video-stream="getVideoStream"
-        :isPhotoTaken="isPhotoTaken"
-        @modal-mode="changeModalMode"
-      />
-      <AddModalFooter
-        v-if="modalMode === 'add'"
-        @is-loading="getAddLoadingState"
-        @modal-mode="changeModalMode"
-        @open-camera="openCamera"
-        :videoStream="cameraVideoStream"
-        @take-photo="getPhotoTakenState"
-      />
-      <!-- End Add Mode -->
+        <!-- Start Add Mode -->
+        <AddModalBody
+          v-if="modalMode === 'add'"
+          :userPhoto="croppedUserPhoto"
+          :isLoading="addModaLoadingState"
+          :isCameraOpened="isCameraOpened"
+          @video-stream="getVideoStream"
+          :isPhotoTaken="isPhotoTaken"
+          @modal-mode="changeModalMode"
+        />
+        <AddModalFooter
+          v-if="modalMode === 'add'"
+          @is-loading="getAddLoadingState"
+          @modal-mode="changeModalMode"
+          @open-camera="openCamera"
+          :videoStream="cameraVideoStream"
+          @take-photo="getPhotoTakenState"
+        />
+        <!-- End Add Mode -->
 
-      <AlertModal
-        title="Remove Photo"
-        body="Are you sure removing your photo?"
-        closeBtn="Close"
-        confirmBtn="Confirm"
-        @is-confirm="removeUserPhoto"
-      />
-    </card-container>
+        <AlertModal
+          title="Remove Photo"
+          body="Are you sure removing your photo?"
+          closeBtn="Close"
+          confirmBtn="Confirm"
+          @is-confirm="removeUserPhoto"
+        />
+      </card-container>
+    </div>
   </div>
 </template>
 
@@ -159,11 +161,19 @@ export default {
 
 
 <style lang="scss" scoped>
+@import "../../../scss/custom.scss";
+
 .profile-user-photo-modal {
   z-index: 1000;
-  top: -5rem;
+  top: 0;
   .card-container {
     padding: 0 !important;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .profile-user-photo-modal-wrapper {
+    width: 96% !important;
   }
 }
 </style>
