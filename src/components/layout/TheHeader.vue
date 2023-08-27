@@ -28,7 +28,7 @@
           <!-- End user-greeting-section for small screens (mobile, tablet) -->
           <ul class="navbar-nav" role="navigation">
             <li class="nav-item">
-              <router-link class="nav-link" active-class="active router-link-active" @click="closeNavbar" to="/">
+              <router-link class="nav-link" @click="closeNavbar" to="/">
                 Home
               </router-link>
             </li>
@@ -45,26 +45,22 @@
               <!-- Start Contents Dropdown menu -->
               <ul class="dropdown-menu contents">
                 <li>
-                  <router-link class="dropdown-item" active-class="router-link-active text-dark" @click="closeNavbar"
-                    to="/alphabet">
+                  <router-link class="dropdown-item" @click="closeNavbar" to="/alphabet">
                     Sign Lang Alphabet
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" active-class="router-link-active text-dark" @click="closeNavbar"
-                    to="/common-signs">
+                  <router-link class="dropdown-item" @click="closeNavbar" to="/common-signs">
                     Common Signs
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" active-class="router-link-active text-dark" @click="closeNavbar"
-                    to="/dictionary">
+                  <router-link class="dropdown-item" @click="closeNavbar" to="/dictionary">
                     Signs Dictionary
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" active-class="router-link-active text-dark" @click="closeNavbar"
-                    to="/flash-cards">
+                  <router-link class="dropdown-item" @click="closeNavbar" to="/flash-cards">
                     Flash Cards
                   </router-link>
                 </li>
@@ -72,16 +68,19 @@
               <!-- End Contents Dropdown menu -->
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" active-class="active router-link-active" @click="closeNavbar"
-                to="/contact">Contact Us</router-link>
+              <router-link class="nav-link" @click="closeNavbar" to="/contact">
+                Contact Us
+              </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" active-class="active router-link-active" @click="closeNavbar"
-                to="/about">About Us</router-link>
+              <router-link class="nav-link" @click="closeNavbar" to="/about">
+                About Us
+              </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" active-class="active router-link-active" @click="closeNavbar"
-                to="/privacy">Privacy</router-link>
+              <router-link class="nav-link" @click="closeNavbar" to="/privacy">
+                Privacy
+              </router-link>
             </li>
           </ul>
           <!-- Start Authentication Links -->

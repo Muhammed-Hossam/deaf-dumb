@@ -8,7 +8,7 @@
         :key="key"
         class="dictionary-alphabet my-5 ms-5"
       >
-        <details>
+        <details class="nested-details">
           <summary>Words That Starts With {{ key }}</summary>
           <div class="words">
             <div class="row my-5">
@@ -136,6 +136,12 @@ export default {
     }
     .not-found {
       background-color: #eee;
+    }
+  }
+
+  .nested-details {
+    summary {
+      font-size: 1.3rem;
     }
   }
 }

@@ -6,8 +6,10 @@
       >
         <ModalHeader
           :modalMode="modalMode"
+          :videoStream="cameraVideoStream"
           @return-default="returnToDefaultMode"
           @close-modal="closeModal"
+          @close-camera="closeCamera"
         />
 
         <!-- Start Default Mode -->
@@ -44,6 +46,7 @@
           @video-stream="getVideoStream"
           :isPhotoTaken="isPhotoTaken"
           @modal-mode="changeModalMode"
+          @disable-take-photo-btn="disableTakePhotoBtn"
         />
         <AddModalFooter
           v-if="modalMode === 'add'"
@@ -52,6 +55,7 @@
           @open-camera="openCamera"
           :videoStream="cameraVideoStream"
           @take-photo="getPhotoTakenState"
+          :isTakePhotoBtnDisabled="isTakePhotoBtnDisabled"
         />
         <!-- End Add Mode -->
 
@@ -105,6 +109,7 @@ export default {
       isCameraOpened: false,
       cameraVideoStream: null,
       isPhotoTaken: false,
+      isTakePhotoBtnDisabled: false
     };
   },
   methods: {
@@ -129,11 +134,17 @@ export default {
     openCamera(value) {
       this.isCameraOpened = value;
     },
+    closeCamera() {
+      this.isCameraOpened = false;
+    },
     getVideoStream(stream) {
       this.cameraVideoStream = stream;
     },
     getPhotoTakenState(state) {
       this.isPhotoTaken = state;
+    },
+    disableTakePhotoBtn(state) {
+      this.isTakePhotoBtnDisabled = state;
     },
     removeUserPhoto() {
       const user = auth.currentUser;

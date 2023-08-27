@@ -24,9 +24,8 @@ export default {
 
 .favorite-btn {
   right: 3rem;
-  top: 7rem;
+  top: 6rem;
   color: red;
-  top: 3rem;
 }
 
 @include media-breakpoint-down(md) {

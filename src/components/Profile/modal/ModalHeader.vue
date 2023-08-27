@@ -25,15 +25,23 @@
 
 <script>
 export default {
-  emits: ['return-default', 'close-modal'],
-  props: ['modalMode'],
+  emits: ['return-default', 'close-modal', 'close-camera'],
+  props: ['modalMode', 'videoStream'],
   methods: {
     returnToDefaultMode() {
       this.$emit('return-default', 'default');
+      this.$emit('close-camera')
+      this.closeCamera();
     },
     closeModal() {
       this.$emit('close-modal', false);
-    }
+    },
+    closeCamera() {
+      if (this.videoStream) {
+        const tracks = this.videoStream.getTracks();
+        tracks.forEach(track => track.stop());
+      }
+    },
   }
 };
 </script>

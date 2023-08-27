@@ -18,7 +18,7 @@
     <div class="use-camera-footer d-flex justify-content-between w-100" v-else>
       
         <button class="cancel btn btn-light ms-3 rounded" @click="closeCamera">Cancel</button>
-        <button class="take-photo btn btn-primary me-3 rounded-pill" @click="takePhoto">Take Photo</button>
+        <button class="take-photo btn btn-primary me-3 rounded-pill" @click="takePhoto" :disabled="isTakePhotoBtnDisabled">Take Photo</button>
       
     </div>
   </div>
@@ -36,7 +36,7 @@ import {
 
 export default {
   emits: ['is-loading', 'modal-mode', 'open-camera', 'take-photo'],
-  props: ['videoStream'],
+  props: ['videoStream', 'isTakePhotoBtnDisabled'],
   data() {
     return {
       upload: {
@@ -97,6 +97,7 @@ export default {
             console.log("profileCoverImg added succesfully");
             this.upload.success = "Profile Cover Image added successfully.";
             this.$emit('modal-mode', 'edit');
+            this.$emit('is-loading', false);
           })
           .catch((error) => {
             this.upload.error = error.message;

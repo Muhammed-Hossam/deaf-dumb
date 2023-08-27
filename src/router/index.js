@@ -19,6 +19,7 @@ const DashboardOverview = () => import('../views/Dashboard/Overview/DashboardOve
 const AddNewItem = () => import('../views/Dashboard/AddNewItem/Index.vue');
 const ManageUsers = () => import('../views/Dashboard/ManageUsers/Index.vue');
 const UserProfile = () => import('../views/Profile/Index.vue');
+const Notfound = () => import('../views/Notfound.vue');
 
 import store from '@/store';
 
@@ -37,7 +38,7 @@ const routes = [
   {
     path: '/common-signs',
     name: 'common-signs',
-    component: CommonSignsView
+    component: CommonSignsView,
   },
   {
     path: '/common-signs/:word',
@@ -61,7 +62,6 @@ const routes = [
     path: '/dictionary/:letter/details',
     name: 'show-word-detials',
     component: ShowWordDetials,
-    // props: route => ({ word: route.query.word })
   },
   {
     path: '/flash-cards',
@@ -171,6 +171,11 @@ const routes = [
         next({ name: 'home' });
       }
     }
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'not-found',
+    component: Notfound
   }
 ]
 
